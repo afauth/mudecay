@@ -1,4 +1,4 @@
-# Repositório para os códigos do experimento vida média dos múons.
+# Códigos do experimento vida média dos múons.
 ================================================================================
   O experimento utiliza:
   -  osciloscópio Tektronix TDS 1002B com driver Visa e  pacote pylef do LEB-IFGW
