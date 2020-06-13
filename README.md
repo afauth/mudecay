@@ -21,7 +21,8 @@
 	    - o arquivo com 5500 eventos está no Google Drive: https://drive.google.com/open?id=12PdxqnW8CiDlFmtguUx0o1hdQtklEnFw
 	 
 Para fazer:
- 1) introduzir o tempo em UTC de cada evento (= dois pulsos na waveform)
- 2) codigos para fazer obter os espectros de carga (e amplitude) dos dois pulsos 
- 2) codigos para verificar a boa qualidade dos dados obtidos
-	contagem x tempo,  carga x tempo (intervalo de tempo variável, 5min..., eixo y em hz, eixo x em minutos)
+ - introduzir o tempo em UTC no início de cada linha dos dados
+ 	- ver codigo daqTek_FauthBruno.py
+ - codigos para fazer obter os espectros de carga (e amplitude) dos dois pulsos 
+ - codigos para verificar a boa qualidade dos dados obtidos
+	- contagem x tempo,  carga x tempo (intervalo de tempo variável, 5min..., eixo y em hz, eixo x em minutos)
