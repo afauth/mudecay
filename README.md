@@ -8,17 +8,21 @@
 	 pylef: https://github.com/gwiederhecker/pylef
 	 
   - detector de particulas (cintilador plástico+PMT+fonte de HV)
-  - computador com Python3 (Anaconda, spyder)
+  - computador com Python3 (Anaconda, Spyder, Jupyter)
 ===============================================================================
     Os códigos no momento são:
 	 - daqTek_onlyData.py
 	 - daqTek_fitPlot.py
 	 - plotVidamedia.py
+	 - espectro-de-carga.ipynb
 	 
 	Para o desenvolvimento do projeto em casa usamos os arquivos de dados
-	 - 5500_diferencias.cvs (diferença de tempo, em microsegundo, entre dois pulsos)
-	 - eventos200.cvs (200 waveforms com 2500 pontos cada uma, o arquivo com 5500 é mito grande e o github não aceita)
-	    - o arquivo com 5500 eventos está no Google Drive: https://drive.google.com/open?id=12PdxqnW8CiDlFmtguUx0o1hdQtklEnFw
+	 - 5500_diferencias.csv (diferença de tempo, em microsegundo, entre dois pulsos)
+	 - Temos também o arquivo 5555_eventos-edit.csv, que armazena os dados já um pouco tratados (este está no GitHub)
+	 - 99_eventos-edit.csv (99 waveforms com 2500 pontos cada uma; o arquivo com 5500 é muito grande e o github não aceita)
+	    - o arquivo com 5500 eventos está no Google Drive: 
+	    	https://drive.google.com/open?id=12PdxqnW8CiDlFmtguUx0o1hdQtklEnFw
+
 	 
 Para fazer:
  - introduzir o tempo em UTC no início de cada linha dos dados
