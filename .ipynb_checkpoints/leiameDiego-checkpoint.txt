@@ -1,0 +1,105 @@
+##################################MUON DECAY##############################
+
+##################################INTRODUCTION############################
+This file was developed with the objective of doing a practical experiment
+in order to know and study muon decay physics and production of muons 
+into Earth atmosphere.
+
+Mount an experiment to measure the muon lifetime using is with 
+Cintilator detector + PMT + high voltage power supply + Oscilloscope + Pc data Logger
+
+The routines were developed with Python 3.7.3 on a windows 7 of 64 system.
+To use it on windows, it was also necessary to install new libraries that help
+to the correct development of the functions. Using Python PIP.
+
+#################################INSTALL#################################
+The libraries are:
+pip install PyVISA
+pip install pylef
+pip install numpy
+pip install matplotlib
+pip install scipy
+
+In addition to installing Tektronic drivers, by visa. Since I know
+use a TDS 1002B oscilloscope. For this there is direct download from
+The manufacturer's website.
+http://www.ni.com/pt-br/support/downloads/drivers/download.ni-visa.html
+
+##################################MANUAL################################
+
+This folder has 5 subfolders which you share practically
+the same routine, but each with a focus for practical work
+different.
+
+FOLDERS:
+1.---Base - Comment 
+It contains the event collector and the plotter, with each step commented to know the operation
+
+2.---Base - noComment
+It contains the event collector and the plotter, with each step without commenting, 
+it is a clean way to see the code
+
+3.---Only Acquisition - Comment
+Routine that only does the data acquisition and then saves it in the CSV file
+
+4.---Only Plot - Comment
+This serves to graph previously saved data,
+for example here we attach 5000 data of the experiment performed
+
+5.---UI - noCommment
+As a final work, if I wanted to make a visual interface 
+to extract data and manage work times to pause and re-search. 
+This work is incomplete.
+
+Finally, it should be taken into account that for each of the routines some variables must be modified, 
+such as the number of samples to be searched and numbers of bins, ends of the bins 
+to eliminate noise in the graph. Each of these changes are commented into the routines discussed.
+
+##################################COMMENTS################################
+
+#IN THE PLOT
+#popt, pcov = curve_fit(model_func, xdata, n)
+# if the adjustment does not converge, you can try to put restrictions on the parameters, adding the limits attribute
+#popt, pcov = curve_fit(model_func, xdata, n, bounds=((1.0, offset*0.6, 0.8), (3.0, offset*1.3, 1.2)))
+
+#For the histogram we can do theoretical and better adjustment functions. changing like this.
+#vida = 2.2
+#offset = 0.0014
+#y_teorico = np.apply_along_axis(model_func, 0, xdata, vida, offset, 1.0)
+#y_best_fit = np.apply_along_axis(model_func, 0, xdata, popt[0], popt[1], popt[2])
+#ax.plot(xdata, y_best_fit, 'r-', label='best fit con $f(x) = off + amp \cdot e^{- x / T }$ $\Longrightarrow$ T=%5.4f, off=%5.4f, amp=%5.4f' % tuple(popt), linewidth=2)  
+
+##################################FUTUREWORK################################
+Possibly to do a future job, after developing this you can say that:
+1.-We could work alone with PyVisa
+---Pyvisa works with another backen of its own to dispense with visa controllers, 
+---as well as pyusb, can help this task, so it would only be necessary to 
+---send the commands directly to the oscilloscope. rm = visa.ResourceManager('@py')
+@@@https://pyvisa-py.readthedocs.io/en/latest/
+@@@https://github.com/pyusb/pyusb
+
+2.-We can work with Linux
+---If the Pyvisa-Py communication is developed, we can make the connection 
+---through the PyVisa backend. For each attempt the ports must be opened, 
+---it is recommended to always use OS with python> 3, in this case Centos 7 
+---is under this parameter, for its new 2019 release this will bring changes.
+@@@https://wiki.centos.org/About/Building_8
+
+3.-We can do without the desktop computer
+---Interesting and fast alternatives are those set out in the link, 
+---after knowing the muons pond
+@@@https://www.instructables.com/id/OFFscope-offline-oscilloscope-Arduino-SD-card-fast/
+
+4.-We can acquire all the data
+---Many times we can see the oscilloscope more decay pulses than those stored by the application, 
+---that is because when the routine is in the loop, the change in the oscilloscope happens and it 
+---no longer takes the data from the buffer. By doing other tests, it was possible to realize that 
+---a loop without discriminator is faster in collecting data, likewise, another python library 
+---called numba, can speed up the process, managing the memory. 
+---Finally, making two threads, one that acquires and the second that can 
+---stop the process and then store.
+@@@https://towardsdatascience.com/heres-how-you-can-get-some-free-speed-on-your-python-code-with-numba-89fdc8249ef3
+@@@https://numba.pydata.org/
+@@@https://docs.python.org/3/library/threading.html
+
+
