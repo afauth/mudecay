@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "mudecay",
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.pythonPath": "C:\\.Anaconda\\python.exe"
+	}
+}
