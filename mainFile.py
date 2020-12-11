@@ -439,7 +439,7 @@ def filtra_delta_t(df, convert_to_microsec, time_in_ADCch, height):
 
 #%% Plot fit exponencial das diferenças de tempo
 
-def curve_fit_exponencial(df, height, convert_to_microsec, fit_point_align=0):
+def curve_fit_exponencial(df, height, convert_to_microsec, plt_points=0, plt_bars=1, path_to_save='images/curve_fit-vida_media.png'):
 
     _ = pd.DataFrame(   peaks_em_x( df=df, height=height),  columns = ['peak_0', 'peak_1']   )   
     delta_x = (   _['peak_1']  -  _['peak_0']   )
@@ -471,25 +471,27 @@ def curve_fit_exponencial(df, height, convert_to_microsec, fit_point_align=0):
     '''
     (d) Plot com histograma e regressão da curva
     '''
+        # detalhes
+    fig = plt.figure( figsize=(8,6), dpi=200 )
+    plt.title('Diferenças de tempo entre o primeiro e o segundo pulso')
+    plt.ylabel(r'$\dfrac{\Delta N}{\Delta t}$')
+    plt.xlabel(r'Diferença de tempo ($\mu$s)')
+    #plt.legend()
         # converter os resultados para as unidades corretas
     coeff = np.array([ opt_coeff[0], opt_coeff[1]*convert_to_microsec, opt_coeff[2] ])
         # plot do histograma
-    sns.histplot(delta_x*convert_to_microsec, color='gray', bins=number_of_bins)
+    if plt_bars == 1:
+        sns.histplot(delta_x*convert_to_microsec, color='gray', bins=number_of_bins)
         # plot dos centros dos bins
-    if fit_point_align == 1:
+    if plt_points == 1:
         plt.scatter(bins_centers*convert_to_microsec, data_entries, color = 'black', label = 'centro dos bins')
         # plot da curve_fit
     x = np.linspace(0,10, 10000)
     plt.plot( 
         x, fit_function(x, coeff[0], coeff[1], coeff[2]), 
-        color = 'orange', label = f'y(t) = {round(coeff[0])}*e^-t/{round(coeff[1])} + {round(coeff[2])}' )
-        # detalhes
-    plt.title('Diferenças de tempo entre o primeiro e o segundo pulso')
-    plt.ylabel(r'$\dfrac{\Delta N}{\Delta t}$')
-    plt.xlabel(r'Diferença de tempo ($\mu$s)')
-    plt.legend()
-    plt.show()
-    plt.savefig('images/curve_fit-vida_media', dpi = 150)
+        color = 'orange', label = f'y(t) = {round(coeff[0])}*e^-t/{round(coeff[1])} + {round(coeff[2])}' 
+            )
+
 
     '''
     (e) incertezas
@@ -500,12 +502,10 @@ def curve_fit_exponencial(df, height, convert_to_microsec, fit_point_align=0):
         #Converte a incerteza do tau para micro seg
     coeff_error[1] = coeff_error[1]*convert_to_microsec
         #Resultado
-    #coeff_error
     coeff_results = pd.DataFrame( [coeff, coeff_error] ).T
     coeff_results.rename( columns = {0:'valor', 1:'incerteza'}, index ={ 0:'A', 1:'tau', 2:'C' } , inplace = True )
-    #print(coeff_results)
 
-    return(coeff_results)
+    return(coeff_results, fig)
 
 
 
