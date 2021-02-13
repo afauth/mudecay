@@ -36,34 +36,33 @@ And to the list 'differencesList' the value in units of time of the two picks fo
 #Funções a serem utilizadas
 #==========================================================================================================
 def Acquisition_Waveform( necessarySamples , oscilloscope_resolution=2500 , numberBins=100 ):
-	
-	waveformsList = np.empty( (1,oscilloscope_resolution) ) #array 1 x oscilloscope_resolution; vetor linha
-	timesList     = np.empty( (1,1) ) 
-
-	'''
+    
+    waveformsList = np.empty( (1,oscilloscope_resolution) ) #array 1 x oscilloscope_resolution; vetor linha
+    timesList     = np.empty( (1,1) )    
+    '''
     Nota sobre np.empty(shape): tenha em mente que isso é um array criado e preenchido com números aleatórios.
     Os valores não são inexistentes e essa linha deve ser removida depois. 
     Vide mais informações em: https://numpy.org/doc/stable/reference/generated/numpy.empty.html
     '''
-	counter = 0
+
+    counter = 0
     while waveformsList.shape[0] - 1 < necessarySamples: #-1 porque a primeira linha será deletada depois
-		counter += 1
-		scope_values = scope.ch1.acquire_y_raw() # Valores, em y, dos pontos do osciloscópio
-		peaks , _    = find_peaks(-1*scope_values, height=0) # Vide bloco de comentários abaixo
+        counter += 1
+        scope_values = scope.ch1.acquire_y_raw() # Valores, em y, dos pontos do osciloscópio
+        peaks , _    = find_peaks(-1*scope_values, height=0) # Vide bloco de comentários abaixo
         '''
-            O base line precisa ser medido ao início de cada aquisição. 
-            No caso, como ele é ~= -50, valores a partir de 0 já configuram um bom trigger para a aquisição.
-            É importante evitar problemas de "pico picado".
+        O base line precisa ser medido ao início de cada aquisição. 
+        No caso, como ele é ~= -50, valores a partir de 0 já configuram um bom trigger para a aquisição.
+        É importante evitar problemas de "pico picado".
         '''
         if len(peaks) > 1:
             waveformsList = np.vstack( (waveformsList, scope_values) )
             timesList     = np.append( timesList, time(), axis=None )
-            if (waveformsList.shape[0] % 5 == 0) or (counter % 100 == 0):
-            	print(f'{100*waveformsList.shape[0]/necessarySamples}% concluido(s)')
-
+        if (waveformsList.shape[0] % 5 == 0) or (counter % 100 == 0):
+            print(f'{100*waveformsList.shape[0]/necessarySamples}% concluido(s)')
 
     '''
-        Lembre-se de deletar a primeira linha, que é auxiliar e feita de números aleatórios.
+    Lembre-se de deletar a primeira linha, que é auxiliar e feita de números aleatórios.
     '''
     waveformsList = np.delete( arr=waveformsList, obj=0, axis=0 ).T #(y_n X t) --> (y_n X t) 
     timesList     = np.delete( arr=timesList, obj=0, axis=None )
