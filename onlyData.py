@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from time import time, ctime
 from scipy.signal import find_peaks
+print()
 
 """
 The next loop is the one who asks the oscilloscope for a list of 2500 points, 
@@ -35,49 +36,52 @@ And to the list 'differencesList' the value in units of time of the two picks fo
 #Funções a serem utilizadas
 #==========================================================================================================
 def Acquisition_Waveform( necessarySamples , oscilloscope_resolution=2500 , numberBins=100 ):
+	
+	waveformsList = np.empty( (1,oscilloscope_resolution) ) #array 1 x oscilloscope_resolution; vetor linha
+	timesList     = np.empty( (1,1) ) 
 
-    waveformsList = np.empty(oscilloscope_resolution) #array 1 x oscilloscope_resolution; vetor linha
-    timesList     = np.empty(oscilloscope_resolution)
-    '''
-    Nota sobre np.empty(shape): tenha em mente que isso é um array criado com números aleatórios.
-    Os valores não são nulos e essa linha deve ser removida depois. 
+	'''
+    Nota sobre np.empty(shape): tenha em mente que isso é um array criado e preenchido com números aleatórios.
+    Os valores não são inexistentes e essa linha deve ser removida depois. 
     Vide mais informações em: https://numpy.org/doc/stable/reference/generated/numpy.empty.html
     '''
-
+	counter = 0
     while waveformsList.shape[0] - 1 < necessarySamples: #-1 porque a primeira linha será deletada depois
-        scope_values = scope.ch1.acquire_y_raw() # Valores, em y, dos pontos do osciloscópio
-        peaks , _    = find_peaks(-1*scope_values, height=0) # Vide bloco de comentários abaixo
+		counter += 1
+		scope_values = scope.ch1.acquire_y_raw() # Valores, em y, dos pontos do osciloscópio
+		peaks , _    = find_peaks(-1*scope_values, height=0) # Vide bloco de comentários abaixo
         '''
             O base line precisa ser medido ao início de cada aquisição. 
             No caso, como ele é ~= -50, valores a partir de 0 já configuram um bom trigger para a aquisição.
             É importante evitar problemas de "pico picado".
         '''
-        if len(peaks) > 0:
+        if len(peaks) > 1:
             waveformsList = np.vstack( (waveformsList, scope_values) )
-            timesList     = np.append( timesList, time, axis=None )
+            timesList     = np.append( timesList, time(), axis=None )
+            if (waveformsList.shape[0] % 5 == 0) or (counter % 100 == 0):
+            	print(f'{100*waveformsList.shape[0]/necessarySamples}% concluido(s)')
+
 
     '''
         Lembre-se de deletar a primeira linha, que é auxiliar e feita de números aleatórios.
     '''
     waveformsList = np.delete( arr=waveformsList, obj=0, axis=0 ).T #(y_n X t) --> (y_n X t) 
     timesList     = np.delete( arr=timesList, obj=0, axis=None )
-    print(waveformsList.shape)
-    print(timesList.shape)
 
     '''
         Anexar os instantes de tempo, individualmente, às waveforms
     ''' 
-    waveforms = np.vstack( (waveformsList, timesList) )
+    waveforms = np.vstack( (timesList, waveformsList) )
 
     '''
         Cria um DataFrame e exporta como csv "num-amostras_waveforms_instante-de-tempo.csv"
     '''
     df = pd.DataFrame(
-            data=waveforms, 
-            columns=[ ('event_'+str(i)) for i in range(waveforms.shape) ]  
+            data=waveforms,
+            index=['time_epoch']+[ str(i) for i in range(waveforms.shape[0]-1) ], 
+            columns=[ ('event_'+str(i)) for i in range(waveforms.shape[1]) ],
                     )
-    df.to_csv( path_or_buf=f'data/{necessarySamples}_waveforms_{time}', header=True, index=True ) 
-    print(df)
+    df.to_csv( path_or_buf=f'data/{necessarySamples}_waveforms_{time()}.csv', header=True, index=True ) 
 
     return(df)
 
@@ -88,12 +92,13 @@ def Acquisition_Waveform( necessarySamples , oscilloscope_resolution=2500 , numb
 number_of_samples = int( input('\nQual o tamanho da amostra que precisa ser obtida? ') )  #number of samples needed to search
 osc_resolution    = 2500 #número de pontos em cada waveform selecionada
 numberBins        = 100  #number of bins to graph
+print()
 
 
 
 rm = visa.ResourceManager() #list of connected visa resources with PyVisa as a visa
 rm.list_resources() #Print resource list
-scope = rm.open_resource('USB0::0x0699::0x0363::C061073::INSTR') #Enter the resource to be connected manually
+#scope = rm.open_resource('USB0::0x0699::0x0363::C061073::INSTR') #Enter the resource to be connected manually
 scope = pylef.TektronixTBS1062() #use the Pylef functions, to handle oscilloscope
 scope.start_acquisition() #Start the aquisition of the waveform
 scope.ch1.turn_on() #Turn channel on
@@ -111,10 +116,11 @@ scope.write('TRIGGER:MAIN:EDGE:SLOPE FALL') #Negative slope
 
 #Iniciando a aquisição
 #==========================================================================================================
-print( '\nStarting acquisition. Local time: ', ctime(time()) ) # Print da hora local marcada no computador
+print( f'\nStarting acquisition. Local time: {ctime(time())} \n'  ) # Print da hora local marcada no computador
 
 Acquisition_Waveform(necessarySamples=number_of_samples, oscilloscope_resolution=osc_resolution, numberBins=numberBins)
 
+print( f'\nEnding acquisition. Local time: {ctime(time())} \n'  ) # Print da hora local marcada no computador
 
 
 
