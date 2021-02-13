@@ -55,11 +55,12 @@ def Acquisition_Waveform( necessarySamples , oscilloscope_resolution=2500 , numb
         No caso, como ele é ~= -50, valores a partir de 0 já configuram um bom trigger para a aquisição.
         É importante evitar problemas de "pico picado".
         '''
-        if len(peaks) > 1:
+
+        if len(peaks) > 0:
             waveformsList = np.vstack( (waveformsList, scope_values) )
             timesList     = np.append( timesList, time(), axis=None )
-        if (waveformsList.shape[0] % 5 == 0) or (counter % 100 == 0):
-            print(f'{100*waveformsList.shape[0]/necessarySamples}% concluido(s)')
+        if (counter % 100 == 0):
+            print(f'{round(100*waveformsList.shape[0]/necessarySamples)}% concluido(s)')
 
     '''
     Lembre-se de deletar a primeira linha, que é auxiliar e feita de números aleatórios.
@@ -124,10 +125,9 @@ print( f'\nEnding acquisition. Local time: {ctime(time())} \n'  ) # Print da hor
 
 
 '''
-1. Converter para array
-2. Exportar como df
+1. (FEITO!) Converter para array
+2. (FEITO!) Exportar df como csv
 3. Enviar email avisando que acabou
-4. Indicar, sempre que quiser, o número de amostras para coleta 
-5. Adicionar o tempo em época ao data-frame
-6. Criar exe do arquivo, abrindo prompt de comando e tal
+4. (FEITO!) Indicar, sempre que quiser, o número de amostras para coleta 
+5. (FEITO!) Adicionar o tempo em época ao data-frame
 '''
