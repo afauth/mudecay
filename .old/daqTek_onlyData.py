@@ -1,7 +1,8 @@
-import visa
+import pyvisa as visa
 import pylef
 import numpy as np
-import matplotlib.pyplot as plt
+import pandas as pd
+from time import time, ctime
 from scipy.signal import find_peaks
 
 necessarySamples = 500 #number of samples needed to search
@@ -37,8 +38,8 @@ both picks is greater than 0.1 units of time.
 
 Finish the process by adding to the list of 'eventsList' lists a list with 2500 points. 
 And to the list 'differencesList' the value in units of time of the two picks found.
-
 """
+
 while len(eventsList) <= necessarySamples:
     pointsList = scope.ch1.acquire_y_raw()
     peaks, _ = find_peaks(-1 * pointsList, height=0)
@@ -50,7 +51,7 @@ while len(eventsList) <= necessarySamples:
                 microseconds = difference / 250
                 if microseconds > 0.1:
                     eventsList.append(pointsList)
-                    differencesList.append(microseconds)
+                    #differencesList.append(microseconds)
                     print('number of current samples: ', len(eventsList))
 
 """
@@ -59,5 +60,5 @@ if you have other files in your directory, do not
 forget to change your name so that it is not replaced
 """
 np.savetxt("EventsList.csv", eventsList, delimiter=",") 
-np.savetxt("DifferencesList.csv", differencesList, delimiter=",")
+#np.savetxt("DifferencesList.csv", differencesList, delimiter=",")
 

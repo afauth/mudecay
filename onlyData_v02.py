@@ -1,4 +1,5 @@
 import re
+#import sys
 import pyvisa
 import numpy as np
 import pandas as pd
@@ -134,6 +135,30 @@ def Acquisition_Waveform( necessarySamples , oscilloscope , min_peaks=2 , oscill
 
     return(df) #[ epoch_time , time_instant ] X [events]
 
+def Scope_Set_Parameters(oscilloscope):
+    '''
+    Note: I don't now exactly why, but sometimes an error will occour in this part of the code. It's a runtime error. I THINK it's something to
+    do with a problem on the communication between computer and oscilloscope.
+    '''
+    try:
+        scope.write('ACQuire:STATE RUN')
+        scope.write('SELECT:CH1 ON')
+        scope.write('DATa:SOUrce CH1') #Sets or queries which waveform will be transferred from the oscilloscope by the queries. 
+        scope.write('DATa:ENCdg ASCII') #Sets or queries the format of the waveform data. ASCII, binary etc.
+        scope.write('DATa:WIDth 1') #Sets the data width to 1 byte per data point for CURVe data.
+        scope.write('CH1:SCAle 0.010')
+        scope.write('CH1:POSition 2')
+        scope.write('CH1:PRObe 1')
+        scope.write('TRIGger:MAIn:LEVel -0.020')
+        scope.write('HORizontal:MAIn:SCAle 1.0E-6')
+        scope.write('HORizontal:MAIn:POSition 0;') #Initial horizontal position 0 default
+        scope.write('HORizontal:MAIn:POSition 0.00000460;') #Horizontal position with respect to the start of the oscilloscope window
+        scope.write('DISplay:PERSistence INF') #Infinite persistence
+        scope.write('TRIGGER:MAIN:EDGE:SLOPE FALL') #Negative slope
+        print(f'\nOscilloscope informations: loaded successfully. Scope ID: {rm.list_resources()[0]}\n')
+        print( f'\nSCOPE INFOs:\n{scope.query("WFMPre?")}\n' ) #Command to transfer waveform preamble information.
+    except:
+         raise Exception('Failed to write scope parameters.\nPlease, check connection with the oscilloscope and try again.')
 
 
 
@@ -156,32 +181,14 @@ print()
 # scope.write('DISplay:PERSistence INF') #Infinite persistence
 # scope.write('TRIGGER:MAIN:EDGE:SLOPE FALL') #Negative slope
 
+# 'USB0::0x0699::0x0363::C061073::INSTR'
+
 rm = pyvisa.ResourceManager() # Calling PyVisa library
 scope = rm.open_resource('USB0::0x0699::0x0363::C061073::INSTR') # Connecting via USB
 
-scope.write('ACQuire:STATE RUN')
-scope.write('SELECT:CH1 ON')
-scope.write('DATa:SOUrce CH1') #Sets or queries which waveform will be transferred from the oscilloscope by the queries. 
-scope.write('DATa:ENCdg ASCII') #Sets or queries the format of the waveform data. ASCII, binary etc.
-scope.write('DATa:WIDth 1') #Sets the data width to 1 byte per data point for CURVe data.
-scope.write('CH1:SCAle 0.010')
-scope.write('CH1:POSition 2')
-scope.write('CH1:PRObe 1')
-scope.write('TRIGger:MAIn:LEVel -0.020')
-scope.write('HORizontal:MAIn:SCAle 1.0E-6')
-scope.write('HORizontal:MAIn:POSition 0') #Initial horizontal position 0 default
-scope.write('HORizontal:MAIn:POSition 0.00000460') #Horizontal position with respect to the start of the oscilloscope window
-scope.write('DISplay:PERSistence INF') #Infinite persistence
-scope.write('TRIGGER:MAIN:EDGE:SLOPE FALL') #Negative slope
+Scope_Set_Parameters(oscilloscope=scope)
 
-'''
-    Note: I don't now exactly why, but sometimes an error will occour in this part of the code. It's a runtime error. I THINK it's something to
-    do with a problem on the communication between computer and oscilloscope.
-'''
-print( f'\nSCOPE INFOs:\n{scope.query("WFMPre?")}\n' )#Command to transfer waveform preamble information.
-print(f'\nOscilloscope informations: loaded. {rm.list_resources()[0]}\n')
-
-number_of_samples = int( input('\nQual o tamanho da amostra que precisa ser obtida? ') )  #number of samples needed to search
+number_of_samples = int( input('\nQual o tamanho da amostra que precisa ser obtida?') )  #number of samples needed to search
 osc_resolution    = 2500 #número de pontos em cada waveform selecionada
 numberBins        = 100  #number of bins to graph
 
