@@ -22,64 +22,12 @@ And to the list 'differencesList' the value in units of time of the two picks fo
 
 #Funções a serem utilizadas
 #==========================================================================================================
-def Acquisition_Waveform( necessarySamples , oscilloscope_resolution=2500 , numberBins=100 ):
-    
-    waveformsList = np.empty( (1,oscilloscope_resolution) ) #array 1 x oscilloscope_resolution; vetor linha
-    timesList     = np.empty( (1,1) )    
-    '''
-    Nota sobre np.empty(shape): tenha em mente que isso é um array criado e preenchido com números aleatórios.
-    Os valores não são inexistentes e essa linha deve ser removida depois. 
-    Vide mais informações em: https://numpy.org/doc/stable/reference/generated/numpy.empty.html
-    '''
-
-    counter = 0
-    while waveformsList.shape[0] - 1 < necessarySamples: #-1 porque a primeira linha será deletada depois
-        counter += 1
-        #scope_values = scope.ch1.acquire_y_raw() # Valores, em y, dos pontos do osciloscópio
-        scope_values = np.array(  re.split( '\n|,|:CURVE ' , scope.query('CURVe?') )[1:-1]  ,  float  )
-        peaks , _    = find_peaks(-1*scope_values, height=0) # Vide bloco de comentários abaixo
-        '''
-        O base line precisa ser medido ao início de cada aquisição.
-        No caso, como ele é ~= -50, valores a partir de 0 já configuram um bom trigger para a aquisição.
-        É importante evitar problemas de "pico picado".
-        '''
-
-        if len(peaks) > 0:
-            waveformsList = np.vstack( (waveformsList, scope_values) )
-            timesList     = np.append( timesList, time(), axis=None )
-        if (counter % 100 == 0):
-            print(f'{round(100*waveformsList.shape[0]/necessarySamples)}% concluido(s)')
-
-    '''
-        Lembre-se de deletar a primeira linha, que é auxiliar e feita de números aleatórios.
-    '''
-    waveformsList = np.delete( arr=waveformsList, obj=0, axis=0 ).T #(y_n X t) --> (y_n X t) 
-    timesList     = np.delete( arr=timesList, obj=0, axis=None )
-
-    '''
-        Anexar os instantes de tempo, individualmente, às waveforms
-    ''' 
-    waveforms = np.vstack( (timesList, waveformsList) )
-
-    '''
-        Cria um DataFrame e exporta como csv "num-amostras_waveforms_instante-de-tempo.csv"
-    '''
-    df = pd.DataFrame(
-            data=waveforms,
-            index=['time_epoch']+[ str(i) for i in range(waveforms.shape[0]-1) ], 
-            columns=[ ('event_'+str(i)) for i in range(waveforms.shape[1]) ],
-                    )
-    
-    return(df) #[ epoch_time , time_instant ] X [events]
 
 def translada_x_n(x_zero , x_incr , n_ranges , pt_off):
     return( x_zero + x_incr*(n_ranges - pt_off) )
 
 def translada_y_n(y_zero , y_mult , y_n , y_off):
-    return( y_zero + y_multy*(y_n - y_off) )
-
-def substr_to_number(string): #ex.: 
-    return(   float(  re.split(' |\n', string)[1]  )   )
+    return( y_zero + y_mult*(y_n - y_off) )
 
 '''
     For Y format, the time (absolute coordinate) of a point, relative to the trigger, can
@@ -89,6 +37,105 @@ be calculated using the following formula. N ranges from 0 to 2499.
 coordinate) of a point can be calculated:
         Yn = YZEro + YMUIty (yn - YOFf)
 '''
+
+def substr_to_number(string): #ex.: 
+    return(   float(  re.split(' |\n', string)[1]  )   )
+
+def Acquisition_Waveform( necessarySamples , oscilloscope , min_peaks=2 , oscilloscope_resolution=2500 , numberBins=100, track_progress=False ):
+    
+    waveformsList = np.empty( (1,oscilloscope_resolution) ) #array 1 x oscilloscope_resolution; vetor linha
+    timesList     = np.empty( (1,1) )    
+    '''
+    Nota sobre np.empty(shape): tenha em mente que isso é um array criado e preenchido com números aleatórios.
+    Os valores não são inexistentes e essa linha deve ser removida depois. 
+    Vide mais informações em: https://numpy.org/doc/stable/reference/generated/numpy.empty.html
+    '''
+
+    '''
+        Acquisition. Note: pay attention on the on the conditional "len(peaks) >= min_peaks" that defines the minimal number of peaks to be
+        considered as an "event". The second conditional is just a tracking of progress for long acquisitions.
+    '''
+    counter = 0
+    if track_progress == True:
+        while waveformsList.shape[0] - 1 < necessarySamples: #-1 porque a primeira linha será deletada depois
+            counter += 1
+            scope_values = np.array(  re.split( '\n|,|:CURVE ' , oscilloscope.query('CURVe?') )[1:-1]  ,  float  ) #Selecting the essential part on the string
+            peaks , _    = find_peaks(-1*scope_values, height=0) # Vide bloco de comentários abaixo
+            '''
+            O base line precisa ser medido ao início de cada aquisição.
+            No caso, como ele é ~= -50, valores a partir de 0 já configuram um bom trigger para a aquisição.
+            É importante evitar problemas de "pico picado".
+            '''
+
+            if len(peaks) >= min_peaks:
+                waveformsList = np.vstack( (waveformsList, scope_values) )
+                timesList     = np.append( timesList, time(), axis=None )
+            if (counter % 100 == 0):
+                print(f'{round(100*waveformsList.shape[0]/necessarySamples)}% concluido(s)')
+    elif track_progress == False:
+        while waveformsList.shape[0] - 1 < necessarySamples: #-1 porque a primeira linha será deletada depois
+            counter += 1
+            scope_values = np.array(  re.split( '\n|,|:CURVE ' , oscilloscope.query('CURVe?') )[1:-1]  ,  float  ) #Selecting the essential part on the string
+            peaks , _    = find_peaks(-1*scope_values, height=0) # Vide bloco de comentários abaixo
+            '''
+            O base line precisa ser medido ao início de cada aquisição.
+            No caso, como ele é ~= -50, valores a partir de 0 já configuram um bom trigger para a aquisição.
+            É importante evitar problemas de "pico picado".
+            '''
+
+            if len(peaks) >= min_peaks:
+                waveformsList = np.vstack( (waveformsList, scope_values) )
+                timesList     = np.append( timesList, time(), axis=None )
+    else:
+        raise(TypeError('The variable track_error must be True or False'))
+
+    '''
+        Lembre-se de deletar a primeira linha, que é auxiliar e feita de números aleatórios.
+    '''
+    waveformsList = np.delete( arr=waveformsList, obj=0, axis=0 ).T #(y_n X t) --> (y_n X t) 
+    timesList     = np.delete( arr=timesList, obj=0, axis=None )
+
+    '''
+        Correcting y-values on the waveform. It's made in relation to the formula shown on the "Programmer's Manual"
+    '''
+    YZEro = substr_to_number( oscilloscope.query('WFMPre:YZEro?') )
+    YMUlt = substr_to_number( oscilloscope.query('WFMPre:YMUlt?') )
+    YOFf  = substr_to_number( oscilloscope.query('WFMPre:YOFf?') )
+    waveformsList_units = translada_y_n(y_zero=YZEro, y_mult=YMUlt, y_n=waveformsList, y_off=YOFf) #The values are now in the units show on the preamble
+
+    '''
+        Anexar os instantes de tempo, individualmente, às waveforms
+    ''' 
+    waveforms = np.vstack( (timesList, waveformsList_units) )
+
+    '''
+        Cria um DataFrame
+    '''
+    df = pd.DataFrame(
+            data=waveforms,
+            index=['time_epoch']+[ str(i) for i in range(waveforms.shape[0]-1) ], 
+            columns=[ ('event_'+str(i)) for i in range(waveforms.shape[1]) ],
+                    )
+    
+    '''
+        Add time in units. 
+            Note: this "time" is actually the "delta_t" in convenient units where the "zero" is the time after triggering the threshold.
+            Note 2: on the df, we can create a column with empty/None/NaN values and the fill only the spaces that interest. 
+        That's because the first row will not be converted to a number/ time instant
+    '''
+    XZEro  = substr_to_number( oscilloscope.query('WFMPre:XZEro?') )
+    XINcr  = substr_to_number( oscilloscope.query('WFMPre:XINcr?') )
+    PT_OFf = substr_to_number( oscilloscope.query('WFMPre:PT_OFf?') )
+    aux    = df.index[1:].to_numpy().astype(np.float64) #the first index is a name, so cannot be a converted to a number
+    
+    df['time_units'] = np.NaN
+    df['time_units'].iloc[1:] = translada_x_n(x_zero=XZEro, x_incr=XINcr, n_ranges=aux, pt_off=PT_OFf)
+
+
+    return(df) #[ epoch_time , time_instant ] X [events]
+
+
+
 
 #
 #==========================================================================================================
@@ -122,19 +169,15 @@ scope.write('CH1:POSition 2')
 scope.write('CH1:PRObe 1')
 scope.write('TRIGger:MAIn:LEVel -0.020')
 scope.write('HORizontal:MAIn:SCAle 1.0E-6')
-scope.write('HORizontal:MAIn:POSition 0;') #Initial horizontal position 0 default
-scope.write('HORizontal:MAIn:POSition 0.00000460;') #Horizontal position with respect to the start of the oscilloscope window
+scope.write('HORizontal:MAIn:POSition 0') #Initial horizontal position 0 default
+scope.write('HORizontal:MAIn:POSition 0.00000460') #Horizontal position with respect to the start of the oscilloscope window
 scope.write('DISplay:PERSistence INF') #Infinite persistence
 scope.write('TRIGGER:MAIN:EDGE:SLOPE FALL') #Negative slope
 
-XZEro = substr_to_number( scope.query('WFMPre:XZEro?') )
-XINcr = substr_to_number( scope.query('WFMPre:XINcr?') )
-PT_OFf = substr_to_number( scope.query('WFMPre:PT_OFf?') )
-
-YZEro = substr_to_number( scope.query('WFMPre:YZEro?') )
-YMUlt = substr_to_number( scope.query('WFMPre:YMUlt?') )
-YOFf = substr_to_number( scope.query('WFMPre:YOFf?') )
-
+'''
+    Note: I don't now exactly why, but sometimes an error will occour in this part of the code. It's a runtime error. I THINK it's something to
+    do with a problem on the communication between computer and oscilloscope.
+'''
 print( f'\nSCOPE INFOs:\n{scope.query("WFMPre?")}\n' )#Command to transfer waveform preamble information.
 print(f'\nOscilloscope informations: loaded. {rm.list_resources()[0]}\n')
 
@@ -147,7 +190,13 @@ numberBins        = 100  #number of bins to graph
 #==========================================================================================================
 print( f'\nStarting acquisition... Local time: {ctime(time())} \n'  ) # Print da hora local marcada no computador
 
-df = Acquisition_Waveform(necessarySamples=number_of_samples, oscilloscope_resolution=osc_resolution, numberBins=numberBins)
+df = Acquisition_Waveform(
+            necessarySamples=number_of_samples, 
+            oscilloscope=scope,
+            min_peaks=1, 
+            oscilloscope_resolution=osc_resolution,
+            numberBins=numberBins
+                         )
 
 print( f'\nFinishing acquisition... Local time: {ctime(time())} \n'  ) # Print da hora local marcada no computador
 
