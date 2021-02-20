@@ -1,5 +1,5 @@
+import configs.cfg_scope as config
 import re
-#import sys
 import pyvisa
 import numpy as np
 import pandas as pd
@@ -9,16 +9,6 @@ from scipy.signal import find_peaks
 print()
 
 """
-The next loop is the one who asks the oscilloscope for a list of 2500 points, 
-which through SciPy find_peaks, finds all local maxima by simple comparison of neighbouring values.
-
-For the present experiment about 5000 samples were required, so the loop is programmed to have these.
-In each iteration when there is a pick, it is discriminated if the first has an amplitude greater than 50 units,
-that the second is greater than 20 units and that the difference in microseconds between
-both picks is greater than 0.1 units of time.
-
-Finish the process by adding to the list of 'eventsList' lists a list with 2500 points. 
-And to the list 'differencesList' the value in units of time of the two picks found.
 """
 
 #Funções a serem utilizadas
@@ -42,7 +32,7 @@ coordinate) of a point can be calculated:
 def substr_to_number(string): #ex.: 
     return(   float(  re.split(' |\n', string)[1]  )   )
 
-def Acquisition_Waveform( necessarySamples , oscilloscope , min_peaks=2 , oscilloscope_resolution=2500 , numberBins=100, track_progress=False ):
+def Acquisition_Waveform( oscilloscope , necessarySamples , min_peaks=2 , oscilloscope_resolution=2500 , numberBins=100, track_progress=False ):
     
     waveformsList = np.empty( (1,oscilloscope_resolution) ) #array 1 x oscilloscope_resolution; vetor linha
     timesList     = np.empty( (1,1) )    
@@ -142,20 +132,34 @@ def Scope_Set_Parameters(oscilloscope):
     '''
     try:
         scope.write('ACQuire:STATE RUN')
-        scope.write('SELECT:CH1 ON')
-        scope.write('DATa:SOUrce CH1') #Sets or queries which waveform will be transferred from the oscilloscope by the queries. 
-        scope.write('DATa:ENCdg ASCII') #Sets or queries the format of the waveform data. ASCII, binary etc.
-        scope.write('DATa:WIDth 1') #Sets the data width to 1 byte per data point for CURVe data.
-        scope.write('CH1:SCAle 0.010')
-        scope.write('CH1:POSition 2')
-        scope.write('CH1:PRObe 1')
-        scope.write('TRIGger:MAIn:LEVel -0.020')
-        scope.write('HORizontal:MAIn:SCAle 1.0E-6')
-        scope.write('HORizontal:MAIn:POSition 0;') #Initial horizontal position 0 default
-        scope.write('HORizontal:MAIn:POSition 0.00000460;') #Horizontal position with respect to the start of the oscilloscope window
-        scope.write('DISplay:PERSistence INF') #Infinite persistence
-        scope.write('TRIGGER:MAIN:EDGE:SLOPE FALL') #Negative slope
-        print(f'\nOscilloscope informations: loaded successfully. Scope ID: {rm.list_resources()[0]}\n')
+        print('\nState: RUN')
+        scope.write(f'SELECT:{config.channel} ON')
+        print(f'{config.channel} ON')
+        scope.write(f'DATa:SOUrce {config.channel}') 
+        #print(f'')
+        scope.write(f'DATa:ENCdg {config.encode_format}') 
+        print(f'Encode Format: {config.encode_format}')
+        scope.write(f'DATa:WIDth {config.width}') 
+        print(f'Data Width: {config.width}')
+        scope.write(f'{config.channel}:SCAle {config.channel_scale}')
+        print(f'{config.channel} scale: {config.channel_scale}')
+        scope.write(f'{config.channel}:POSition {config.channel_position}')
+        print(f'{config.channel} position: {config.channel_position}')
+        scope.write(f'{config.channel}:PRObe {config.channel_probe}')
+        print(f'{config.channel} probe: {config.channel_probe}')
+        scope.write(f'TRIGger:MAIn:LEVel {config.trigger}')
+        print(f'Trigger: {config.trigger}')
+        scope.write(f'HORizontal:MAIn:SCAle {config.horizontal_scale}')
+        print(f'Horizontal scale: {config.horizontal_scale}')
+        scope.write(f'HORizontal:MAIn:POSition {config.horizontal_position_1};') 
+        print(f'Horizontal Position: {config.horizontal_position_1}')
+        scope.write(f'HORizontal:MAIn:POSition {config.horizontal_position_2};') 
+        print(f'Horizontal Position: {config.horizontal_position_2}')
+        scope.write(f'DISplay:PERSistence {config.persistence}') 
+        print(f'Persistence: {config.persistence}')
+        scope.write(f'TRIGGER:MAIN:EDGE:SLOPE {config.slope}') 
+        print(f'Slope: {config.slope}')
+        print(f'Oscilloscope informations: loaded successfully. Scope ID: {rm.list_resources()[0]}\n')
         print( f'\nSCOPE INFOs:\n{scope.query("WFMPre?")}\n' ) #Command to transfer waveform preamble information.
     except:
          raise Exception('Failed to write scope parameters.\nPlease, check connection with the oscilloscope and try again.')
@@ -165,49 +169,29 @@ def Scope_Set_Parameters(oscilloscope):
 #
 #==========================================================================================================
 print()
-# rm = pyvisa.ResourceManager() #list of connected visa resources with PyVisa as a visa
-# rm.list_resources() #Print resource list
-# scope = rm.open_resource('USB0::0x0699::0x0363::C061073::INSTR') #Enter the resource to be connected manually 'USB0::0x0699::0x0363::C061073::INSTR'; 'TEKTRONIX,TDS 1002B,C061073,CF:91.1CT FV:v22.11\n'
-# scope = pylef.TektronixTBS1062() #use the Pylef functions, to handle oscilloscope
-# scope.start_acquisition() #Start the aquisition of the waveform
-# scope.ch1.turn_on() #Turn channel on
-# scope.ch1.set_scale('0.010') #Ch1 10,0mV = 0,010 VOLTS
-# scope.ch1.set_position(2) #Vertical position for channel 1 must be 2
-# scope.ch1.set_probe(1) #Voltage probe must be at 1
-# scope.trigger.set_level(-0.020) #Trigger in -20mV
-# scope.set_horizontal_scale(1 / 1000000) #Oscilloscope SEC/DIV time 1.00 us = 1e-06
-# scope.write('HORizontal:MAIn:POSition 0;') #Initial horizontal position 0 default
-# scope.write('HORizontal:MAIn:POSition 0.00000460;') #Horizontal position with respect to the start of the oscilloscope window
-# scope.write('DISplay:PERSistence INF') #Infinite persistence
-# scope.write('TRIGGER:MAIN:EDGE:SLOPE FALL') #Negative slope
-
 rm = pyvisa.ResourceManager() # Calling PyVisa library
-scope = rm.open_resource('USB0::0x0699::0x0363::C061073::INSTR') # Connecting via USB
+scope = rm.open_resource(str(config.ScopeID)) # Connecting via USB
 
 Scope_Set_Parameters(oscilloscope=scope)
-
-number_of_samples = int( input('\nQual o tamanho da amostra que precisa ser obtida?') )  #number of samples needed to search
-osc_resolution    = 2500 #número de pontos em cada waveform selecionada
-numberBins        = 100  #number of bins to graph
-
 
 #Iniciando a aquisição
 #==========================================================================================================
 print( f'\nStarting acquisition... Local time: {ctime(time())} \n'  ) # Print da hora local marcada no computador
 
 df = Acquisition_Waveform(
-            necessarySamples=number_of_samples, 
             oscilloscope=scope,
-            min_peaks=1, 
-            oscilloscope_resolution=osc_resolution,
-            numberBins=numberBins
+            necessarySamples=config.necessarySamples, 
+            min_peaks=config.min_peaks, 
+            oscilloscope_resolution=config.scopeResolution,
+            numberBins=config.numberBins,
+            track_progress=config.track_progress
                          )
 
 print( f'\nFinishing acquisition... Local time: {ctime(time())} \n'  ) # Print da hora local marcada no computador
 
 print( '\nSaving .csv file...\n' )
 
-df.to_csv( path_or_buf=f'data/{number_of_samples}-samples_waveforms_{time()}.csv', header=True, index=True ) 
+df.to_csv( path_or_buf=f'data/{config.necessarySamples}-samples_waveforms_{time()}.csv', header=True, index=True ) 
 
 print('\nEND\n\n')
 
