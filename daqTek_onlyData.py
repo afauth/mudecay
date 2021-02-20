@@ -1,4 +1,4 @@
-import visa
+import pyvisa as visa
 import pylef
 import numpy as np
 import pandas as pd
@@ -39,9 +39,6 @@ both picks is greater than 0.1 units of time.
 Finish the process by adding to the list of 'eventsList' lists a list with 2500 points. 
 And to the list 'differencesList' the value in units of time of the two picks found.
 """
-
-# Print da hora local marcada no computador
-print( 'Local time: ', ctime(time()) )
 
 while len(eventsList) <= necessarySamples:
     pointsList = scope.ch1.acquire_y_raw()
