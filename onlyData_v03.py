@@ -1,5 +1,7 @@
 import configs.cfg_scope as config
 from send_email import Send_Email
+import os
+#import os.path
 import re
 import pyvisa
 import numpy as np
@@ -60,34 +62,34 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , height=-100 , min_pe
     Acquisition. Note: pay attention on the on the conditional "len(peaks) >= min_peaks" that defines the minimal number of peaks to be
     considered as an "event". The second conditional is just a tracking of progress for long acquisitions.
     '''
+
+    '''
+    O base line precisa ser medido ao início de cada aquisição.
+    No caso, como ele é ~= -50, valores a partir de 0 já configuram um bom trigger para a aquisição.
+    É importante evitar problemas de "pico picado".
+    '''
     counter = 0
     if track_progress == True:
         while waveformsList.shape[0] - 1 < necessarySamples: #-1 porque a primeira linha será deletada depois
-            scope_values = np.array(  re.split( '\n|,|:CURVE ' , oscilloscope.query('CURVe?') )[1:-1]  ,  float  ) #Selecting the essential part on the string
-            peaks , _    = find_peaks(-1*scope_values, height=-height) # Vide bloco de comentários abaixo
-            '''
-            O base line precisa ser medido ao início de cada aquisição.
-            No caso, como ele é ~= -50, valores a partir de 0 já configuram um bom trigger para a aquisição.
-            É importante evitar problemas de "pico picado".
-            '''
+            try:
+                scope_values = np.array(  re.split('\n|,|:CURVE ' , oscilloscope.query('CURVe?'))[1:-1]  ,  float  ) #Selecting the essential part on the string
+                peaks , _    = find_peaks(-scope_values, height=-height) # Vide bloco de comentários acima
+                if len(peaks) >= min_peaks:
+                    waveformsList = np.vstack( (waveformsList, scope_values) )
+                    timesList     = np.append( timesList, time(), axis=None )
+                    if (counter % 5 == 0):
+                        print(f'{round(100*(waveformsList.shape[0] - 1)/necessarySamples)}% concluido(s)')
+                    counter += 1
+            except:
+                if waveformsList.shape[0] > 1: #if there's at least one real event
+                    print(f'\nERROR DURING ACQUISITION. SAVING FILE WITH {waveformList.shape[0]} EVENTS\n')
 
-            if len(peaks) >= min_peaks:
-                waveformsList = np.vstack( (waveformsList, scope_values) )
-                timesList     = np.append( timesList, time(), axis=None )
-                if (counter % 5 == 0):
-                    print(f'{round(100*(waveformsList.shape[0] - 1)/necessarySamples)}% concluido(s)')
-                counter += 1
+    
     elif track_progress == False:
         while waveformsList.shape[0] - 1 < necessarySamples: #-1 porque a primeira linha será deletada depois
             counter += 1
             scope_values = np.array(  re.split( '\n|,|:CURVE ' , oscilloscope.query('CURVe?') )[1:-1]  ,  float  ) #Selecting the essential part on the string
             peaks , _    = find_peaks(-1*scope_values, height=-height) # Vide bloco de comentários abaixo
-            '''
-            O base line precisa ser medido ao início de cada aquisição.
-            No caso, como ele é ~= -50, valores a partir de 0 já configuram um bom trigger para a aquisição.
-            É importante evitar problemas de "pico picado".
-            '''
-
             if len(peaks) >= min_peaks:
                 waveformsList = np.vstack( (waveformsList, scope_values) )
                 timesList     = np.append( timesList, time(), axis=None )
@@ -95,25 +97,24 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , height=-100 , min_pe
         raise(TypeError('The variable track_error must be True or False'))
 
     '''
-        Lembre-se de deletar a primeira linha, que é auxiliar e feita de números aleatórios.
+    Lembre-se de deletar a primeira linha, que é auxiliar e feita de números aleatórios.
     '''
     waveformsList = np.delete( arr=waveformsList, obj=0, axis=0 ).T #(y_n X t) --> (y_n X t) 
     timesList     = np.delete( arr=timesList, obj=0, axis=None )
 
     '''
-        Anexar os instantes de tempo, individualmente, às waveforms
+    Anexar os instantes de tempo, individualmente, às waveforms
     ''' 
     waveforms = np.vstack( (timesList, waveformsList) )
 
     '''
-        Cria um DataFrame para os valores das waveforms
+    Cria um DataFrame para os valores das waveforms
     '''
     df = pd.DataFrame(
             data=waveforms,
             index=['time_epoch']+[ str(i) for i in range(waveforms.shape[0]-1) ], 
             columns=[ ('event_'+str(i)) for i in range(waveforms.shape[1]) ],
                     )
-    
     
     return(df) #[ epoch_time , time_instant ] X [events]
 
@@ -123,34 +124,49 @@ def Scope_Set_Parameters(oscilloscope):
     do with a problem on the communication between computer and oscilloscope.
     '''
     try:
+        
         oscilloscope.write('ACQuire:STATE RUN')
         print('\nState: RUN')
+        
         oscilloscope.write(f'SELECT:{config.channel} ON')
         print(f'{config.channel} ON')
+        
         oscilloscope.write(f'DATa:SOUrce {config.channel}') 
         #print(f'')
+        
         oscilloscope.write(f'DATa:ENCdg {config.encode_format}') 
         print(f'Encode Format: {config.encode_format}')
+        
         oscilloscope.write(f'DATa:WIDth {config.width}') 
         print(f'Data Width: {config.width}')
+        
         oscilloscope.write(f'{config.channel}:SCAle {config.channel_scale}')
         print(f'{config.channel} scale: {config.channel_scale}')
+        
         oscilloscope.write(f'{config.channel}:POSition {config.channel_position}')
         print(f'{config.channel} position: {config.channel_position}')
+        
         oscilloscope.write(f'{config.channel}:PRObe {config.channel_probe}')
         print(f'{config.channel} probe: {config.channel_probe}')
+        
         oscilloscope.write(f'TRIGger:MAIn:LEVel {config.trigger}')
         print(f'Trigger: {config.trigger}')
+        
         oscilloscope.write(f'HORizontal:MAIn:SCAle {config.horizontal_scale}')
         print(f'Horizontal scale: {config.horizontal_scale}')
+        
         oscilloscope.write(f'HORizontal:MAIn:POSition {config.horizontal_position_1};') 
         print(f'Horizontal Position: {config.horizontal_position_1}')
+        
         oscilloscope.write(f'HORizontal:MAIn:POSition {config.horizontal_position_2};') 
         print(f'Horizontal Position: {config.horizontal_position_2}')
+        
         oscilloscope.write(f'DISplay:PERSistence {config.persistence}') 
         print(f'Persistence: {config.persistence}')
+        
         oscilloscope.write(f'TRIGGER:MAIN:EDGE:SLOPE {config.slope}') 
         print(f'Slope: {config.slope}')
+        
         print(f'Oscilloscope informations: loaded successfully. Scope ID: {rm.list_resources()[0]}\n')
         print( f'\nSCOPE INFOs:\n{oscilloscope.query("WFMPre?")}\n' ) #Command to transfer waveform preamble information.
     except:
@@ -169,6 +185,30 @@ def Find_Conversion_Parameters(oscilloscope):
     df = pd.DataFrame( data=_ , index=['X_zero' , 'X_incr' , 'Pt_off' , 'Y_zero' , 'Y_mult' , 'Y_off'] , columns=['value'] )
     return(df)
 
+def Save_Waveform_csv(waveform, folder_name, tagger=''):
+
+    #print( '\nSaving Data Frame and conversion parameters to .csv files...\n' )
+
+    path_folder = f'data/{folder_name}'
+    os.mkdir(path_folder)
+
+    #file_name = f'data/{time_finish}_{config.necessarySamples}-samples_{config.min_peaks}-peaks_waveforms.csv'
+    file_name = f'{path_folder}/{waveform.shape[1]}-samples_{config.min_peaks}-peaks_waveforms_{tagger}.csv'
+
+    waveform.to_csv( path_or_buf=file_name, header=True, index=True ) 
+    
+# def concat_waveforms_csv(folder_name): #folder_name = time()...
+
+#     path = f'data/{folder_name}'
+#     files = [f for f in os.listdir(path)if os.path.isfile(os.path.join(path, f))]
+
+#     df = pd.read_csv(f'{path}/{files[0]}')
+#     for i in range( 1, len(files) ):
+#         _ = pd.read_csv(f'{path}/{files[i]}')
+#         df = pd.concat( [df, _], axis=1 )
+    
+#     file_name = f'{path}/{df.shape[1]}-samples_{config.min_peaks}-peaks_waveforms.csv'
+#     pd.to_csv(file_name)
 
 
 
@@ -214,13 +254,12 @@ try:
                 numberBins=config.numberBins,
                 track_progress=config.track_progress
                             )
+
     time_finish = time() # Get finish time
     print( f'\nFinishing acquisition... Local time: {ctime(time_finish)}\nAfter {str(timedelta(seconds=time_finish - time_start))}'  ) # Print da hora local marcada no computador
 
-    print( '\nSaving Data Frame and conversion parameters to .csv files...\n' )
-    df_file = f'data/{time_finish}_{config.necessarySamples}-samples_{config.min_peaks}-peaks_waveforms.csv'
-    df.to_csv( path_or_buf=df_file, header=True, index=True ) 
-    df_conversion.to_csv( path_or_buf=f'data/{time_finish}_conversion-values.csv', header=True, index=True )
+    Save_Waveform_csv(waveform=df, folder_name=time_start, tagger='')
+    #df_conversion.to_csv( path_or_buf=f'data/{time_finish}_conversion-values.csv', header=True, index=True )
 
     if config.email_me == True:
         subject = f'[MuDecay] Acquisition Finished succesfully'
