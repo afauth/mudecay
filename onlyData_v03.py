@@ -1,7 +1,6 @@
 import configs.cfg_scope as config
 from send_email import Send_Email
 import os
-#import os.path
 import re
 import pyvisa
 import numpy as np
@@ -82,17 +81,20 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , height=-100 , min_pe
                     counter += 1
             except:
                 if waveformsList.shape[0] > 1: #if there's at least one real event
-                    print(f'\nERROR DURING ACQUISITION. SAVING FILE WITH {waveformList.shape[0]} EVENTS\n')
-
-    
+                    print(f'\nERROR DURING ACQUISITION. SAVING FILE WITH {waveformsList.shape[0]} EVENTS\n')
+                    break
     elif track_progress == False:
         while waveformsList.shape[0] - 1 < necessarySamples: #-1 porque a primeira linha será deletada depois
-            counter += 1
-            scope_values = np.array(  re.split( '\n|,|:CURVE ' , oscilloscope.query('CURVe?') )[1:-1]  ,  float  ) #Selecting the essential part on the string
-            peaks , _    = find_peaks(-1*scope_values, height=-height) # Vide bloco de comentários abaixo
-            if len(peaks) >= min_peaks:
-                waveformsList = np.vstack( (waveformsList, scope_values) )
-                timesList     = np.append( timesList, time(), axis=None )
+            try:
+                scope_values = np.array(  re.split('\n|,|:CURVE ' , oscilloscope.query('CURVe?'))[1:-1]  ,  float  ) #Selecting the essential part on the string
+                peaks , _    = find_peaks(-scope_values, height=-height) # Vide bloco de comentários acima
+                if len(peaks) >= min_peaks:
+                    waveformsList = np.vstack( (waveformsList, scope_values) )
+                    timesList     = np.append( timesList, time(), axis=None )
+            except:
+                if waveformsList.shape[0] > 1: #if there's at least one real event
+                    print(f'\nERROR DURING ACQUISITION. SAVING FILE WITH {waveformsList.shape[0] - 1} EVENTS\n')
+                    break
     else:
         raise(TypeError('The variable track_error must be True or False'))
 
@@ -125,8 +127,8 @@ def Scope_Set_Parameters(oscilloscope):
     '''
     try:
         
-        oscilloscope.write('ACQuire:STATE RUN')
-        print('\nState: RUN')
+        #oscilloscope.write('ACQuire:STATE RUN')
+        #print('\nState: RUN')
         
         oscilloscope.write(f'SELECT:{config.channel} ON')
         print(f'{config.channel} ON')
@@ -259,7 +261,7 @@ try:
     print( f'\nFinishing acquisition... Local time: {ctime(time_finish)}\nAfter {str(timedelta(seconds=time_finish - time_start))}'  ) # Print da hora local marcada no computador
 
     Save_Waveform_csv(waveform=df, folder_name=time_start, tagger='')
-    #df_conversion.to_csv( path_or_buf=f'data/{time_finish}_conversion-values.csv', header=True, index=True )
+    df_conversion.to_csv( path_or_buf=f'data/{time_start}/conversion-values.csv', header=True, index=True )
 
     if config.email_me == True:
         subject = f'[MuDecay] Acquisition Finished succesfully'

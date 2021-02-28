@@ -7,17 +7,17 @@ ScopeID = 'USB0::0x0699::0x0363::C061073::INSTR'
     Parameters for the acquisition
 '''
 #number of samples needed to search
-necessarySamples  = 200 
+necessarySamples  = 500
 #
-min_peaks         = 2    
+min_peaks         = 1   
 #número de pontos em cada waveform selecionada
 scopeResolution   = 2500  
 #number of bins to graph
 numberBins        = 100   
 #
-track_progress    = False 
+track_progress    = True 
 #
-email_me          = True
+email_me          = False
 
 '''
     Parameters to set on the oscilloscope
