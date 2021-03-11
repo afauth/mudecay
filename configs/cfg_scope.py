@@ -1,5 +1,5 @@
 '''
-    Oscilloscope ID from the TEKTRONIX [...]
+    Oscilloscope ID from the TEKTRONIX TDS1002B
 '''
 ScopeID = 'USB0::0x0699::0x0363::C061073::INSTR'
 
@@ -7,17 +7,17 @@ ScopeID = 'USB0::0x0699::0x0363::C061073::INSTR'
     Parameters for the acquisition
 '''
 #number of samples needed to search
-necessarySamples  = 500
+necessarySamples  = 5
 #
-min_peaks         = 1   
+min_peaks         = 0  
 #número de pontos em cada waveform selecionada
 scopeResolution   = 2500  
 #number of bins to graph
 numberBins        = 100   
 #
-track_progress    = True 
+track_progress    = False 
 #
-email_me          = False
+email_me          = True
 
 '''
     Parameters to set on the oscilloscope
