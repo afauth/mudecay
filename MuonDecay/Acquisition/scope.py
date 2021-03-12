@@ -1,9 +1,11 @@
 import re
 import numpy as np
 import pyvisa
-import configs.cfg_scope as config
+from Configs import cfg_scope as config
 from time import time, ctime, sleep
 from datetime import timedelta
+
+
 
 def y_values(oscilloscope):
     start = time()
@@ -21,6 +23,3 @@ def y_values_ascii(oscilloscope):
 
 rm = pyvisa.ResourceManager()                 # Calling PyVisa library
 scope = rm.open_resource(str(config.ScopeID)) # Connecting via USB
-print(scope)
-sleep(3)
-print('Pimba Master 2018')

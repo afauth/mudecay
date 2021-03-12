@@ -1,6 +1,6 @@
 import smtplib
 from time import time, ctime
-import configs.cfg_email as config
+from Configs import cfg_email
 
 '''
     You need to give permission on your email:
@@ -10,14 +10,14 @@ Note: I think that you necessarily need to login on the computer, so google can 
 https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa3V5M3YzRUZnMlppc1hGbnRoVXJzSXBzN3d5UXxBQ3Jtc0trUG5EbV9qYUI3NGc3U01XQ3RRMmRZWlNGZjY1Wm1WeEVvVGRnek5KRVFRcXN1dm5OUEg0V2ExQXRtRjhFRHJlUXVQZ2FIanVpMXJDdWdIQ2lHNE5iRThQdGhpWngxbWlnaWdMWXNFNEt5QUVCUXZ6cw&q=https%3A%2F%2Fmyaccount.google.com%2Flesssecureapps
 '''
 
-def Send_Email(subject, msg):
+def SendEmail(subject, msg):
     try:
         server = smtplib.SMTP('smtp.gmail.com:587')
         server.ehlo()
         server.starttls()
-        server.login(config.EMAIL_ADDRESS, config.PASSWORD)
+        server.login(cfg_email.EMAIL_ADDRESS, cfg_email.PASSWORD)
         message = 'Subject: {}\n\n{}'.format(subject, msg)
-        server.sendmail(from_addr=config.EMAIL_ADDRESS, to_addrs=config.EMAIL_DESTINATION, msg=message)
+        server.sendmail(from_addr=cfg_email.EMAIL_ADDRESS, to_addrs=cfg_email.EMAIL_DESTINATION, msg=message)
         server.quit()
         print('Success: Email sent.')
     except:

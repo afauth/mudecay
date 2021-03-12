@@ -1,5 +1,5 @@
-import configs.cfg_scope as config
-from send_email import Send_Email
+from ..configs import cfg_scope as config
+from ..Send_Email import Send_Email
 import os
 import re
 import pyvisa
@@ -51,28 +51,47 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , height=0 , min_peaks
     sleep(3)
 
     waveformList = pd.DataFrame()
+    timeList = []
     counter = 1
-    
+
     while waveformList.shape[1] < necessarySamples:
+        
+        start = time()
 
-        tempList = []
+        # Acquisition of random samples
         print(f'Try number {counter}')
+        temp_df  = pd.DataFrame()
+        tempTime = [] 
+        sample   = min(1000, 10*necessarySamples)
+        for i in range( sample ):
+            try:
+                event           = oscilloscope.query_ascii_values('curve?') #list
+                temp_df[f'{i}'] = event
+                time_instant = time()
+                tempTime.append(time_instant)
+            except:
+                print('error')
 
-        try:
-            tempList = oscilloscope.query_ascii_values('curve?')
-        except:
-            print('error')
+        # Analysis of the sample: find waveform if len(peaks) >= min_peaks and save
+        for i in range( temp_df.shape[1] ):
+            event = temp_df[ temp_df.columns[i] ]
+            peaks, _ = find_peaks(-1*event, height=-1*height)
+            if len(peaks) >= min_peaks:
+                waveformList[f'{i}'] = event
+                timeList.append( tempTime[i] )
+        
+        finish = time()
+        print(f'Elapsed time: {timedelta(seconds=finish-start)}')
 
-
-        event = pd.Series(tempList)
-        peaks, _ = find_peaks(-event, height=-height)
-
-        if len(peaks) >= min_peaks:
-            waveformList[f'{counter-1}'] = event
-
+        # If not finished yet, try again
         counter += 1
 
-    return(waveformList)
+    # Add correct label to the columns and add the time column
+    waveformList.columns = [ ('event_'+str(i)) for i in range(waveformList.shape[1]) ]
+    df = waveformList.T #This command is only to add the timeList as a line in an easy way. This undone later
+    df.insert( 0, 'time_epoch', np.array(timeList) )
+
+    return(df.T)
 
 def Scope_Set_Parameters(oscilloscope):
     '''
@@ -123,7 +142,7 @@ def Scope_Set_Parameters(oscilloscope):
         oscilloscope.write(f'TRIGGER:MAIN:EDGE:SLOPE {config.slope}') 
         #print(f'Slope: {config.slope}')
         
-        print(f'Oscilloscope informations: LOADED SUCESSFULLY. Check config file for more details.\n')
+        print(f'\n\nOscilloscope informations: LOADED SUCESSFULLY. Check config file for more details.\n')
         #print( f'\nSCOPE INFOs:\n{oscilloscope.query("WFMPre?")}\n' ) #Command to transfer waveform preamble information.
     except:
         print('FAILED TO WRITE scope parameters.\nPlease, check connection with the oscilloscope and try again.')

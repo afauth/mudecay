@@ -7,8 +7,9 @@
 	 
 	 pylef: https://github.com/gwiederhecker/pylef
 	 
-  - detector de particulas (cintilador plástico+PMT+fonte de HV)
-  - computador com Python3 (Anaconda, Spyder, Jupyter)
+  - detector de particulas (cintilador de plástico+PMT+fonte de HV)
+  - computador -- Windows 7/10 -- com Python3 (Anaconda, de preferência)
+  - opcional: para o desenvolvimento do código, utiliza-se o VS Code. 
 ===============================================================================
     Os códigos no momento são:
 	 - daqTek_onlyData.py
