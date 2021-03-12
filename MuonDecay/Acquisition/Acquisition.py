@@ -1,4 +1,5 @@
 from Configs import cfg_scope
+from Save_Outputs.Save_Output import myprint, outputs
 import pandas as pd
 import numpy as np
 import pyvisa
@@ -20,7 +21,7 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , height=0 , min_peaks
         #start = time()
 
         '''Acquisition of random samples'''
-        print(f'Try number {counter}')
+        myprint(f'Try number {counter}')
         temp_df  = pd.DataFrame()
         tempTime = [] 
         sample   = min(1000, 10*necessarySamples)
@@ -31,7 +32,7 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , height=0 , min_peaks
                 time_instant = time()
                 tempTime.append(time_instant)
             except:
-                print('error')
+                myprint('error')
 
         '''Analysis of the sample: find waveform if len(peaks) >= min_peaks and save'''
         for i in range( temp_df.shape[1] ):
@@ -115,15 +116,15 @@ def Set_Scope_Parameters(oscilloscope):
             
             try_set = False
 
-            print(f'\n\nOscilloscope informations: LOADED SUCESSFULLY after {counter} attempt(s). Check config file for more details.\n')
-            print( f'\nSCOPE INFOs:\n{oscilloscope.query("WFMPre?")}\n' ) #Command to transfer waveform preamble information.
+            myprint(f'\n\nOscilloscope informations: LOADED SUCESSFULLY after {counter} attempt(s). Check config file for more details.\n')
+            myprint( f'\nSCOPE INFOs:\n{oscilloscope.query("WFMPre?")}\n' ) #Command to transfer waveform preamble information.
 
             
         except:
             
             counter += 1
-            print('FAILED TO WRITE scope parameters.')
+            myprint('FAILED TO WRITE scope parameters.')
 
             if counter >= 3:
-                print('FAILED TO WRITE scope parameters, even after three attempts.\nPlease, check connection with the oscilloscope and try again.')
+                myprint('FAILED TO WRITE scope parameters, even after three attempts.\nPlease, check connection with the oscilloscope and try again.')
                 raise

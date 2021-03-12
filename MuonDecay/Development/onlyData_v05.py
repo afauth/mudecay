@@ -20,6 +20,7 @@ Create_Folder(name=folder_name) #Documents/data/time_start
 
 '''Print local time'''
 myprint( f'\nStarting acquisition... Local time: {ctime(time_start)} \n'  ) 
+sleep(3)
 
 
 #                           Call oscilloscope and set the parameters
@@ -109,4 +110,3 @@ if cfg_scope.email_me == True:
     with open(logging_file) as f:
         msg = f.read()
         SendEmail(subject=subject, msg=msg)
-
