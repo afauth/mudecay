@@ -1,7 +1,7 @@
 import re
 import numpy as np
 import pyvisa
-from Configs import cfg_scope as config
+from acquisition.Configs import cfg_scope as config
 from time import time, ctime, sleep
 from datetime import timedelta
 

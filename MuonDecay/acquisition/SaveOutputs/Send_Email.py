@@ -1,7 +1,7 @@
 import smtplib
 from time import time, ctime
 try:
-    from ACQUISITION.Configs import cfg_email
+    from acquisition.Configs import cfg_email
 except:
     print('\nNo config file for the email.\n'+
     'Please, make sure you have a config-file named "cfg_email.py" and with the following files:\n'+
