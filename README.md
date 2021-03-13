@@ -31,3 +31,8 @@ Para fazer:
  - codigos para fazer obter os espectros de carga (e amplitude) dos dois pulsos 
  - codigos para verificar a boa qualidade dos dados obtidos
 	- contagem x tempo,  carga x tempo (intervalo de tempo variável, 5min..., eixo y em hz, eixo x em minutos)
+
+
+Importante:
+ - Para rodar os códigos no repositório do GitHub é necessário ajeitar o PATH do Python para que ele consiga reconhecer o diretório e encontrar os códigos que são importados.
+ [dar instruções e tal]

@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "C:\\.Anaconda\\python.exe",
+    "python.autoComplete.extraPaths":["./MuonDecay"]
+
+}

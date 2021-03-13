@@ -441,7 +441,7 @@ def filtra_delta_t(df, convert_to_microsec, time_in_ADCch, height):
 
 #%% Plot fit exponencial das diferenças de tempo
 
-def curve_fit_exponencial(df, height, convert_to_microsec, custom_number_of_bins=0, plot_graph=1, plt_points=0, plt_bars=1, path_to_save='images/curve_fit-vida_media.png'):
+def curve_fit_exponencial(df, height, convert_to_microsec, custom_number_of_bins=0, plot_graph=1, plt_points=0, plt_bars=1, path_to_save='../Documents/images/curve_fit-vida_media.png'):
 
     _ = pd.DataFrame(   peaks_em_x( df=df, height=height),  columns = ['peak_0', 'peak_1']   )   
     delta_x = (   _['peak_1']  -  _['peak_0']   )*convert_to_microsec

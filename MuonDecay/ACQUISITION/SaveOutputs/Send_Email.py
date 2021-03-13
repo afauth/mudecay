@@ -1,6 +1,12 @@
 import smtplib
 from time import time, ctime
-from Configs import cfg_email
+try:
+    from ACQUISITION.Configs import cfg_email
+except:
+    print('\nNo config file for the email.\n'+
+    'Please, make sure you have a config-file named "cfg_email.py" and with the following files:\n'+
+    'EMAIL_ADDRESS, EMAIL_DESTINATION and PASSWORD --- all in the Config folder.\n\n')
+    raise
 
 '''
     You need to give permission on your email:
@@ -25,5 +31,4 @@ def SendEmail(subject, msg):
 
 # subject = f'Testando som... 2... s... som...'
 # msg = f'Pimba master 2018 {ctime(time())}'
-
-# send_email(subject, msg)
+# SendEmail(subject, msg)
