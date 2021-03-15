@@ -1,7 +1,9 @@
-from Configs import cfg_scope
-from Acquisition.Acquisition import Acquisition_Waveform, Set_Scope_Parameters
-from Save_Outputs.Save_Output import myprint, outputs, Create_Folder
-from Save_Outputs.Send_Email import SendEmail
+from acquisition.Configs import cfg_scope
+from acquisition.DataAcquisition.Acquisition_Waveform import Acquisition_Waveform
+from acquisition.DataAcquisition.Set_Scope_Parameters import Set_Scope_Parameters
+from acquisition.SaveOutputs.Save_Output import myprint, outputs, Create_Folder
+from acquisition.SaveOutputs.Send_Email import SendEmail
+
 import pyvisa
 import pandas as pd
 from time import time, ctime, sleep
