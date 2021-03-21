@@ -2,46 +2,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
-from scipy.signal import find_peaks
+
+# from data_analyze.FindPeaks.peaks
 
 
 
 #=====================================================================================================
-'''Exponential curve function to make a regression'''
-def fit_function(t, A, tau, C):
-    return(  A * np.e**(-t/tau) + C  )
-
-
-
-#=====================================================================================================
-def Find_Peaks_Waveforms(df, height=0, invert_waveform=True):
-    
-    if invert_waveform == True:
-        wvfrs = -1*df
-    else:
-        wvfrs = df
-    
-    Peaks = pd.DataFrame()
-
-    for i in range(wvfrs.shape[1]):
-
-        event = wvfrs[wvfrs.columns[i]]
-        x_peaks, _ = find_peaks( event, height=height ) #x_peaks is an array
-        y_peaks    = event.iloc[x_peaks].tolist()
-
-        peaks = np.append(x_peaks, y_peaks)
-
-        Peaks[wvfrs.columns[i]] = peaks
-
-    Peaks = Peaks.T
-    Peaks.columns = ['peak_X0', 'peak_X1', 'peak_Y0', 'peak_Y1']
-
-    return(Peaks) # [event_0, event_1, ..., event_n] X [peak_X0, peak_X1, peak_Y0, peak_Y1]
-
-
-
-#=====================================================================================================
-def Time_Difference(df): #peak_X0, peak_X1, peak_Y0, peak_Y1
+def Time_Difference(df): #Columns: peak_X0, peak_X1, peak_Y0, peak_Y1
     '''dataFrame of differences'''
     delta_t = pd.DataFrame(df.columns[1] - df.columns[0], columns=['delta_x']) 
     return(delta_t)
@@ -61,6 +28,13 @@ def Bins_Infos(x_values , number_of_bins=50):
     centers = np.array([ bins_edges[i] + dt/2 for i in range(len(bins_edges)-1) ])
 
     return(data_entries, bins_edges, centers)
+
+
+
+#=====================================================================================================
+'''Exponential curve function to make a regression'''
+def fit_function(t, A, tau, C):
+    return(  A * np.e**(-t/tau) + C  )
 
 
 
