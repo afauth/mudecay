@@ -1,6 +1,7 @@
 # Códigos do experimento vida média dos múons.
 ================================================================================
-  O experimento utiliza:
+  
+O experimento utiliza:
   -  osciloscópio Tektronix TDS 1002B com driver Visa e  pacote pylef do LEB-IFGW
      TEKVISA Connectivity Software - V4.2.0
 	 https://download.tek.com/secure/software/TekVISA_404_066093809.exe?nva=20200613175735&nbv=20200613174235&token=0bccb3f1f3c552b1fccdf
@@ -27,7 +28,7 @@ Os códigos no momento são:
 	    	https://drive.google.com/open?id=12PdxqnW8CiDlFmtguUx0o1hdQtklEnFw
 
 	 
-Para fazer:
+# Para fazer:
  - introduzir o tempo em UTC no início de cada linha dos dados
  	- ver codigo daqTek_FauthBruno.py
  - codigos para fazer obter os espectros de carga (e amplitude) dos dois pulsos 
