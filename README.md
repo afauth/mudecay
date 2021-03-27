@@ -11,15 +11,37 @@ O experimento utiliza:
  - Opcional: para o desenvolvimento do código, utiliza-se o VS Code. 
 
 
-### Código 
+### Código: _overview_ 
 ===============================================================================
 
-Os códigos no momento são:
- - daqTek_onlyData.py
- - daqTek_fitPlot.py
- - plotVidamedia.py
- - espectro-de-carga.ipynb
-	 
+Os códigos em Python no momento são:
+
+ - acquisition
+ 	- Configs: onde são guardados os config_files para a aquisição
+ 	- DataAcquisition: contem as funções para aquisição dos dados e para o _set_ do osciloscópio
+ 	- SaveOutputs: contem as funções auxiliares, como as funções de enviar email, salvar o _output_ do terminal, criar as pastas para armazenar os dados adquiridos etc.
+
+ - data_analyze
+ 	- .old: versões anteriores do projeto
+ 	- Analyze: 
+ 	- FindPeaks:   
+ 	- Preliminaries: 
+ 	- RegExp: 
+ 	- Spectrums: 
+	
+ - development
+ 	-
+	
+ - documents
+ 	- .old: versões anteriores dos documentos
+ 	- data: pasta onde são armazenados os documentos de aquisição e dos resultados das análises de dados
+ 	- images: pasta para armazenar os gráficos e os resultados em imagem
+
+
+
+### Para fazer:
+===============================================================================
+
 	Para o desenvolvimento do projeto em casa usamos os arquivos de dados
 	 - 5500_diferencias.csv (diferença de tempo, em microsegundo, entre dois pulsos)
 	 - Temos também o arquivo 5555_eventos-edit.csv, que armazena os dados já um pouco tratados (este está no GitHub)
@@ -28,7 +50,8 @@ Os códigos no momento são:
 	    	https://drive.google.com/open?id=12PdxqnW8CiDlFmtguUx0o1hdQtklEnFw
 
 	 
-# Para fazer:
+### Para fazer:
+===============================================================================
  - introduzir o tempo em UTC no início de cada linha dos dados
  	- ver codigo daqTek_FauthBruno.py
  - codigos para fazer obter os espectros de carga (e amplitude) dos dois pulsos 
