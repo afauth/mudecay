@@ -39,15 +39,14 @@ Os códigos em Python no momento são:
 
 
 
-### Para fazer:
+### Desenvolvimento:
 ===============================================================================
 
-	Para o desenvolvimento do projeto em casa usamos os arquivos de dados
-	 - 5500_diferencias.csv (diferença de tempo, em microsegundo, entre dois pulsos)
-	 - Temos também o arquivo 5555_eventos-edit.csv, que armazena os dados já um pouco tratados (este está no GitHub)
-	 - 99_eventos-edit.csv (99 waveforms com 2500 pontos cada uma; o arquivo com 5500 é muito grande e o github não aceita)
-	    - o arquivo com 5500 eventos está no Google Drive: 
-	    	https://drive.google.com/open?id=12PdxqnW8CiDlFmtguUx0o1hdQtklEnFw
+Para o desenvolvimento do projeto em casa usamos os arquivos de dados
+ - 5500_diferencias.csv (diferença de tempo, em microsegundo, entre dois pulsos)
+ - Temos também o arquivo 5555_eventos-edit.csv, que armazena os dados já um pouco tratados (este está no GitHub)
+ - 99_eventos-edit.csv (99 waveforms com 2500 pontos cada uma; o arquivo com 5500 é muito grande e o github não aceita)
+ - o arquivo com 5500 eventos está no Google Drive: https://drive.google.com/open?id=12PdxqnW8CiDlFmtguUx0o1hdQtklEnFw
 
 	 
 ### Para fazer:
