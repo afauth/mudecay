@@ -17,26 +17,26 @@ O experimento utiliza:
 Os códigos em Python no momento são:
 
 - MuonDecay
- - acquisition
- 	- Configs: onde são guardados os config_files para a aquisição
- 	- DataAcquisition: contem as funções para aquisição dos dados e para o _set_ do osciloscópio
- 	- SaveOutputs: contem as funções auxiliares, como as funções de enviar email, salvar o _output_ do terminal, criar as pastas para armazenar os dados adquiridos etc.
+	 - acquisition
+		- Configs: onde são guardados os config_files para a aquisição
+		- DataAcquisition: contem as funções para aquisição dos dados e para o _set_ do osciloscópio
+		- SaveOutputs: contem as funções auxiliares, como as funções de enviar email, salvar o _output_ do terminal, criar as pastas para armazenar os dados adquiridos etc.
 
- - data_analyze
- 	- .old: versões anteriores do projeto
- 	- Analyze: 
- 	- FindPeaks:   
- 	- Preliminaries: 
- 	- RegExp: 
- 	- Spectrums: 
-	
- - development
- 	-
-	
- - documents
- 	- .old: versões anteriores dos documentos
- 	- data: pasta onde são armazenados os documentos de aquisição e dos resultados das análises de dados
- 	- images: pasta para armazenar os gráficos e os resultados em imagem
+	 - data_analyze
+		- .old: versões anteriores do projeto
+		- Analyze: 
+		- FindPeaks:   
+		- Preliminaries: 
+		- RegExp: 
+		- Spectrums: 
+
+	 - development
+		-
+
+	 - documents
+		- .old: versões anteriores dos documentos
+		- data: pasta onde são armazenados os documentos de aquisição e dos resultados das análises de dados
+		- images: pasta para armazenar os gráficos e os resultados em imagem
 
 
 
