@@ -16,6 +16,7 @@ O experimento utiliza:
 
 Os códigos em Python no momento são:
 
+- MuonDecay
  - acquisition
  	- Configs: onde são guardados os config_files para a aquisição
  	- DataAcquisition: contem as funções para aquisição dos dados e para o _set_ do osciloscópio
