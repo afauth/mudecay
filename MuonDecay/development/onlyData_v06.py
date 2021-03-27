@@ -121,6 +121,7 @@ for i in range( len(files) ):
     #os.remove(path=files[i])
     waveforms.append(df)
 Waveforms_df = pd.concat(waveforms, axis=1)
+Waveforms_df.columns = [ ('event_'+str(i)) for i in range(Waveforms_df.shape[1]) ]
 Waveforms_df.to_csv(f'{folder_name}/{time_start}_final.csv')
 #df_conversion.to_csv( path_or_buf=f'data/{time_start}/conversion-values.csv', header=True, index=True )
 
