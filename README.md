@@ -58,6 +58,7 @@ Para o desenvolvimento do projeto em casa usamos os arquivos de dados "documents
 	- contagem x tempo,  carga x tempo (intervalo de tempo variável, 5min..., eixo y em hz, eixo x em minutos)
 
 
-Importante:
+### Importante:
+===============================================================================
  - Para rodar os códigos no repositório do GitHub é necessário ajeitar o PATH do Python para que ele consiga reconhecer o diretório e encontrar os códigos que são importados.
  [dar instruções e tal]
