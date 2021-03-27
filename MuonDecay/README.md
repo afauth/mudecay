@@ -37,6 +37,10 @@ Os códigos em Python no momento são:
  - É necessário clonar o repositório do GitHub no computador
  - *IMPORTANTÍSSIMO*: para rodar os códigos que estão no repositório do GitHub é necessário ajeitar o PATH do Python para que ele consiga reconhecer o diretório e encontrar os códigos que são importados. 
  	- {intruções detalhadas aqui}
+ 
+ - Após essas preliminares estarem resolvidas, pode-se partir para a execução dos códigos
+ 	- Aquisição:
+ 	- Análise de dados: 
 
 
 
