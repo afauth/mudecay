@@ -41,7 +41,8 @@ Os códigos em Python no momento são:
 
 ### Desenvolvimento:
 ===============================================================================
-Para o desenvolvimento do projeto em casa usamos os arquivos de dados "documents/data/previous_data/5555_eventos-edit.csv".
+ - Para o desenvolvimento do projeto em casa usamos os arquivos de dados "documents/data/previous_data/5555_eventos-edit.csv".
+ - O desenvolvimento do código de aquisição envolve o pyvisa e o código de análise é basicamente fundamentado no pandas.
  - Obs:
  	- Este arquivo é uma versão modificada de um arquivo que não cabia no GitHub e que está no GoogleDrive (https://drive.google.com/open?id=12PdxqnW8CiDlFmtguUx0o1hdQtklEnFw)
  	- Existem outros arquivos, como uns arquivos com menos eventos ou outros arquivos com outros registros, mas o principal é o mencionado acima
