@@ -10,8 +10,13 @@ O experimento utiliza:
  	- a biblioteca utilizada para comunicação com o osciloscópio é, atualmente, o pyvisa (https://pyvisa.readthedocs.io/en/latest/#)
  - Detector de particulas (cintilador de plástico+PMT+fonte de HV)
  - Computador com Windows 7/10 
- - Opcional: para o desenvolvimento do código, utiliza-se o VS Code. 
+ - Opcional: para o desenvolvimento do código, utiliza-se o VS Code; ROOT também é opcional (visite https://root.cern/install/ para mais detalhes).
 
+
+
+### Overview
+ - MuonDecay: diretório principal do código em Python
+ - ROOT: diretório contendo arquivos desenvolvidos em ROOT. Basicamente, servem para o mesmo propósito que os códigos em Python do MuonDecay
 
 
 
