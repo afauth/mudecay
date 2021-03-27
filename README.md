@@ -41,7 +41,6 @@ Os códigos em Python no momento são:
 
 ### Desenvolvimento:
 ===============================================================================
-
 Para o desenvolvimento do projeto em casa usamos os arquivos de dados "documents/data/previous_data/5555_eventos-edit.csv".
  - Obs:
  	- Este arquivo é uma versão modificada de um arquivo que não cabia no GitHub e que está no GoogleDrive (https://drive.google.com/open?id=12PdxqnW8CiDlFmtguUx0o1hdQtklEnFw)
@@ -51,11 +50,11 @@ Para o desenvolvimento do projeto em casa usamos os arquivos de dados "documents
 	 
 ### Para fazer:
 ===============================================================================
- - introduzir o tempo em UTC no início de cada linha dos dados
- 	- ver codigo daqTek_FauthBruno.py
- - codigos para fazer obter os espectros de carga (e amplitude) dos dois pulsos 
- - codigos para verificar a boa qualidade dos dados obtidos
-	- contagem x tempo,  carga x tempo (intervalo de tempo variável, 5min..., eixo y em hz, eixo x em minutos)
+ - Verificar a aquisição rodando com longevidade
+ - Fazer o _curve fit_ do espectro de Michel nos dados
+ - Escolher uma versão adequada dos filtros
+ - Como incorporar a captura do múon negativo?
+ 
 
 
 ### Importante:
