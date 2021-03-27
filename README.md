@@ -15,10 +15,10 @@ O experimento utiliza:
 ===============================================================================
 
 Os códigos no momento são:
-	- daqTek_onlyData.py
-	- daqTek_fitPlot.py
-	- plotVidamedia.py
-	- espectro-de-carga.ipynb
+ - daqTek_onlyData.py
+ - daqTek_fitPlot.py
+ - plotVidamedia.py
+ - espectro-de-carga.ipynb
 	 
 	Para o desenvolvimento do projeto em casa usamos os arquivos de dados
 	 - 5500_diferencias.csv (diferença de tempo, em microsegundo, entre dois pulsos)
