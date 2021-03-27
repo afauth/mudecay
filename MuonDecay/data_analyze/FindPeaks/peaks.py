@@ -4,20 +4,29 @@ from scipy.signal import find_peaks
 
 
 #=====================================================================================================
-def Find_Peaks_Waveforms(df, height=0, invert_waveform=True):
+def Find_Peaks_Waveforms(waveforms, height, invert_waveform=True):
+    '''
+    waveforms:
+    height:
+    invert_waveform:
+    '''
     
     if invert_waveform == True:
-        wvfrs = -1*df
+        wvfrs = -1*waveforms
     else:
-        wvfrs = df
+        wvfrs = waveforms
     
     Peaks = pd.DataFrame()
 
-    for i in range(wvfrs.shape[1]):
+    for i in range(wvfrs.shape[1]): # 
 
         event = wvfrs[wvfrs.columns[i]]
         x_peaks, _ = find_peaks( event, height=height ) #x_peaks is an array
-        y_peaks    = event.iloc[x_peaks].tolist()
+
+        if len(x_peaks) != 2:
+            raise ValueError(f'The events must have two peaks exactly. Please, check the "height" parameter.\nProblem found on {wvfrs.columns[i]}.')
+
+        y_peaks = event.iloc[x_peaks].tolist()
 
         peaks = np.append(x_peaks, y_peaks)
 

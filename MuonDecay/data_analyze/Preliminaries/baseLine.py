@@ -20,7 +20,7 @@ def BaseLine_Sample(waveform, peak, random_left):
 
 
 #=====================================================================================================
-def baseLine(waveforms, peaks, random_left=10):
+def baseLine_df(waveforms, peaks, random_left=10):
     '''
     waveforms: waveforms DataFrame.
     peaks: peaks DataFrame returned by the Find_Peaks_Waveforms function.  
@@ -30,7 +30,7 @@ def baseLine(waveforms, peaks, random_left=10):
     baseLines = []
     peaks_X0 = peaks[ peaks.columns[0] ]
     
-    for i in range( len(waveforms.shape[1]) ):
+    for i in range( waveforms.shape[1] ):
         event = waveforms[ waveforms.columns[i] ]
         peak  = peaks_X0[i]
         baseLines.append( BaseLine_Sample(waveform=event, peak=peak, random_left=random_left) )
