@@ -30,8 +30,7 @@ Os códigos em Python no momento são:
 		- RegExp: 
 		- Spectrums: 
 
-	 - development
-		-
+	 - development: códigos experimentais	
 
 	 - documents
 		- .old: versões anteriores dos documentos
