@@ -10,7 +10,7 @@ O experimento utiliza:
  	- a biblioteca utilizada para comunicação com o osciloscópio é, atualmente, o pyvisa (https://pyvisa.readthedocs.io/en/latest/#)
  - Detector de particulas (cintilador de plástico+PMT+fonte de HV)
  - Computador com Windows 7/10 
- - Opcional: para o desenvolvimento do código, utiliza-se o VS Code; ROOT também é opcional (visite https://root.cern/install/ para mais detalhes).
+ - Opcional: para o desenvolvimento do código, utiliza-se o VS Code; ROOT também é opcional (visite https://root.cern/install/) para mais detalhes).
 
 
 
