@@ -29,6 +29,9 @@ Os códigos em Python no momento são:
 
 ### Utilização do código: 
 ===========================================================================
+ - Recomenda-se a instalação do Anaconda, que facilita bastante na questão das bibliotecas e facilita a instalação do python no computador.
+ 	- Se for instalar o Anaconda, recomenda-se incluir o Anaconda no path do computador. Esse é um passo adiantado, mas pode ser resolvido depois.
+ 	![alt text](https://fgnt.github.io/python_crashkurs_doc/_images/path.png)
  - Primeiramente, é necessário clonar o repositório do GitHub no computador
  - *IMPORTANTÍSSIMO*: para rodar os códigos que estão no repositório do GitHub é necessário ajeitar o PATH do Python para que ele consiga reconhecer o diretório e encontrar os códigos que são importados. 
  	- {intruções detalhadas aqui}
