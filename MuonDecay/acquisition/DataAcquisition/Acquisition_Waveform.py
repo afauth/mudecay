@@ -1,5 +1,6 @@
 from acquisition.Configs import cfg_scope #import config file
 from acquisition.SaveOutputs.Save_Output import myprint, outputs #import function "myprint" and variable "outputs"
+
 import pandas as pd
 import numpy as np
 import pyvisa
@@ -10,6 +11,8 @@ from scipy.signal import find_peaks
 
 
 def Acquisition_Waveform( oscilloscope , necessarySamples , height=0 , min_peaks=2 , oscilloscope_resolution=2500 , numberBins=100, track_progress=False ):
+    '''
+    '''
     sleep(3)
 
     waveformList = pd.DataFrame()

@@ -4,6 +4,7 @@ from acquisition.DataAcquisition.Set_Scope_Parameters import Set_Scope_Parameter
 from acquisition.SaveOutputs.Save_Output import myprint, outputs, Create_Folder
 from acquisition.SaveOutputs.Send_Email import SendEmail
 
+import os
 import pyvisa
 import pandas as pd
 from time import time, ctime, sleep
@@ -17,7 +18,7 @@ from datetime import timedelta
 time_start = time()
 
 '''Create folder to store logging, waveforms and conversion file'''
-folder_name = f'Documents/data/{time_start}'
+folder_name = f'documents/data/{time_start}'
 Create_Folder(name=folder_name) #Documents/data/time_start
 
 '''Print local time'''
@@ -62,6 +63,7 @@ else:
 
 acquired_samples = 0
 saved_csv = 0
+files = []
 
 while acquired_samples < cfg_scope.necessarySamples:
 
@@ -76,7 +78,9 @@ while acquired_samples < cfg_scope.necessarySamples:
             track_progress=cfg_scope.track_progress
                                         )
         
-        waveform.to_csv(f'documents/data/{time_start}/{time_start}_{saved_csv}.csv')
+        file_name = f'{folder_name}/{time_start}_{saved_csv}.csv'
+        waveform.to_csv(file_name)
+        files.append(file_name)
 
         acquired_samples += waveform.shape[1]
         saved_csv += 1
@@ -103,13 +107,21 @@ while acquired_samples < cfg_scope.necessarySamples:
 #                          Finishing acquisition
 #==========================================================================================================
 
-
-
 time_finish = time() # Get finish time
 myprint( f'\nFinishing acquisition... Local time: {ctime(time_finish)}\nAfter {str(timedelta(seconds=time_finish - time_start))}'  )
 
 
-waveform.to_csv(f'Documents/data/{time_start}/{time_start}.csv')
+'''
+Reading all previous saved waveforms DataFrames and deleting the subfiles
+'''
+
+waveforms = []
+for i in range( len(files) ):
+    df = pd.read_csv(files[i])
+    #os.remove(path=files[i])
+    waveforms.append(df)
+Waveforms_df = pd.concat(waveforms, axis=1)
+Waveforms_df.to_csv(f'{folder_name}/{time_start}_final.csv')
 #df_conversion.to_csv( path_or_buf=f'data/{time_start}/conversion-values.csv', header=True, index=True )
 
 
