@@ -1,5 +1,5 @@
 # Códigos do experimento vida média dos múons.
-=============================================================================
+===========================================================================
   
 O experimento utiliza:
  - Osciloscópio Tektronix TDS 1002B com driver Visa TEKVISA Connectivity Software - V4.2.0
@@ -12,7 +12,7 @@ O experimento utiliza:
 
 
 ### Código: _overview_ 
-=============================================================================
+===========================================================================
 
 Os códigos em Python no momento são:
 
@@ -38,15 +38,19 @@ Os códigos em Python no momento são:
 		- images: pasta para armazenar os gráficos e os resultados em imagem
 
 
+
+
 ### Utilização do código: 
-=============================================================================
+===========================================================================
  - Primeiramente, é necessário clonar o repositório do GitHub no computador
  - *IMPORTANTÍSSIMO*: para rodar os códigos que estão no repositório do GitHub é necessário ajeitar o PATH do Python para que ele consiga reconhecer o diretório e encontrar os códigos que são importados. 
  	- {intruções detalhadas aqui}
 
 
+
+
 ### Desenvolvimento:
-=============================================================================
+===========================================================================
  - Para o desenvolvimento do projeto em casa usamos os arquivos de dados "documents/data/previous_data/5555_eventos-edit.csv".
  - O desenvolvimento do código de aquisição envolve o pyvisa e o código de análise é basicamente fundamentado no pandas.
  - Obs:
@@ -56,7 +60,7 @@ Os códigos em Python no momento são:
 
 	 
 ### Para fazer:
-===============================================================================
+===========================================================================
  - Verificar a aquisição rodando com longevidade
  - Fazer o _curve fit_ do espectro de Michel nos dados
  - Escolher uma versão adequada dos filtros
