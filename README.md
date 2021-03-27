@@ -2,9 +2,8 @@
 ================================================================================
   
 O experimento utiliza:
- -  osciloscópio Tektronix TDS 1002B com driver Visa e  pacote pylef do LEB-IFGW
-     TEKVISA Connectivity Software - V4.2.0
-	 https://download.tek.com/secure/software/TekVISA_404_066093809.exe?nva=20200613175735&nbv=20200613174235&token=0bccb3f1f3c552b1fccdf
+ -  osciloscópio Tektronix TDS 1002B com driver Visa TEKVISA Connectivity Software - V4.2.0
+	- Link: https://download.tek.com/secure/software/TekVISA_404_066093809.exe?nva=20200613175735&nbv=20200613174235&token=0bccb3f1f3c552b1fccdf
  - Python3 (com Anaconda, de preferência)
  	- a biblioteca utilizada para comunicação com o osciloscópio é, atualmente, o pyvisa (https://pyvisa.readthedocs.io/en/latest/#)
  - detector de particulas (cintilador de plástico+PMT+fonte de HV)
