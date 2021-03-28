@@ -7,7 +7,7 @@ O experimento utiliza:
  - Osciloscópio Tektronix TDS 1002B com driver Visa TEKVISA Connectivity Software - V4.2.0
 	- Link: https://download.tek.com/secure/software/TekVISA_404_066093809.exe?nva=20200613175735&nbv=20200613174235&token=0bccb3f1f3c552b1fccdf
  - Python3 (com Anaconda, de preferência)
- 	- a biblioteca utilizada para comunicação com o osciloscópio é, atualmente, o pyvisa (https://pyvisa.readthedocs.io/en/latest/#)
+ 	- A biblioteca utilizada para comunicação com o osciloscópio é, atualmente, o pyvisa (https://pyvisa.readthedocs.io/en/latest/#)
  - Detector de particulas (cintilador de plástico+PMT+fonte de HV)
  - Computador com Windows 7/10 
  - Opcional: para o desenvolvimento do código, utiliza-se o VS Code; ROOT também é opcional (visite https://root.cern/install/) para mais detalhes).
