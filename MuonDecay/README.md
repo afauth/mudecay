@@ -56,8 +56,11 @@ Os códigos em Python no momento são:
 ### Execução dos códigos
 
  - Após essas preliminares estarem resolvidas, pode-se partir para a execução dos códigos
- 	- Aquisição: em "development/onlyData_v06.py" está a última versão do código. Ele pode 
- 	- Análise de dados: 
+ 	- Aquisição: em "development/onlyData_v06.py" está a última versão do código. Ele pode ser executado normalmente com o Python a partir do terminal (cmd, powershell etc.)
+ 		- Se ocorrer algum erro com problema de _import_ do Python, verifique o PythonPATH no seu sistema operacional
+ 		- O código deve, normalmente, levar um longo tempo para ser concluído
+ 		- Se ocorrer um erro por causa da falta do arquivo de "config_email", é porque é necessário que você crie o seu próprio. Recomenda-se que você adicione o arquivo ao "git ignore" no seu computador
+ 	- Análise de dados: o código de análise "data_analyze/analyze.ipynb" é um _Jupyter notebook_. Ele pode ser rodado diretamente também, basta abri-lo e executá-lo.
 
 
 
