@@ -64,6 +64,7 @@ try: # Try to get all the datas
         min_peaks=cfg_scope.min_peaks
     )
     
+
 except: # Log error. Raise error. Interrupt the execution.
 
     time_finish = time()
@@ -81,10 +82,6 @@ except: # Log error. Raise error. Interrupt the execution.
         
     raise Exception("Problem on the acquisition. Please, re-run.")
 
-# else: # Execute if everything occoured as expected. Save the csv file.
-
-#     file_name = f'{folder_name}/{time_start}_{waveform.shape[1]}-events_{cfg_scope.min_peaks}-peaks.csv'
-#     waveform.to_csv(file_name)
 
 else: # Execute if everything occoured as expected
 
@@ -103,30 +100,3 @@ else: # Execute if everything occoured as expected
         with open(logging_file) as f:
             msg = f.read()
             SendEmail(subject=subject, msg=msg)
-
-
-
-# #                          Finishing acquisition
-# #==========================================================================================================
-
-# time_finish = time() # Get finish time
-# myprint( f'\nFinishing acquisition... Local time: {ctime(time_finish)}\nAfter {str(timedelta(seconds=time_finish - time_start))}'  )
-
-# myprint('\nEND acquisition\n\n')
-
-
-
-# #                          Save output file and send by email
-# #==========================================================================================================
-
-
-# '''Assemble all the terminal outputs in one txt file'''
-# logging_file = f"{folder_name}/output.txt"
-# open(logging_file, "w").write("\n".join(outputs))
-
-
-# if cfg_scope.email_me == True:
-#     subject = f'[MuDecay] Acquisition results'
-#     with open(logging_file) as f:
-#         msg = f.read()
-#         SendEmail(subject=subject, msg=msg)
