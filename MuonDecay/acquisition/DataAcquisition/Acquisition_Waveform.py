@@ -21,32 +21,31 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , height=0 , min_peaks
 
     while waveformList.shape[1] < necessarySamples:
         
-        #start = time()
+        print(waveformList.shape[1])
 
         '''Acquisition of random samples'''
-        myprint(f'Try number {counter}')
+        myprint(f'   Run {counter}. {100*(waveformList.shape[1] / necessarySamples)}%')
         temp_df  = pd.DataFrame()
         tempTime = [] 
-        sample   = min(1000, 10*necessarySamples)
+        sample   = min(100, 10*necessarySamples)
+
         for i in range( sample ):
             try:
-                event           = oscilloscope.query_ascii_values('curve?') #list
+                event = oscilloscope.query_ascii_values('curve?') #list
+            except:
+                myprint('error')
+            else:
                 temp_df[f'{i}'] = event
                 time_instant = time()
                 tempTime.append(time_instant)
-            except:
-                myprint('error')
 
         '''Analysis of the sample: find waveform if len(peaks) >= min_peaks and save'''
         for i in range( temp_df.shape[1] ):
             event = temp_df[ temp_df.columns[i] ]
             peaks, _ = find_peaks(-1*event, height=-1*height)
             if len(peaks) >= min_peaks:
-                waveformList[f'{i}'] = event
+                waveformList[f'{counter}_{i}'] = event
                 timeList.append( tempTime[i] )
-        
-        #finish = time()
-        #print(f'Elapsed time: {timedelta(seconds=finish-start)}')
 
         '''If not finished yet, try again'''
         counter += 1
