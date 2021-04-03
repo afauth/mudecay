@@ -55,7 +55,7 @@ else:
     
 try: # Try to get all the datas
 
-    waveform = Acquisition_Waveform(
+    Acquisition_Waveform(
         oscilloscope=scope,
         necessarySamples=cfg_scope.necessarySamples,
         path=folder_name,

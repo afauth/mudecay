@@ -134,7 +134,7 @@ def run_acquisition( oscilloscope , samples=100 , height=0 , min_peaks=2 ):
         'Quality test' for the waveform. If it contains at least the minimal peaks, it's a 'good sample'.
     """
 
-    sleep(2)
+    sleep(1)
 
     waveformList = pd.DataFrame()
     timeList = []
@@ -146,7 +146,7 @@ def run_acquisition( oscilloscope , samples=100 , height=0 , min_peaks=2 ):
         temp_df  = pd.DataFrame()
         tempTime = [] 
         rnd_sample = min(100, 10*samples)
-        myprint(f'   Run {counter}. {100*round(total_events/samples , 1)}%. ({total_events}/{samples}).')
+        myprint(f'   Run {counter}. {round(100*total_events/samples , 1)}%. ({total_events}/{samples}).')
 
         '''Acquisition of random samples'''
         for i in range( rnd_sample ):
