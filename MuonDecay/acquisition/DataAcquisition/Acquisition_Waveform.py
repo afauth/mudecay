@@ -93,7 +93,7 @@ def read_waveforms_csv(files, file_name, path, tag=''):
 
     for i in range( len(files) ):
         df = pd.read_csv(files[i])
-        os.remove(path=files[i])
+        # os.remove(path=files[i]) # delete the partial files
         waveforms.append(df)
 
     Waveforms_df = pd.concat(waveforms, axis=1)
@@ -207,12 +207,12 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , path , file_name , h
     """
 
     acquired_samples = 0    # Total amount of samples collected
-    saved_csv = 0           # Total of saved csv files 
+    saved_csv = 1           # Total of saved csv files 
     files = []              # File names
 
     while acquired_samples < necessarySamples:
 
-        myprint(f'Try number {saved_csv+1}. {100*round(acquired_samples/necessarySamples,2)}% ({acquired_samples}/{necessarySamples}).')
+        myprint(f'Try number {saved_csv}. {round(100*acquired_samples/necessarySamples,2)}% ({acquired_samples}/{necessarySamples}).')
 
         waveforms = run_acquisition(
                 oscilloscope=oscilloscope,
@@ -228,6 +228,7 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , path , file_name , h
         acquired_samples += waveforms.shape[1]
         saved_csv += 1
     
-    waveforms = read_waveforms_csv(files=files, file_name=file_name, path=path, tag=f'{min_peaks}-events')
+    '''Assemble all the files in only one'''
+    # waveforms = read_waveforms_csv(files=files, file_name=file_name, path=path, tag=f'{min_peaks}-events')
 
-    return(waveforms)
+    # return(waveforms)
