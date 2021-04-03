@@ -68,7 +68,7 @@ try: # Try to get all the datas
 except: # Log error. Raise error. Interrupt the execution.
 
     time_finish = time()
-    myprint(f'FATAL ERROR.\nAn unexpected error occoured.\n\nPlease, re-check the acquisition and try again.\n\nLocal time: {ctime(time())}\nAfter {str(timedelta(seconds=time_finish - time_start))}')
+    myprint(f'\n\nFATAL ERROR.\nAn unexpected error occoured.\n\nPlease, re-check the acquisition and try again.\n\nLocal time: {ctime(time())}\nAfter {str(timedelta(seconds=time_finish - time_start))}')
         
     '''Assemble all the terminal outputs in one txt file'''
     logging_file = f"{folder_name}/output.txt"

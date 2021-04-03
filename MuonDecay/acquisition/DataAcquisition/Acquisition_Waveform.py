@@ -87,7 +87,7 @@ def read_waveforms_csv(files, file_name, path, tag=''):
         A tag to put on the end of the file name. The default is the same as no tag.
     """
 
-    myprint('Reading and assembling the csv files.')
+    myprint('\nReading and assembling the csv files.')
 
     waveforms = []
 
@@ -221,9 +221,9 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , path , file_name , h
                 min_peaks=min_peaks
                 )
 
-        file_name = f'{path}/file_{saved_csv}.csv'
-        waveforms.to_csv(file_name) # save the partial waveforms DataFrame
-        files.append(file_name)     # add the name to the list
+        file = f'{path}/file_{saved_csv}.csv'
+        waveforms.to_csv(file) # save the partial waveforms DataFrame
+        files.append(file)     # add the name to the list
 
         acquired_samples += waveforms.shape[1]
         saved_csv += 1

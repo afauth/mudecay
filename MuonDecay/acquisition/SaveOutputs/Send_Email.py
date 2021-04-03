@@ -25,9 +25,9 @@ def SendEmail(subject, msg):
         message = 'Subject: {}\n\n{}'.format(subject, msg)
         server.sendmail(from_addr=cfg_email.EMAIL_ADDRESS, to_addrs=cfg_email.EMAIL_DESTINATION, msg=message)
         server.quit()
-        print('Success: Email sent.')
+        print('Success: Email sent.\n')
     except:
-        print('Email failed to send.')
+        print('Email failed to send.\n')
 
 # subject = f'Testando som... 2... s... som...'
 # msg = f'Pimba master 2018 {ctime(time())}'

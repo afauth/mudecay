@@ -1,0 +1,34 @@
+
+Starting acquisition... Local time: Wed Mar 31 15:10:13 2021 
+
+
+SCOPE INFOs:
+1;8;ASC;RP;MSB;2500;"Ch1, DC coupling, 1.0E-2 V/div, 1.0E-6 s/div, 2500 points, Sample mode";Y;4.0E-9;0;-4.0E-7;"s";4.0E-4;0.0E0;5.0E1;"Volts"
+
+
+
+Oscilloscope informations: LOADED SUCESSFULLY after 0 attempt(s). Check config file for more details.
+
+
+Number of requested samples: 20
+Minimal number of peaks: 2
+Progress tracker is OFF
+An email will be sent when acquisition is over or in case of error.
+
+Try number 1. 0.0% (0/20).
+   Run 1. 0.0%. (0/20).
+   Run 2. 20.0%. (4/20).
+   Run 3. 30.0%. (6/20).
+   Run 4. 50.0%. (10/20).
+   Run 5. 70.0%. (13/20).
+   Run 6. 70.0%. (13/20).
+   Run 7. 80.0%. (16/20).
+   Run 8. 90.0%. (18/20).
+
+Reading and assembling the csv files.
+
+Finishing acquisition... Local time: Wed Mar 31 15:39:12 2021
+After 0:28:59.087470
+
+END acquisition
+
