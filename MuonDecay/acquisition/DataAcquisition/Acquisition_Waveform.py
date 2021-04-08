@@ -146,7 +146,7 @@ def run_acquisition( oscilloscope , samples=100 , height=0 , min_peaks=2 ):
         temp_df  = pd.DataFrame()
         tempTime = [] 
         rnd_sample = min(100, 10*samples)
-        myprint(f'   Run {counter}. {round(100*total_events/samples , 1)}%. ({total_events}/{samples}).')
+        print(f'   Run {counter}. {round(100*total_events/samples , 1)}%. ({total_events}/{samples}).')
 
         '''Acquisition of random samples'''
         for i in range( rnd_sample ):
@@ -176,8 +176,6 @@ def run_acquisition( oscilloscope , samples=100 , height=0 , min_peaks=2 ):
     waveformList.columns = [ ('event_'+str(i)) for i in range(waveformList.shape[1]) ]
     df = waveformList.T #This command is only to add the timeList as a line in an easy way. This undone later
     df.insert( 0, 'time_epoch', np.array(timeList) )
-
-    print(df.T)
 
     return(df.T)
     
