@@ -61,7 +61,8 @@ try: # Try to get all the datas
         path=folder_name,
         file_name=time_start,
         height=0,
-        min_peaks=cfg_scope.min_peaks
+        min_peaks=cfg_scope.min_peaks,
+        min_separation=cfg_scope.min_separation
     )
     
 

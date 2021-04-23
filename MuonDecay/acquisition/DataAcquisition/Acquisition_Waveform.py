@@ -105,7 +105,7 @@ def read_waveforms_csv(files, file_name, path, tag=''):
 
 
 #=====================================================================================================
-def run_acquisition( oscilloscope , samples=100 , height=0 , min_peaks=2 ):
+def run_acquisition( oscilloscope , samples=100 , rnd_sample=1000, height=0 , min_peaks=2, min_separation=10 ):
     """
     This function serves to the purpose of retrieving a useful sample with given lenght. 
     Operation:
@@ -128,6 +128,9 @@ def run_acquisition( oscilloscope , samples=100 , height=0 , min_peaks=2 ):
     samples: int, default 100
         The number of samples to retrieve. 'samples' is the total amount of 'good samples', i.e.,
         the total amount of samples that pass on the min_peaks tests. Do not confuse with the rnd_sample.
+    rnd_samples: int, default 1000
+        The number of samples with random goodness, i.e., the samples may be good, but maybe not good. 
+        After collecting, they will be analyzed and stored as specified.
     height: int, default 0
         The height value to find the peaks on the waveform. It's called by scipy, on the find_peaks function
     min_peaks: int, default 2
@@ -145,7 +148,6 @@ def run_acquisition( oscilloscope , samples=100 , height=0 , min_peaks=2 ):
         total_events = waveformList.shape[1]
         temp_df  = pd.DataFrame()
         tempTime = [] 
-        rnd_sample = min(100, 10*samples)
         print(f'   Run {counter}. {round(100*total_events/samples , 1)}%. ({total_events}/{samples}).')
 
         '''Acquisition of random samples'''
@@ -165,7 +167,7 @@ def run_acquisition( oscilloscope , samples=100 , height=0 , min_peaks=2 ):
             event = temp_df[ temp_df.columns[i] ]
             peaks, _ = find_peaks(-1*event, height=-1*height)
 
-            if len(peaks) >= min_peaks:
+            if (len(peaks) == min_peaks) and (peaks[1] - peaks[0] >= min_separation):
                 waveformList[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
                 timeList.append( tempTime[i] )
 
@@ -182,7 +184,7 @@ def run_acquisition( oscilloscope , samples=100 , height=0 , min_peaks=2 ):
 
 
 #=====================================================================================================
-def Acquisition_Waveform( oscilloscope , necessarySamples , path , file_name , height=0 , min_peaks=2 ):
+def Acquisition_Waveform( oscilloscope , necessarySamples , path , file_name , rnd_sample=1000, height=0 , min_peaks=2, min_separation=10 ):
     """
     This function is built to run the "run_acquisition" function multiple times. Sometimes, a random error 
     may occour (like a problem on the communication between the oscilloscope, a sudden blackout etc.) 
@@ -217,6 +219,7 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , path , file_name , h
         waveforms = run_acquisition(
                 oscilloscope=oscilloscope,
                 samples=min(100, necessarySamples),
+                rnd_sample=min(1000, 10*necessarySamples),
                 height=height,
                 min_peaks=min_peaks
                 )

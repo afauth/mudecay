@@ -51,7 +51,7 @@ def Scope_Parameters(oscilloscope):
             
     myprint( f'\nSCOPE INFOs:\n{oscilloscope.query("WFMPre?")}\n' ) #Command to transfer waveform preamble information.
 
-            
+    myprint(f'TRIGGER: {1000*cfg_scope.trigger} mV\n\n') 
 
 def Set_Scope_Parameters(oscilloscope):
     '''
