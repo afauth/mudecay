@@ -167,7 +167,11 @@ def run_acquisition( oscilloscope , samples=100 , rnd_sample=1000, height=0 , mi
             event = temp_df[ temp_df.columns[i] ]
             peaks, _ = find_peaks(-1*event, height=-1*height)
 
-            if (len(peaks) == min_peaks) and (peaks[1] - peaks[0] >= min_separation):
+            if (min_peaks >= 2) and (len(peaks) == min_peaks) and (peaks[1] - peaks[0] >= min_separation):
+                waveformList[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
+                timeList.append( tempTime[i] )
+
+            elif (min_peaks < 2) and (len(peaks) == min_peaks): # there's no separation when there's only 1 or none peaks
                 waveformList[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
                 timeList.append( tempTime[i] )
 
