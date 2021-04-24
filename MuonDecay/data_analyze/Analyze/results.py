@@ -48,22 +48,34 @@ def Results_Analyze(waveforms, height):
 
 
 #=====================================================================================================
-def plots_collection(results):
+def plots_collection(results, title):
 
     print(f"{results.shape[0]} events")
 
-    ax1 = sns.histplot(results[['peak_Y0','peak_Y1']])
-    plt.show()
+    # Main plot
+    fig, axes = plt.subplots(ncols=2, nrows=2, figsize=(16,10))
+    fig.suptitle(title)
+    
+    # Fig 1
+    sns.histplot(results[['peak_Y0','peak_Y1']], ax=axes[0,0])
+    axes[0,0].set_title('Espectro de amplitude; Histograma dos picos')
 
-    ax2 = sns.histplot(results[['integrals_0', 'integrals_1']])
-    plt.show()
+    # Fig 2
+    sns.histplot(results[['integrals_0', 'integrals_1']], ax=axes[0,1])
+    axes[0,1].set_title('Espectro de carga; Histograma dos pulsos')
 
-    ax3 = plt.scatter( x=results['integrals_0'], y=results['peak_Y0'], label='pulse_0' )
-    plt.legend()
-    plt.show()
+    # Fig 3
+    axes[1,0].scatter( x=results['integrals_0'], y=results['peak_Y0'], label='pulse_0' )
+    axes[1,0].set_title('Primeiro pulso: Carga X Picos')
+    axes[1,0].set_xlabel('Picos')
+    axes[1,0].set_ylabel('Carga')
+    axes[1,0].legend()
 
-    ax4 = plt.scatter( x=results['integrals_1'], y=results['peak_Y1'], color='orange', label='pulse_1' )
-    plt.legend()
-    plt.show()
+    # Fig 4
+    axes[1,1].scatter( x=results['integrals_1'], y=results['peak_Y1'], color='orange', label='pulse_1' )
+    axes[1,1].set_title('Segundo pulso: Carga X Picos')
+    axes[1,1].set_xlabel('Picos')
+    axes[1,1].set_ylabel('Carga')
+    axes[1,1].legend()
 
-    return(ax1, ax2, ax3, ax4)
+    plt.show()
