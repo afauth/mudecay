@@ -57,6 +57,7 @@ import numpy as np
 
 
 
+#=====================================================================================================
 def contour_arbitrary(waveform, peak, random_left, random_right):
     '''
     waveform: column of the waveforms DataFrame.
@@ -98,7 +99,7 @@ def contour_arbitrary_df(waveforms, peaks, random_left=10, random_right=15):
     """
     peaks_cp = peaks.copy()
     peaks_cp.columns = ['peak_X0', 'peak_X1', 'peak_Y0', 'peak_Y1']
-    problems = peaks_cp.query("peak_X0 < @random_right  |  peak_X1 > 2500 - @random_left")
+    problems = peaks_cp.query("peak_X0 < @random_left or peak_X1 > 2500 - @random_right")
     
     if len(problems.index) > 0: # if it's not empty, then delete the problems
         
@@ -109,6 +110,7 @@ def contour_arbitrary_df(waveforms, peaks, random_left=10, random_right=15):
 
         wvfrms = waveforms.copy() # if any event is removed from from peaks, it also needs to be removed on the waveforms 
         wvfrms.drop(labels=problems_list, axis=1, inplace=True)
+
     
     else:
         
@@ -125,6 +127,7 @@ def contour_arbitrary_df(waveforms, peaks, random_left=10, random_right=15):
         event = wvfrms[ wvfrms.columns[i] ]
         event_peaks = peaks_cp.iloc[i]
         pulse_0 , pulse_1 = contour_arbitrary(waveform=event, peak=event_peaks, random_left=random_left, random_right=random_right)
+
         pulses_0[ wvfrms.columns[i] ] = pulse_0
         pulses_1[ wvfrms.columns[i] ] = pulse_1
     
