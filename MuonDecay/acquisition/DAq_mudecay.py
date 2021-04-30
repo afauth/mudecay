@@ -4,6 +4,7 @@ try:
     from acquisition.DataAcquisition.Set_Scope_Parameters import Set_Scope_Parameters
     from acquisition.SaveOutputs.Save_Output import myprint, outputs, Create_Folder
     from acquisition.SaveOutputs.Send_Email import SendEmail
+    from acquisition.DataAcquisition.Conversion_Values import units_conversion_parameters, convert_y_to_units
 except:
     raise ImportError('Error on importing modules. Please, try again.')
 
@@ -52,7 +53,14 @@ else:
 
 #                           RUN ACQUISITION
 #==========================================================================================================
-    
+
+'''
+Converting trigger to proper value; the software trigger and the hardware trigger must match
+'''
+conversion = units_conversion_parameters(oscilloscope=scope)
+height     = convert_y_to_units(cfg_scope.trigger, conversion)
+
+
 try: # Try to get all the datas
 
     Acquisition_Waveform(
@@ -60,7 +68,7 @@ try: # Try to get all the datas
         necessarySamples=cfg_scope.necessarySamples,
         path=folder_name,
         file_name=time_start,
-        height=0,
+        height=height,
         min_peaks=cfg_scope.min_peaks,
         min_separation=cfg_scope.min_separation
     )

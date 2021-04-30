@@ -4,7 +4,7 @@ from scipy.signal import find_peaks
 
 
 #=====================================================================================================
-def Find_Peaks_Waveforms(waveforms, height, invert_waveform=True):
+def Find_Peaks_Waveforms(waveforms, height, invert_waveform=True, check_two_peaks=False):
     '''
     waveforms:
     height:
@@ -23,7 +23,7 @@ def Find_Peaks_Waveforms(waveforms, height, invert_waveform=True):
         event = wvfrs[wvfrs.columns[i]]
         x_peaks, _ = find_peaks( event, height=height ) #x_peaks is an array
 
-        if len(x_peaks) != 2:
+        if (len(x_peaks) != 2) and (check_two_peaks == True):
             raise ValueError(f'The events must have two peaks exactly. Please, check the "height" parameter.\nProblem found on {wvfrs.columns[i]}.')
 
         y_peaks = event.iloc[x_peaks].tolist()

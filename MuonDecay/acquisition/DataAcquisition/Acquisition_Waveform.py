@@ -180,10 +180,11 @@ def run_acquisition( oscilloscope , samples=100 , rnd_sample=1000, height=0 , mi
 
     '''Add correct label to the columns and add the time column'''
     waveformList.columns = [ ('event_'+str(i)) for i in range(waveformList.shape[1]) ]
+    # waveformList.index = [i for i in range(waveformList.shape[0])]
     df = waveformList.T #This command is only to add the timeList as a line in an easy way. This undone later
     df.insert( 0, 'time_epoch', np.array(timeList) )
 
-    return(df.T)
+    return(df)
     
 
 
@@ -232,10 +233,5 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , path , file_name , r
         waveforms.to_csv(file) # save the partial waveforms DataFrame
         files.append(file)     # add the name to the list
 
-        acquired_samples += waveforms.shape[1]
+        acquired_samples += waveforms.shape[0]
         saved_csv += 1
-    
-    '''Assemble all the files in only one'''
-    # waveforms = read_waveforms_csv(files=files, file_name=file_name, path=path, tag=f'{min_peaks}-events')
-
-    # return(waveforms)
