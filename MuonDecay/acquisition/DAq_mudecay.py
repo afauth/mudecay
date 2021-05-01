@@ -60,7 +60,6 @@ Converting trigger to proper value; the software trigger and the hardware trigge
 conversion = units_conversion_parameters(oscilloscope=scope)
 height     = convert_y_to_units(cfg_scope.trigger, conversion)
 
-
 try: # Try to get all the datas
 
     Acquisition_Waveform(
