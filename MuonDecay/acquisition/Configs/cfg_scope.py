@@ -7,7 +7,7 @@ ScopeID = 'USB0::0x0699::0x0363::C061073::INSTR'
 Parameters for the acquisition
 '''
 #number of samples needed to search
-necessarySamples  = 10_000
+necessarySamples  = 15_000
 #
 min_peaks         = 1
 #separation between the two peaks (1/2500 micro-seconds): optimal value = 60 ns
@@ -27,7 +27,7 @@ Parameters to set on the oscilloscope
 channel               = 'CH1'    #Sets or queries which waveform will be transferred from the oscilloscope by the queries. 
 encode_format         = 'ASCII'  #Sets or queries the format of the waveform data. ASCII, binary etc.
 width                 = 1        #Sets the data width to 1 byte per data point for CURVe data.
-channel_scale         = 50.0E-3  #
+channel_scale         = 20.0E-3  #
 channel_position      = 2        #
 channel_probe         = 1        #
 trigger               = -10E-3   #
