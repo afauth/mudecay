@@ -9,6 +9,10 @@ Parameters for the acquisition
 #number of samples needed to search
 necessarySamples  = 10_000
 #
+samples           = 100
+#
+random_samples    = 1_000
+#
 min_peaks         = 1
 #separation between the two peaks (1/2500 micro-seconds): optimal value = 60 ns
 min_separation    = 150 
@@ -16,8 +20,6 @@ min_separation    = 150
 scopeResolution   = 2500  
 #number of bins to graph
 numberBins        = 100   
-#
-track_progress    = False 
 #
 email_me          = True
 

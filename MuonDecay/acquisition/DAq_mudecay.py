@@ -66,10 +66,11 @@ try: # Try to get all the datas
         oscilloscope=scope,
         necessarySamples=cfg_scope.necessarySamples,
         path=folder_name,
-        file_name=time_start,
         height=height,
         min_peaks=cfg_scope.min_peaks,
-        min_separation=cfg_scope.min_separation
+        min_separation=cfg_scope.min_separation,
+        samples=cfg_scope.samples,
+        rnd_sample=cfg_scope.random_samples
     )
     
 

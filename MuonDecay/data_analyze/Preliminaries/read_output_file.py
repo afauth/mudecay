@@ -80,13 +80,14 @@ def trigger_acquisition(path='documents/data/1619314826.6753685/', file='output.
     """
 
     '''
-    TRIGGER: -40.0 mV
+    Example:
+    Trigger: -40.0 mV
     '''
 
     with open(path+sep+file, 'r') as f:
         output = f.read()
     
-    temp    = re.split( 'TRIGGER: ' , output )[1]
+    temp    = re.split( 'Trigger: ' , output )[1]
     trigger = float(re.split( ' mV' , temp )[0])
 
     return( trigger )

@@ -129,8 +129,8 @@ def run_acquisition( oscilloscope , samples=100 , rnd_sample=1000, height=0 , mi
         The number of samples to retrieve. 'samples' is the total amount of 'good samples', i.e.,
         the total amount of samples that pass on the min_peaks tests. Do not confuse with the rnd_sample.
     rnd_samples: int, default 1000
-        The number of samples with random goodness, i.e., the samples may be good, but maybe not good. 
-        After collecting, they will be analyzed and stored as specified.
+        The number of samples with random goodness, i.e., the samples may be good, but may be not. 
+        After collecting, they will be analyzed and stored, if they are good, as specified.
     height: int, default 0
         The height value to find the peaks on the waveform. It's called by scipy, on the find_peaks function
     min_peaks: int, default 2
@@ -189,7 +189,7 @@ def run_acquisition( oscilloscope , samples=100 , rnd_sample=1000, height=0 , mi
 
 
 #=====================================================================================================
-def Acquisition_Waveform( oscilloscope , necessarySamples , path , file_name , rnd_sample=1000, height=0 , min_peaks=2, min_separation=10 ):
+def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd_sample=1_000, height=0, min_peaks=2, min_separation=10 ):
     """
     This function is built to run the "run_acquisition" function multiple times. Sometimes, a random error 
     may occour (like a problem on the communication between the oscilloscope, a sudden blackout etc.) 
@@ -205,12 +205,17 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , path , file_name , r
         .
     path: string
         Path to save the csv files.
+    samples: int, default 100
+        Basically, the number of good samples to save per csv file.
+    rnd_sample: int, default 1000
+        Parameter required for the "run_acquisition" function.  
     file_name: string
         .
     height: int, default 0
         .
     min_peaks: int, default 2
         .
+    min_separation: int, default 10
     """
 
     acquired_samples = 0    # Total amount of samples collected
@@ -223,10 +228,11 @@ def Acquisition_Waveform( oscilloscope , necessarySamples , path , file_name , r
 
         waveforms = run_acquisition(
                 oscilloscope=oscilloscope,
-                samples=min(100, necessarySamples),
-                rnd_sample=min(1000, 10*necessarySamples),
+                samples=samples,
+                rnd_sample=rnd_sample,
                 height=height,
-                min_peaks=min_peaks
+                min_peaks=min_peaks,
+                min_separation=min_separation
                 )
 
         file = f'{path}/file_{saved_csv}.csv'

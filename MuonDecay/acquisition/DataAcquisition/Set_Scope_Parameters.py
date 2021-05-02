@@ -83,10 +83,9 @@ def Set_Scope_Parameters(oscilloscope):
         else:
 
             try_set = False
-            myprint(f'{cfg_scope.channel} scale: {cfg_scope.channel_scale}')
-            myprint(f'{cfg_scope.channel} position: {cfg_scope.channel_position}')
+            myprint(f'{cfg_scope.channel} scale: {1000*cfg_scope.channel_scale} mV')
             myprint(f'Trigger: {1_000*cfg_scope.trigger} mV')
-            myprint(f'Horizontal scale: {cfg_scope.horizontal_scale}')
-            myprint(f'Horizontal Position: {cfg_scope.horizontal_position_2}')
+            myprint(f'Horizontal scale: {10E6*cfg_scope.horizontal_scale} micro-sec')
+            myprint(f'Horizontal Position: {10E6*cfg_scope.horizontal_position_2} micro-sec')
 
             myprint(f'\nOscilloscope informations: LOADED SUCESSFULLY after {counter} attempt(s). Check config file for more details.\n')
