@@ -29,7 +29,7 @@ Parameters to set on the oscilloscope
 channel               = 'CH1'    #Sets or queries which waveform will be transferred from the oscilloscope by the queries. 
 encode_format         = 'ASCII'  #Sets or queries the format of the waveform data. ASCII, binary etc.
 width                 = 1        #Sets the data width to 1 byte per data point for CURVe data.
-channel_scale         = 20.0E-3  #
+channel_scale         = 25.0E-3  #
 channel_position      = 2        #
 channel_probe         = 1        #
 trigger               = -10E-3   #
