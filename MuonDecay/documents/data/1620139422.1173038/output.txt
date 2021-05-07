@@ -1,0 +1,99 @@
+
+Starting acquisition... Local time: Tue May  4 11:43:42 2021 
+
+
+SCOPE INFOs:
+1;8;ASC;RP;MSB;2500;"Ch1, DC coupling, 2.5E-2 V/div, 1.0E-6 s/div, 2500 points, Sample mode";Y;4.0E-9;0;-4.0E-7;"s";1.0E-3;0.0E0;5.0E1;"Volts"
+
+
+CH1 scale: 25.0 mV
+Trigger: -10.0 mV
+Horizontal scale: 10.0 micro-sec
+Horizontal Position: 46.0 micro-sec
+
+Oscilloscope informations: LOADED SUCESSFULLY after 0 attempt(s). Check config file for more details.
+
+
+Number of requested samples: 50000
+Minimal number of peaks: 1
+An email will be sent when acquisition is over or in case of error.
+
+Try number 1. 0.0% (0/50000).
+Try number 2. 1.21% (606/50000).
+Try number 3. 2.44% (1222/50000).
+Try number 4. 3.74% (1872/50000).
+Try number 5. 5.09% (2543/50000).
+Try number 6. 6.44% (3221/50000).
+Try number 7. 7.83% (3915/50000).
+Try number 8. 9.2% (4599/50000).
+Try number 9. 10.58% (5290/50000).
+Try number 10. 11.95% (5977/50000).
+Try number 11. 13.38% (6691/50000).
+Try number 12. 14.77% (7387/50000).
+Try number 13. 16.13% (8067/50000).
+Try number 14. 17.5% (8751/50000).
+Try number 15. 18.89% (9446/50000).
+Try number 16. 20.26% (10128/50000).
+Try number 17. 21.67% (10837/50000).
+Try number 18. 23.07% (11537/50000).
+Try number 19. 24.37% (12185/50000).
+Try number 20. 25.77% (12886/50000).
+Try number 21. 27.12% (13560/50000).
+Try number 22. 28.5% (14252/50000).
+Try number 23. 29.9% (14948/50000).
+Try number 24. 31.24% (15619/50000).
+Try number 25. 32.57% (16286/50000).
+Try number 26. 33.95% (16975/50000).
+Try number 27. 35.29% (17646/50000).
+Try number 28. 36.66% (18330/50000).
+Try number 29. 38.04% (19022/50000).
+Try number 30. 39.45% (19724/50000).
+Try number 31. 40.83% (20417/50000).
+Try number 32. 42.22% (21109/50000).
+Try number 33. 43.57% (21783/50000).
+Try number 34. 44.97% (22483/50000).
+Try number 35. 46.34% (23171/50000).
+Try number 36. 47.76% (23878/50000).
+Try number 37. 49.11% (24555/50000).
+Try number 38. 50.48% (25242/50000).
+Try number 39. 51.9% (25948/50000).
+Try number 40. 53.25% (26627/50000).
+Try number 41. 54.62% (27311/50000).
+Try number 42. 56.02% (28011/50000).
+Try number 43. 57.44% (28720/50000).
+Try number 44. 58.83% (29414/50000).
+Try number 45. 60.19% (30097/50000).
+Try number 46. 61.57% (30783/50000).
+Try number 47. 62.94% (31472/50000).
+Try number 48. 64.28% (32138/50000).
+Try number 49. 65.61% (32804/50000).
+Try number 50. 66.99% (33493/50000).
+Try number 51. 68.4% (34202/50000).
+Try number 52. 69.78% (34890/50000).
+Try number 53. 71.17% (35585/50000).
+Try number 54. 72.56% (36281/50000).
+Try number 55. 73.94% (36969/50000).
+Try number 56. 75.3% (37649/50000).
+Try number 57. 76.71% (38354/50000).
+Try number 58. 78.07% (39035/50000).
+Try number 59. 79.45% (39727/50000).
+Try number 60. 80.82% (40412/50000).
+Try number 61. 82.23% (41113/50000).
+Try number 62. 83.61% (41804/50000).
+Try number 63. 85.01% (42507/50000).
+Try number 64. 86.41% (43205/50000).
+Try number 65. 87.74% (43869/50000).
+Try number 66. 89.12% (44562/50000).
+Try number 67. 90.49% (45246/50000).
+Try number 68. 91.87% (45937/50000).
+Try number 69. 93.22% (46610/50000).
+Try number 70. 94.59% (47294/50000).
+Try number 71. 96.01% (48004/50000).
+Try number 72. 97.39% (48693/50000).
+Try number 73. 98.79% (49393/50000).
+
+Finishing acquisition... Local time: Thu May  6 07:31:43 2021
+After 1 day, 19:48:01.264853
+
+END acquisition
+
