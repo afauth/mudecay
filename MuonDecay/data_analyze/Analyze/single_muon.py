@@ -108,13 +108,10 @@ def Analysis_SingleMuon(folder):
     waveform = df[1:] #eliminate the row of the time_epoch data
 
     converter = retrieve_y_to_volts(path=folder) #DataFrame with the infos of the conversion to volts
-    print(converter)
     waveform  = convert_y_to_volts(value=waveform, converter_df=converter) #actually, converts data to mV
 
     baseLine = waveform.iloc[150:].mean().mean() #assume that the peaks occours until x=150; then, the baseLine is the general mean
-    print(baseLine)
     height = trigger_acquisition(folder) #reads the trigger on the output.txt file; trigger is in mV
-    print(height)
 
 
     peaks, problems = peaks_single_muon(df=waveform, height=-1*height, first_peak_loc=100)
