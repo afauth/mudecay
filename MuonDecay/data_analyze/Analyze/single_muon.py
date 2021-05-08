@@ -84,7 +84,7 @@ def convert_charge(integral):
     binTime = 4E-3 #micro-sec
     VoltCh  = 100 / 255 #100mV/(256-1)bits
 
-    charge = 1_000*integral*binTime*VoltCh/R #pC
+    charge = 1_000*integral*binTime/R #pC
 
     return(charge)
 
@@ -107,8 +107,8 @@ def Analysis_SingleMuon(folder):
     df = concat_csv(path=folder)
     waveform = df[1:] #eliminate the row of the time_epoch data
 
-    converter = retrieve_y_to_volts(path=folder) #DataFrame with the infos of the conversion to volts
-    waveform  = convert_y_to_volts(value=waveform, converter_df=converter) #actually, converts data to mV
+    # converter = retrieve_y_to_volts(path=folder) #DataFrame with the infos of the conversion to volts
+    # waveform  = convert_y_to_volts(value=waveform, converter_df=converter) #actually, converts data to mV
 
     baseLine = waveform.iloc[150:].mean().mean() #assume that the peaks occours until x=150; then, the baseLine is the general mean
     height = trigger_acquisition(folder) #reads the trigger on the output.txt file; trigger is in mV

@@ -57,7 +57,8 @@ else:
 Converting trigger to proper value; the software trigger and the hardware trigger must match
 '''
 conversion = units_conversion_parameters(oscilloscope=scope)
-height     = convert_y_to_units(cfg_scope.trigger, conversion)
+#height     = convert_y_to_units(cfg_scope.trigger, conversion)
+trigger = 1000*cfg_scope.trigger #mV
 
 try: # Try to get all the datas
 
@@ -65,7 +66,7 @@ try: # Try to get all the datas
         oscilloscope=scope,
         necessarySamples=cfg_scope.necessarySamples,
         path=folder_name,
-        height=height,
+        height=trigger,
         min_peaks=cfg_scope.min_peaks,
         min_separation=cfg_scope.min_separation,
         samples=cfg_scope.samples,

@@ -89,3 +89,13 @@ def Set_Scope_Parameters(oscilloscope):
             myprint(f'Horizontal Position: {10E6*cfg_scope.horizontal_position_2} micro-sec')
 
             myprint(f'\nOscilloscope informations: LOADED SUCESSFULLY after {counter} attempt(s). Check config file for more details.\n')
+
+
+
+# def verify_trigger(oscilloscope, trigger):
+
+#     scope_trigger = oscilloscope.query("Trigger?")
+    
+#     temp    = re.split( 'Trigger: ' , output )[1]
+#     trigger = float(re.split( ' mV' , temp )[0])
+
