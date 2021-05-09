@@ -44,13 +44,10 @@ def convert_y_to_volts(value_in_units, converter_df):
     y_n = y_off + (y_volts - y_zero) / y_mult
     '''
 
-    if converter_df['y_mult'][0] == 0:
-        raise ValueError('y_mult must not be zero')
-
     value_in_volts = converter_df['y_zero'][0] + converter_df['y_mult'][0]*(value_in_units - converter_df['y_off'][0])
     value_in_volts *= 1_000 # mV
 
-    return(value_in_units)
+    return(value_in_volts)
 
 
 

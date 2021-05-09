@@ -1,0 +1,51 @@
+
+Starting acquisition... Local time: Sat May  8 16:00:21 2021 
+
+
+SCOPE INFOs:
+1;8;ASC;RP;MSB;2500;"Ch1, DC coupling, 2.5E-2 V/div, 1.0E-6 s/div, 2500 points, Sample mode";Y;4.0E-9;0;-4.0E-7;"s";1.0E-3;0.0E0;5.0E1;"Volts"
+
+
+CH1 scale: 25.0 mV
+Trigger: -10.0 mV
+Horizontal scale: 10.0 micro-sec
+Horizontal Position: 46.0 micro-sec
+
+Oscilloscope informations: LOADED SUCESSFULLY after 0 attempt(s). Check config file for more details.
+
+
+Number of requested samples: 15000
+Minimal number of peaks: 1
+An email will be sent when acquisition is over or in case of error.
+
+Try number 1. 0.0% (0/15000).
+Try number 2. 3.99% (599/15000).
+Try number 3. 7.93% (1190/15000).
+Try number 4. 12.53% (1879/15000).
+Try number 5. 16.91% (2536/15000).
+Try number 6. 21.35% (3202/15000).
+Try number 7. 25.34% (3801/15000).
+Try number 8. 29.33% (4399/15000).
+Try number 9. 33.47% (5020/15000).
+Try number 10. 37.52% (5628/15000).
+Try number 11. 41.52% (6228/15000).
+Try number 12. 45.48% (6822/15000).
+Try number 13. 49.58% (7437/15000).
+Try number 14. 53.8% (8070/15000).
+Try number 15. 57.69% (8654/15000).
+Try number 16. 61.67% (9250/15000).
+Try number 17. 65.74% (9861/15000).
+Try number 18. 69.55% (10433/15000).
+Try number 19. 73.67% (11051/15000).
+Try number 20. 77.68% (11652/15000).
+Try number 21. 81.69% (12253/15000).
+Try number 22. 85.78% (12867/15000).
+Try number 23. 89.79% (13468/15000).
+Try number 24. 93.75% (14063/15000).
+Try number 25. 97.58% (14637/15000).
+
+Finishing acquisition... Local time: Sun May  9 07:00:18 2021
+After 14:59:56.568925
+
+END acquisition
+

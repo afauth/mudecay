@@ -107,7 +107,7 @@ def run_acquisition( oscilloscope , converter , samples=100 , rnd_sample=1000, h
                 temp_df[f'{i}'] = event
                 time_instant = time()
                 tempTime.append(time_instant)
-
+        
         '''Analysis of the rnd_sample: find waveform if len(peaks) >= min_peaks and save'''
         for i in range( temp_df.shape[1] ):
 
@@ -136,7 +136,7 @@ def run_acquisition( oscilloscope , converter , samples=100 , rnd_sample=1000, h
 
 
 #=====================================================================================================
-def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd_sample=1_000, height=0, min_peaks=2, min_separation=10 ):
+def Acquisition_Waveform( oscilloscope, necessarySamples, path, converter, samples=100, rnd_sample=1_000, height=0, min_peaks=2, min_separation=10 ):
     """
     This function is built to run the "run_acquisition" function multiple times. Sometimes, a random error 
     may occour (like a problem on the communication between the oscilloscope, a sudden blackout etc.) 
@@ -179,7 +179,8 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd
                 rnd_sample=rnd_sample,
                 height=height,
                 min_peaks=min_peaks,
-                min_separation=min_separation
+                min_separation=min_separation,
+                converter=converter
                 )
 
         file = f'{path}/file_{saved_csv}.csv'

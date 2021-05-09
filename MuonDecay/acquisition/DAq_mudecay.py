@@ -70,7 +70,8 @@ try: # Try to get all the datas
         min_peaks=cfg_scope.min_peaks,
         min_separation=cfg_scope.min_separation,
         samples=cfg_scope.samples,
-        rnd_sample=cfg_scope.random_samples
+        rnd_sample=cfg_scope.random_samples, 
+        converter=conversion
     )
     
 
