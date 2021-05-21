@@ -51,7 +51,7 @@ def read_waveforms_csv(files, file_name, path, tag=''):
 
 
 #=====================================================================================================
-def run_acquisition( oscilloscope , converter , samples=100 , rnd_sample=1000, height=0 , min_peaks=2, min_separation=10 ):
+def run_acquisition( oscilloscope , converter , height, samples=100 , rnd_sample=1000, min_peaks=2, min_separation=10 ):
     """
     This function serves to the purpose of retrieving a useful sample with given lenght. 
     Operation:
@@ -77,7 +77,7 @@ def run_acquisition( oscilloscope , converter , samples=100 , rnd_sample=1000, h
     rnd_samples: int, default 1000
         The number of samples with random goodness, i.e., the samples may be good, but may be not. 
         After collecting, they will be analyzed and stored, if they are good, as specified.
-    height: int, default 0
+    height: int
         The height value to find the peaks on the waveform. It's called by scipy, on the find_peaks function
     min_peaks: int, default 2
         'Quality test' for the waveform. If it contains at least the minimal peaks, it's a 'good sample'.
@@ -103,7 +103,7 @@ def run_acquisition( oscilloscope , converter , samples=100 , rnd_sample=1000, h
             except:
                 myprint('error')
             else:
-                event = convert_y_to_volts(event, converter)
+                event = convert_y_to_volts(event, converter) #convert event to mV, to compare with trigger
                 temp_df[f'{i}'] = event
                 time_instant = time()
                 tempTime.append(time_instant)
@@ -136,7 +136,7 @@ def run_acquisition( oscilloscope , converter , samples=100 , rnd_sample=1000, h
 
 
 #=====================================================================================================
-def Acquisition_Waveform( oscilloscope, necessarySamples, path, converter, samples=100, rnd_sample=1_000, height=0, min_peaks=2, min_separation=10 ):
+def Acquisition_Waveform( oscilloscope, necessarySamples, height, path, converter, samples=100, rnd_sample=1_000, min_peaks=2, min_separation=10 ):
     """
     This function is built to run the "run_acquisition" function multiple times. Sometimes, a random error 
     may occour (like a problem on the communication between the oscilloscope, a sudden blackout etc.) 
@@ -158,7 +158,7 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, converter, sampl
         Parameter required for the "run_acquisition" function.  
     file_name: string
         .
-    height: int, default 0
+    height: int
         .
     min_peaks: int, default 2
         .
