@@ -7,7 +7,7 @@ ScopeID = 'USB0::0x0699::0x0363::C061073::INSTR'
 Parameters for the acquisition
 '''
 #number of samples needed to search
-necessarySamples  = 15_000
+necessarySamples  = 1000
 #number of samples per csv
 samples           = 100
 #number of random samples to collect
@@ -32,7 +32,7 @@ width                 = 1        #Sets the data width to 1 byte per data point f
 channel_scale         = 25.0E-3  #
 channel_position      = 2        #
 channel_probe         = 1        #
-trigger               = -30E-3   #Value in Volts
+trigger               = -40E-3   #Value in Volts
 horizontal_scale      = 1.0E-6   #
 horizontal_position_1 = 0        #Initial horizontal position 0 default
 horizontal_position_2 = 4.6E-6   #Horizontal position with respect to the start of the oscilloscope window

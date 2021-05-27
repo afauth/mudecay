@@ -1,0 +1,29 @@
+
+Starting acquisition... Local time: Mon May 24 18:12:38 2021 
+
+FAILED 1 to write scope parameters.
+
+SCOPE INFOs:
+1;8;ASC;RP;MSB;2500;"Ch1, DC coupling, 2.5E-2 V/div, 1.0E-6 s/div, 2500 points, Sample mode";Y;4.0E-9;0;-4.0E-7;"s";1.0E-3;0.0E0;5.0E1;"Volts"
+
+
+CH1 scale: 25.0 mV
+Trigger: -10.0 mV
+Horizontal scale: 10.0 micro-sec
+Horizontal Position: 46.0 micro-sec
+
+Oscilloscope informations: LOADED SUCESSFULLY after 1 attempt(s). Check config file for more details.
+
+
+Number of requested samples: 1000
+Minimal number of peaks: 1
+An email will be sent when acquisition is over or in case of error.
+
+Try number 1. 0.0% (0/1000).
+Try number 2. 72.3% (723/1000).
+
+Finishing acquisition... Local time: Mon May 24 19:25:05 2021
+After 1:12:26.835625
+
+END acquisition
+
