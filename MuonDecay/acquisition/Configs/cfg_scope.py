@@ -29,10 +29,10 @@ Parameters to set on the oscilloscope
 channel               = 'CH1'    #Sets or queries which waveform will be transferred from the oscilloscope by the queries. 
 encode_format         = 'ASCII'  #Sets or queries the format of the waveform data. ASCII, binary etc.
 width                 = 1        #Sets the data width to 1 byte per data point for CURVe data.
-channel_scale         = 25.0E-3  #
+channel_scale         = 40.0E-3  #Valores permitidos: ]2mV, 5V[ 
 channel_position      = 2        #
 channel_probe         = 1        #
-trigger               = -40E-3   #Value in Volts
+trigger               = -40E-3   #Value in Volts; the values MUST be multiple of 0.6 mV
 horizontal_scale      = 1.0E-6   #
 horizontal_position_1 = 0        #Initial horizontal position 0 default
 horizontal_position_2 = 4.6E-6   #Horizontal position with respect to the start of the oscilloscope window
