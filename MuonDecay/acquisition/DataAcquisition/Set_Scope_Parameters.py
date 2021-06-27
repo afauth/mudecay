@@ -1,7 +1,9 @@
+from numpy import tri
 from acquisition.Configs import cfg_scope #import config file
 from acquisition.SaveOutputs.Save_Output import myprint, outputs #import function "myprint" and variable "outputs"
 import pyvisa
 from time import sleep
+import re
 
 
 
@@ -88,14 +90,28 @@ def Set_Scope_Parameters(oscilloscope):
             myprint(f'Horizontal scale: {10E6*cfg_scope.horizontal_scale} micro-sec')
             myprint(f'Horizontal Position: {10E6*cfg_scope.horizontal_position_2} micro-sec')
 
-            myprint(f'\nOscilloscope informations: LOADED SUCESSFULLY after {counter} attempt(s). Check config file for more details.\n')
+            myprint(f'\nOscilloscope informations: LOADED SUCESSFULLY after {counter} attempt(s). Check config file for more details.\n\n')
 
 
 
-# def verify_trigger(oscilloscope, trigger):
+def check_parameters(oscilloscope):
 
-#     scope_trigger = oscilloscope.query("Trigger?")
+    '''Check trigger and y-scale parameters'''
+
+    trigger_info  = oscilloscope.query('trigger:main?')
+    trigger_value = float( re.split(';', trigger_info)[-2] )
+
+    y_scale_info  = oscilloscope.query('ch1:scale?')
+    y_scale_value = float( re.split('\n', y_scale_info)[0] )
+
+    if trigger_value != cfg_scope.trigger:
+        myprint(f'Trigger set to {1_000*trigger_value} mV')
+    else:
+        myprint(f'Trigger ok. Set to {1_000*trigger_value} mV')
     
-#     temp    = re.split( 'Trigger: ' , output )[1]
-#     trigger = float(re.split( ' mV' , temp )[0])
-
+    if y_scale_value != cfg_scope.channel_scale:
+        myprint(f'Scale set to {y_scale_value}\n')
+    else:
+        myprint(f'Scale ok. Set to {y_scale_value}\n')
+    
+    return(trigger_value, y_scale_value)

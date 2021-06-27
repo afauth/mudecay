@@ -1,4 +1,4 @@
-from time import sleep
+#from time import sleep
 import os
 import subprocess
 
@@ -22,10 +22,19 @@ def Create_Folder(name):
 
 
 
+def Acquisition_Type(min_peaks):
+    if min_peaks == 1:
+        acquisition = 'single_muon'
+    elif min_peaks == 2: 
+        acquisition = 'muon_decay'
+    else:
+        acquisition = 'other'
+    return(acquisition)
+
+
+
 outputs = []
 def myprint(message):
     global outputs
     print(message)
     outputs.append(message)
-#myprint('banana')
-#open("output.txt", "w").write("\n".join(outputs))
