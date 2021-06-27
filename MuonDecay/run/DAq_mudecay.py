@@ -1,10 +1,10 @@
 try:
     from acquisition.Configs import cfg_scope
     from acquisition.DataAcquisition.Acquisition_Waveform import Acquisition_Waveform
-    from acquisition.DataAcquisition.Set_Scope_Parameters import Set_Scope_Parameters
-    from acquisition.SaveOutputs.Save_Output import myprint, outputs, Create_Folder
+    from acquisition.DataAcquisition.Set_Scope_Parameters import Set_Scope_Parameters, check_parameters
+    from acquisition.SaveOutputs.Save_Output import myprint, outputs, Create_Folder, Acquisition_Type
     from acquisition.SaveOutputs.Send_Email import SendEmail
-    from acquisition.DataAcquisition.Conversion_Values import units_conversion_parameters, convert_y_to_units
+    from acquisition.DataAcquisition.Conversion_Values import units_conversion_parameters
 except:
     raise ImportError('Error on importing modules. Please, try again.')
 
@@ -22,11 +22,12 @@ from datetime import timedelta
 time_start = time()
 
 '''Create folder to store logging, waveforms and conversion file'''
-folder_name = f'../documents/data/{time_start}'
-Create_Folder(name=folder_name) #Documents/data/time_start
+acquisition_type = Acquisition_Type(min_peaks=cfg_scope.min_peaks)
+folder_name = f'../documents/data/{acquisition_type}/{time_start}'
+Create_Folder(name=folder_name) #documents/data/{tag_name}/{time_start}
 
-'''Print local time'''
-myprint( f'\nStarting acquisition... Local time: {ctime(time_start)} \n'  ) 
+'''Print local time and type of acquisition'''
+myprint( f'\nStarting acquisition... Local time: {ctime(time_start)}\nThis is a \"{acquisition_type}\" type of acquisition.'  ) 
 sleep(3)
 
 
@@ -35,7 +36,10 @@ sleep(3)
 #==========================================================================================================
 rm = pyvisa.ResourceManager()                    # Calling PyVisa library
 scope = rm.open_resource(str(cfg_scope.ScopeID)) # Connecting via USB
+
 Set_Scope_Parameters(oscilloscope=scope)
+trigger, y_scale = check_parameters(oscilloscope=scope)
+converter = units_conversion_parameters(oscilloscope=scope)
 
 
 
@@ -56,10 +60,13 @@ else:
 '''
 Converting trigger to proper value; the software trigger and the hardware trigger must match
 '''
-conversion = units_conversion_parameters(oscilloscope=scope)
+
+#converter = units_conversion_parameters(oscilloscope=scope)
 #height     = convert_y_to_units(cfg_scope.trigger, conversion)
-trigger = 1000*cfg_scope.trigger #mV
-print('\ntrigger =', trigger, '\n')
+#trigger = 1000*cfg_scope.trigger #mV
+#print('\ntrigger =', trigger, '\n')
+
+
 
 try: # Try to get all the datas
 
@@ -72,9 +79,10 @@ try: # Try to get all the datas
         min_separation=cfg_scope.min_separation,
         samples=cfg_scope.samples,
         rnd_sample=cfg_scope.random_samples, 
-        converter=conversion
+        converter=converter
     )
     
+
 
 except: # Log error. Raise error. Interrupt the execution.
 
@@ -89,9 +97,10 @@ except: # Log error. Raise error. Interrupt the execution.
         subject = f'[MuDecay] Acquisition results'
         with open(logging_file) as f:
             msg = f.read()
-            SendEmail(subject=subject, msg=msg)
+            SendEmail(subject=subject, msg=f'ERROR\n {msg}')
         
     raise Exception("Problem on the acquisition. Please, re-run.")
+
 
 
 else: # Execute if everything occoured as expected
@@ -111,3 +120,9 @@ else: # Execute if everything occoured as expected
         with open(logging_file) as f:
             msg = f.read()
             SendEmail(subject=subject, msg=msg)
+
+"""
+Ainda precisa implementar a parte de coletar e devolver os dados já analizados
+
+Implementar parte que verifica se o csv é vazio ou não e o deleta?
+"""
