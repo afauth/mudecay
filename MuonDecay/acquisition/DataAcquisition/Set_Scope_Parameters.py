@@ -98,20 +98,32 @@ def check_parameters(oscilloscope):
 
     '''Check trigger and y-scale parameters'''
 
-    trigger_info  = oscilloscope.query('trigger:main?')
-    trigger_value = float( re.split(';', trigger_info)[-2] )
+    try_info = True
+    counter  = 0
 
-    y_scale_info  = oscilloscope.query('ch1:scale?')
+    while try_info == True: 
+        try:
+            trigger_info  = oscilloscope.query('trigger:main?')
+            y_scale_info  = oscilloscope.query('ch1:scale?')
+        except:
+            counter += 1
+            if counter >= 3:
+                myprint('FAILED TO QUERY scope parameters, even after three attempts.\nPlease, check connection with the oscilloscope and try again.')
+                raise
+        else:
+            try_info = False
+
+    trigger_value_mV = 1_000*float( re.split(';', trigger_info)[-1] )
     y_scale_value = float( re.split('\n', y_scale_info)[0] )
-
-    if trigger_value != cfg_scope.trigger:
-        myprint(f'Trigger set to {1_000*trigger_value} mV')
+    print(trigger_value_mV)
+    if trigger_value_mV != cfg_scope.trigger:
+        myprint(f'Trigger changed: set to {trigger_value_mV} mV')
     else:
-        myprint(f'Trigger ok. Set to {1_000*trigger_value} mV')
+        myprint(f'Trigger ok.')
     
     if y_scale_value != cfg_scope.channel_scale:
-        myprint(f'Scale set to {y_scale_value}\n')
+        myprint(f'Scale changed: set to {y_scale_value}\n')
     else:
-        myprint(f'Scale ok. Set to {y_scale_value}\n')
+        myprint(f'Scale ok.\n')
     
-    return(trigger_value, y_scale_value)
+    return(trigger_value_mV, y_scale_value)

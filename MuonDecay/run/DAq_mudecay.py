@@ -27,7 +27,7 @@ folder_name = f'../documents/data/{acquisition_type}/{time_start}'
 Create_Folder(name=folder_name) #documents/data/{tag_name}/{time_start}
 
 '''Print local time and type of acquisition'''
-myprint( f'\nStarting acquisition... Local time: {ctime(time_start)}\nThis is a \"{acquisition_type}\" type of acquisition.'  ) 
+myprint( f'\nStarting acquisition... Local time: {ctime(time_start)}\nThis is a \"{acquisition_type}\" type of acquisition.\n'  ) 
 sleep(3)
 
 
@@ -67,7 +67,6 @@ Converting trigger to proper value; the software trigger and the hardware trigge
 #print('\ntrigger =', trigger, '\n')
 
 
-
 try: # Try to get all the datas
 
     Acquisition_Waveform(
@@ -99,7 +98,7 @@ except: # Log error. Raise error. Interrupt the execution.
             msg = f.read()
             SendEmail(subject=subject, msg=f'ERROR\n {msg}')
         
-    raise Exception("Problem on the acquisition. Please, re-run.")
+    raise ("Problem on the acquisition. Please, re-run.")
 
 
 

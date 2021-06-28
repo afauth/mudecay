@@ -1,6 +1,6 @@
 from acquisition.Configs import cfg_scope #import config file
 from acquisition.SaveOutputs.Save_Output import myprint, outputs #import function "myprint" and variable "outputs"
-from acquisition.DataAcquisition.Conversion_Values import convert_y_to_volts
+from acquisition.DataAcquisition.Conversion_Values import convert_y_to_mV
 
 import os
 import pandas as pd
@@ -99,28 +99,30 @@ def run_acquisition( oscilloscope , converter , height, samples=100 , rnd_sample
         '''Acquisition of random samples'''
         for i in range( rnd_sample ):
             try:
-                event = np.array( oscilloscope.query_ascii_values('curve?') ) #list
+                event = np.array( oscilloscope.query_ascii_values('curve?') ) #numpy-array
             except:
                 myprint('error')
             else:
-                event = convert_y_to_volts(event, converter) #convert event to mV, to compare with trigger
+                event = convert_y_to_mV(event, converter) #convert event to mV, to compare with trigger
                 temp_df[f'{i}'] = event
                 time_instant = time()
                 tempTime.append(time_instant)
-        
+        print(temp_df)
         '''Analysis of the rnd_sample: find waveform if len(peaks) >= min_peaks and save'''
         for i in range( temp_df.shape[1] ):
 
             event = temp_df[ temp_df.columns[i] ]
+            print(event)
             peaks, _ = find_peaks(-1*event, height=-1*height)
 
             if (min_peaks >= 2) and (len(peaks) == min_peaks) and (peaks[1] - peaks[0] >= min_separation):
                 waveformList[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
                 timeList.append( tempTime[i] )
 
-            elif (min_peaks < 2) and (len(peaks) == min_peaks): # there's no separation when there's only 1 or none peaks
+            elif (min_peaks < 2) and (len(peaks) >= min_peaks): # there's no separation when there's only 1 or none peaks
                 waveformList[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
                 timeList.append( tempTime[i] )
+        print(waveformList)
 
         '''If not finished yet, try again'''
         counter += 1
@@ -168,7 +170,7 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, height, path, converte
     acquired_samples = 0    # Total amount of samples collected
     saved_csv = 1           # Total of saved csv files 
     files = []              # File names
-
+    print('height =', height)
     while acquired_samples < necessarySamples:
 
         myprint(f'Try number {saved_csv}. {round(100*acquired_samples/necessarySamples,2)}% ({acquired_samples}/{necessarySamples}).')

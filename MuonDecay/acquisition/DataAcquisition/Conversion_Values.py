@@ -32,7 +32,7 @@ def units_conversion_parameters(oscilloscope):
 
 
 
-def convert_y_to_volts(value_in_units, converter_df):
+def convert_y_to_mV(value_in_units, converter_df):
     """
     This function is built to [...]
 
