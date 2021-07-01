@@ -1,14 +1,13 @@
 from acquisition.Configs import cfg_scope #import config file
 from acquisition.SaveOutputs.Save_Output import myprint, outputs #import function "myprint" and variable "outputs"
-from acquisition.DataAcquisition.Conversion_Values import convert_y_to_mV
+from acquisition.DataAcquisition.Conversion_Values import convert_y_to_mV, units_conversion_parameters
 
 import os
 import pandas as pd
 import numpy as np
-import pyvisa
 from time import time, sleep
 from datetime import timedelta
-from scipy.signal import find_peaks
+from scipy.signal import find_peaks, waveforms
 
 
 
@@ -51,11 +50,146 @@ def read_waveforms_csv(files, file_name, path, tag=''):
 
 
 #=====================================================================================================
-def run_acquisition( oscilloscope , converter , height, samples=100 , rnd_sample=1000, min_peaks=2, min_separation=10 ):
+# def run_acquisition( oscilloscope , converter , height, samples=100 , rnd_sample=1000, min_peaks=2, min_separation=10 ):
+#     """
+#     This function serves to the purpose of retrieving a useful sample with given lenght. 
+#     Operation:
+#         - wait 2 seconds
+#         - define DataFrame and list to be filled after
+#         - while loop:
+#             -- retrieve a sample with lenght = min(100, 10*samples); neither too small nor too big
+#             -- analyze this sample with respect to the peaks
+#             -- store the useful events on the DataFrame and the times on the respective list
+#             -- repeat until get enought events
+#         - after filling all the requested samples, append the times to the DataFrame, change columns names, 
+#         details etc.
+#         - finish
+#         - returns the DataFrame containing the times and the waveforms (on the columns)
+
+#     Parameters
+#     ----------
+#     oscilloscope: instrument object
+#         Called by the pyvisa library.
+#     samples: int, default 100
+#         The number of samples to retrieve. 'samples' is the total amount of 'good samples', i.e.,
+#         the total amount of samples that pass on the min_peaks tests. Do not confuse with the rnd_sample.
+#     rnd_samples: int, default 1000
+#         The number of samples with random goodness, i.e., the samples may be good, but may be not. 
+#         After collecting, they will be analyzed and stored, if they are good, as specified.
+#     height: int
+#         The height value to find the peaks on the waveform. It's called by scipy, on the find_peaks function
+#     min_peaks: int, default 2
+#         'Quality test' for the waveform. If it contains at least the minimal peaks, it's a 'good sample'.
+#     """
+
+#     sleep(1)
+
+#     waveformList = pd.DataFrame()
+#     timeList = []
+#     counter = 1
+
+#     while waveformList.shape[1] < samples:
+        
+#         total_events = waveformList.shape[1]
+#         temp_df  = pd.DataFrame()
+#         tempTime = [] 
+#         print(f'   Run {counter}. {round(100*total_events/samples , 1)}%. ({total_events}/{samples}).')
+
+#         '''Acquisition of random samples'''
+#         for i in range( rnd_sample ):
+#             try:
+#                 event = np.array( oscilloscope.query_ascii_values('curve?') ) #numpy-array
+#             except:
+#                 myprint('error')
+#             else:
+#                 event = convert_y_to_mV(event, converter) #convert event to mV, to compare with trigger
+#                 temp_df[f'{i}'] = event
+#                 time_instant = time()
+#                 tempTime.append(time_instant)
+
+#         '''Analysis of the rnd_sample: find waveform if len(peaks) >= min_peaks and save'''
+#         for i in range( temp_df.shape[1] ):
+
+#             event = temp_df[ temp_df.columns[i] ]
+#             peaks, _ = find_peaks(-1*event, height=-1*height)
+
+#             if (min_peaks >= 2) and (len(peaks) == min_peaks) and (peaks[1] - peaks[0] >= min_separation):
+#                 waveformList[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
+#                 timeList.append( tempTime[i] )
+
+#             elif (min_peaks < 2) and (len(peaks) >= min_peaks): # there's no separation when there's only 1 or none peaks
+#                 waveformList[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
+#                 timeList.append( tempTime[i] )
+
+#         '''If not finished yet, try again'''
+#         counter += 1
+
+#     '''Add correct label to the columns and add the time column'''
+#     waveformList.columns = [ ('event_'+str(i)) for i in range(waveformList.shape[1]) ]
+#     # waveformList.index = [i for i in range(waveformList.shape[0])]
+#     df = waveformList.T #This command is only to add the timeList as a line in an easy way. This undone later
+#     df.insert( 0, 'time_epoch', np.array(timeList) )
+
+#     return(df)
+
+
+
+#=====================================================================================================
+def get_rnd_sample(oscilloscope, rnd_sample):
+
+    '''Retrieve the conversion parameters from the oscilloscope'''
+    converter = units_conversion_parameters(oscilloscope=oscilloscope)
+
+    '''Create objects to fill'''
+    df_data   = pd.DataFrame() 
+    time_data = [] 
+
+    '''Acquisition of random samples'''
+    for i in range( rnd_sample ):
+        try:
+            event = np.array( oscilloscope.query_ascii_values('curve?') ) #numpy-array
+        except:
+            myprint('error')
+        else:
+            event = convert_y_to_mV(event, converter) #convert event to mV, to compare with trigger
+            df_data[f'{i}'] = event
+            time_instant = time()
+            time_data.append(time_instant)
+
+    return(df_data, time_data)
+
+
+
+#=====================================================================================================
+def analyze_rnd_sample(df_data, time_data, counter=1, min_peaks=2, min_separation=10, trigger=-20, trigger_slope=-1):
+
+    waveforms_analyzed = pd.DataFrame()
+    time_analyzed = []
+
+    '''Analysis of the rnd_sample: find waveform if len(peaks) >= min_peaks and save'''
+    for i in range( df_data.shape[1] ):
+
+        event = df_data[ df_data.columns[i] ]
+        peaks, _ = find_peaks(trigger_slope*event, height=trigger_slope*trigger)
+
+        if (min_peaks >= 2) and (len(peaks) == min_peaks) and (peaks[1] - peaks[0] >= min_separation):
+            waveforms_analyzed[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
+            time_analyzed.append( time_data[i] )
+
+        elif (min_peaks < 2) and (len(peaks) >= min_peaks): # there's no separation when there's only 1 or none peaks
+            waveforms_analyzed[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
+            time_analyzed.append( time_data[i] )
+
+    return(waveforms_analyzed, time_analyzed)
+
+
+
+#=====================================================================================================
+def run_acquisition( oscilloscope, height, samples=100, rnd_sample=1000, min_peaks=2, min_separation=10 ):
     """
     This function serves to the purpose of retrieving a useful sample with given lenght. 
     Operation:
-        - wait 2 seconds
+        - wait
         - define DataFrame and list to be filled after
         - while loop:
             -- retrieve a sample with lenght = min(100, 10*samples); neither too small nor too big
@@ -85,56 +219,45 @@ def run_acquisition( oscilloscope , converter , height, samples=100 , rnd_sample
 
     sleep(1)
 
-    waveformList = pd.DataFrame()
-    timeList = []
+    waveforms_storage = pd.DataFrame()
+    time_storage = []
     counter = 1
 
-    while waveformList.shape[1] < samples:
+    while waveforms_storage.shape[1] < samples:
         
-        total_events = waveformList.shape[1]
-        temp_df  = pd.DataFrame()
-        tempTime = [] 
+        total_events = waveforms_storage.shape[1]
+        temp_df   = pd.DataFrame()
+        temp_time = [] 
         print(f'   Run {counter}. {round(100*total_events/samples , 1)}%. ({total_events}/{samples}).')
 
-        '''Acquisition of random samples'''
-        for i in range( rnd_sample ):
-            try:
-                event = np.array( oscilloscope.query_ascii_values('curve?') ) #numpy-array
-            except:
-                myprint('error')
-            else:
-                event = convert_y_to_mV(event, converter) #convert event to mV, to compare with trigger
-                temp_df[f'{i}'] = event
-                time_instant = time()
-                tempTime.append(time_instant)
-        print(temp_df)
-        '''Analysis of the rnd_sample: find waveform if len(peaks) >= min_peaks and save'''
-        for i in range( temp_df.shape[1] ):
+        temp_df, temp_time = get_rnd_sample(
+            oscilloscope=oscilloscope, 
+            rnd_sample=rnd_sample
+            )
 
-            event = temp_df[ temp_df.columns[i] ]
-            print(event)
-            peaks, _ = find_peaks(-1*event, height=-1*height)
-
-            if (min_peaks >= 2) and (len(peaks) == min_peaks) and (peaks[1] - peaks[0] >= min_separation):
-                waveformList[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
-                timeList.append( tempTime[i] )
-
-            elif (min_peaks < 2) and (len(peaks) >= min_peaks): # there's no separation when there's only 1 or none peaks
-                waveformList[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
-                timeList.append( tempTime[i] )
-        print(waveformList)
+        waveforms_analyzed, time_analyzed = analyze_rnd_sample(
+            df_data=temp_df, 
+            time_data=temp_time, 
+            counter=counter, 
+            min_peaks=min_peaks, 
+            min_separation=min_separation, 
+            trigger=height, 
+            trigger_slope=-1
+            )
+        
+        waveforms_storage = pd.concat( [waveforms_storage,waveforms_analyzed], axis=1 )
 
         '''If not finished yet, try again'''
         counter += 1
 
     '''Add correct label to the columns and add the time column'''
-    waveformList.columns = [ ('event_'+str(i)) for i in range(waveformList.shape[1]) ]
+    waveforms_storage.columns = [ ('event_'+str(i)) for i in range(waveforms_storage.shape[1]) ]
     # waveformList.index = [i for i in range(waveformList.shape[0])]
-    df = waveformList.T #This command is only to add the timeList as a line in an easy way. This undone later
-    df.insert( 0, 'time_epoch', np.array(timeList) )
+    df = waveforms_storage.T #This command is only to add the time_storage as a line in an easy way. This is undone later
+    df.insert( 0, 'time_epoch', np.array(time_storage) )
 
     return(df)
-    
+
 
 
 #=====================================================================================================
@@ -170,7 +293,7 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, height, path, converte
     acquired_samples = 0    # Total amount of samples collected
     saved_csv = 1           # Total of saved csv files 
     files = []              # File names
-    print('height =', height)
+
     while acquired_samples < necessarySamples:
 
         myprint(f'Try number {saved_csv}. {round(100*acquired_samples/necessarySamples,2)}% ({acquired_samples}/{necessarySamples}).')
@@ -182,7 +305,6 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, height, path, converte
                 height=height,
                 min_peaks=min_peaks,
                 min_separation=min_separation,
-                converter=converter
                 )
 
         file = f'{path}/file_{saved_csv}.csv'

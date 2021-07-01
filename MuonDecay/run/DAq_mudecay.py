@@ -61,12 +61,6 @@ else:
 Converting trigger to proper value; the software trigger and the hardware trigger must match
 '''
 
-#converter = units_conversion_parameters(oscilloscope=scope)
-#height     = convert_y_to_units(cfg_scope.trigger, conversion)
-#trigger = 1000*cfg_scope.trigger #mV
-#print('\ntrigger =', trigger, '\n')
-
-
 try: # Try to get all the datas
 
     Acquisition_Waveform(
