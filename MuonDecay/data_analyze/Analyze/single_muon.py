@@ -27,7 +27,7 @@ def peaks_single_muon(df, height, first_peak_loc=False):
 
         if len(x_peaks) != 1:
             # raise ValueError(f'the numbers of peaks must be 1 and it found {len(x_peaks)} on {event.name}')
-            problems[event.name] = ['peaks quantity']
+            problems[event.name] = [f'peaks quantity {x_peaks}']
             continue
 
         if first_peak_loc != False: #trigger makes us expect the pulse in [80:120]
@@ -57,9 +57,29 @@ def peaks_single_muon(df, height, first_peak_loc=False):
 #==========================================================================================================
 def contours_single_muon(waveform, peak, random_left=10, random_right=15):
 
+    # pulses_0 = pd.DataFrame()
+    
+    # for i in range(waveform.shape[1]):
+    #     try:
+    #         event = waveform[waveform.columns[i]]
+
+    #         peak_X0 = int(peak['peak_X0'][i])
+
+    #         limits_0 = [ peak_X0-random_left, peak_X0+random_right ]
+
+    #         pulse_0 = event.iloc[ limits_0[0]:limits_0[1] ].to_list()
+
+    #         pulses_0[ event.name ] = pulse_0
+    #     except:
+    #         raise ValueError(f'problem on {event.name}')
+
+    # return(pulses_0)
+
     pulses_0 = pd.DataFrame()
     
-    for i in range(waveform.shape[1]):
+    
+
+    for i in range(peak.shape[1]):
         try:
             event = waveform[waveform.columns[i]]
 
@@ -76,6 +96,8 @@ def contours_single_muon(waveform, peak, random_left=10, random_right=15):
     return(pulses_0)
 
 
+
+######ERRORRRRRRRRRRRRRRRR
 
 #                          .
 #==========================================================================================================
@@ -112,15 +134,18 @@ def Analysis_SingleMuon(folder):
     trigger, slope = trigger_acquisition(folder) #reads the trigger on the output.txt file; trigger is in mV
 
     peaks, problems = peaks_single_muon(df=slope*waveform, height=slope*trigger, first_peak_loc=100)
-    
-    contours = contours_single_muon(waveform=waveform, peak=peaks, random_left=10, random_right=15)
-    integral = simpson_integral_df(contours - baseLine)
-
     pathlib.Path(f"{folder}/results").mkdir(parents=True, exist_ok=True) #create folder to store the results
-
     peaks.to_csv(f"{folder}/results/peaks.csv")
     problems.to_csv(f"{folder}/results/problems.csv")
+
+    contours = contours_single_muon(waveform=waveform, peak=peaks, random_left=10, random_right=15)
+    integral = simpson_integral_df(contours - baseLine)
     contours.to_csv(f"{folder}/results/contours.csv")
     integral.to_csv(f"{folder}/results/integral.csv")
+
+    
+
+    
+    
 
 
