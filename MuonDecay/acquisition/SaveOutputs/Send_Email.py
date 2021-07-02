@@ -16,6 +16,8 @@ Note: I think that you necessarily need to login on the computer, so google can 
 https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa3V5M3YzRUZnMlppc1hGbnRoVXJzSXBzN3d5UXxBQ3Jtc0trUG5EbV9qYUI3NGc3U01XQ3RRMmRZWlNGZjY1Wm1WeEVvVGRnek5KRVFRcXN1dm5OUEg0V2ExQXRtRjhFRHJlUXVQZ2FIanVpMXJDdWdIQ2lHNE5iRThQdGhpWngxbWlnaWdMWXNFNEt5QUVCUXZ6cw&q=https%3A%2F%2Fmyaccount.google.com%2Flesssecureapps
 '''
 
+
+
 def SendEmail(subject, msg):
     try:
         server = smtplib.SMTP('smtp.gmail.com:587')
@@ -25,10 +27,6 @@ def SendEmail(subject, msg):
         message = 'Subject: {}\n\n{}'.format(subject, msg)
         server.sendmail(from_addr=cfg_email.EMAIL_ADDRESS, to_addrs=cfg_email.EMAIL_DESTINATION, msg=message)
         server.quit()
-        print('Success: Email sent.\n')
+        print('Success: Email sent.\n\n\n')
     except:
-        print('Email failed to send.\n')
-
-# subject = f'Testando som... 2... s... som...'
-# msg = f'Pimba master 2018 {ctime(time())}'
-# SendEmail(subject, msg)
+        print('Email failed to send.\n\n\n')

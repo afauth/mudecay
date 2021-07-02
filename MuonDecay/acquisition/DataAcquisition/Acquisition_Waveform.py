@@ -1,6 +1,7 @@
 from acquisition.Configs import cfg_scope #import config file
 from acquisition.SaveOutputs.Save_Output import myprint, outputs #import function "myprint" and variable "outputs"
 from acquisition.DataAcquisition.Conversion_Values import convert_y_to_mV, units_conversion_parameters
+from acquisition.DataAcquisition.Set_Scope_Parameters import check_parameters
 
 import os
 import pandas as pd
@@ -135,6 +136,22 @@ def read_waveforms_csv(files, file_name, path, tag=''):
 
 
 #=====================================================================================================
+def trigger_slope_value(config='FALL'):
+
+    cfg_uppercase = config.upper()
+
+    if cfg_uppercase == 'FALL':
+        slope = -1
+    elif cfg_uppercase == 'RISE':
+        slope = 1
+    else:
+        raise ('Trigger Slope Error: could not determine the slope of the config file. It must be \"FALL\" or \"RISE\"')
+
+    return(slope)
+
+
+
+#=====================================================================================================
 def get_rnd_sample(oscilloscope, rnd_sample):
 
     '''Retrieve the conversion parameters from the oscilloscope'''
@@ -161,7 +178,9 @@ def get_rnd_sample(oscilloscope, rnd_sample):
 
 
 #=====================================================================================================
-def analyze_rnd_sample(df_data, time_data, counter=1, min_peaks=2, min_separation=10, trigger=-20, trigger_slope=-1):
+def analyze_rnd_sample(df_data, time_data, trigger, trigger_slope, counter=1, min_peaks=2, min_separation=10):
+
+    trigger_slope = trigger_slope_value(trigger_slope)
 
     waveforms_analyzed = pd.DataFrame()
     time_analyzed = []
@@ -185,7 +204,7 @@ def analyze_rnd_sample(df_data, time_data, counter=1, min_peaks=2, min_separatio
 
 
 #=====================================================================================================
-def run_acquisition( oscilloscope, height, samples=100, rnd_sample=1000, min_peaks=2, min_separation=10 ):
+def run_acquisition( oscilloscope, trigger, trigger_slope, samples=100, rnd_sample=1000, min_peaks=2, min_separation=10 ):
     """
     This function serves to the purpose of retrieving a useful sample with given lenght. 
     Operation:
@@ -241,11 +260,12 @@ def run_acquisition( oscilloscope, height, samples=100, rnd_sample=1000, min_pea
             counter=counter, 
             min_peaks=min_peaks, 
             min_separation=min_separation, 
-            trigger=height, 
-            trigger_slope=-1
+            trigger=trigger, 
+            trigger_slope=trigger_slope
             )
         
         waveforms_storage = pd.concat( [waveforms_storage,waveforms_analyzed], axis=1 )
+        time_storage.extend(time_analyzed)
 
         '''If not finished yet, try again'''
         counter += 1
@@ -261,7 +281,7 @@ def run_acquisition( oscilloscope, height, samples=100, rnd_sample=1000, min_pea
 
 
 #=====================================================================================================
-def Acquisition_Waveform( oscilloscope, necessarySamples, height, path, converter, samples=100, rnd_sample=1_000, min_peaks=2, min_separation=10 ):
+def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd_sample=1_000, min_peaks=2, min_separation=10 ):
     """
     This function is built to run the "run_acquisition" function multiple times. Sometimes, a random error 
     may occour (like a problem on the communication between the oscilloscope, a sudden blackout etc.) 
@@ -290,6 +310,8 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, height, path, converte
     min_separation: int, default 10
     """
 
+    trigger_value, trigger_slope, y_scale = check_parameters(oscilloscope=oscilloscope)
+
     acquired_samples = 0    # Total amount of samples collected
     saved_csv = 1           # Total of saved csv files 
     files = []              # File names
@@ -302,9 +324,10 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, height, path, converte
                 oscilloscope=oscilloscope,
                 samples=samples,
                 rnd_sample=rnd_sample,
-                height=height,
                 min_peaks=min_peaks,
                 min_separation=min_separation,
+                trigger=trigger_value,
+                trigger_slope=trigger_slope
                 )
 
         file = f'{path}/file_{saved_csv}.csv'

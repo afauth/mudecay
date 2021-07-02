@@ -96,15 +96,15 @@ def Set_Scope_Parameters(oscilloscope):
 
 def check_parameters(oscilloscope):
 
-    '''Check trigger and y-scale parameters'''
+    '''Check scope parameters'''
 
     try_info = True
     counter  = 0
 
     while try_info == True: 
         try:
-            trigger_info  = oscilloscope.query('trigger:main?')
-            y_scale_info  = oscilloscope.query('ch1:scale?')
+            trigger_info = oscilloscope.query('trigger:main?')
+            y_scale_info = oscilloscope.query('ch1:scale?')
         except:
             counter += 1
             if counter >= 3:
@@ -114,6 +114,7 @@ def check_parameters(oscilloscope):
             try_info = False
 
     trigger_value_mV = 1_000*float( re.split(';', trigger_info)[-1] )
+    trigger_slope = re.split(';', trigger_info)[5]
     y_scale_value = float( re.split('\n', y_scale_info)[0] )
 
     if trigger_value_mV != cfg_scope.trigger:
@@ -121,9 +122,14 @@ def check_parameters(oscilloscope):
     else:
         myprint(f'Trigger ok.')
     
+    if trigger_slope != cfg_scope.slope:
+        myprint(f'Trigger slope changed: set to {trigger_slope}')
+    else:
+        myprint('trigger_slope ok.')
+    
     if y_scale_value != cfg_scope.channel_scale:
         myprint(f'Scale changed: set to {y_scale_value}\n')
     else:
         myprint(f'Scale ok.\n')
     
-    return(trigger_value_mV, y_scale_value)
+    return(trigger_value_mV, trigger_slope, y_scale_value)

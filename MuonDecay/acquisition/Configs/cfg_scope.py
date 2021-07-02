@@ -7,7 +7,7 @@ ScopeID = 'USB0::0x0699::0x0363::C061073::INSTR'
 Parameters for the acquisition
 '''
 #number of samples needed to search
-necessarySamples  = 10
+necessarySamples  = 100
 #number of samples per csv
 samples           = 10
 #number of random samples to collect
@@ -16,10 +16,6 @@ random_samples    = 10
 min_peaks         = 0
 #separation between the two peaks (1/2500 micro-seconds): optimal value = 60 ns
 min_separation    = 150 
-#número de pontos em cada waveform selecionada
-scopeResolution   = 2500  
-#number of bins to graph
-numberBins        = 100   
 #
 email_me          = True
 
@@ -38,3 +34,5 @@ horizontal_position_1 = 0        #Initial horizontal position 0 default
 horizontal_position_2 = 4.6E-6   #Horizontal position with respect to the start of the oscilloscope window
 persistence           = 'INF'    #Infinite persistence
 slope                 = 'FALL'   #Negative slope
+scopeResolution       = 2500     #número de pontos em cada waveform selecionada
+numberBins            = 100      #number of bins to graph
