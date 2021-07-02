@@ -3,7 +3,7 @@ try:
     from acquisition.DataAcquisition.Acquisition_Waveform import Acquisition_Waveform
     from acquisition.DataAcquisition.Set_Scope_Parameters import Set_Scope_Parameters
     from acquisition.SaveOutputs.Save_Output import myprint, outputs, Create_Folder, Acquisition_Type, Save_Output_File
-    from data_analyze.Analyze.single_muon import Analysis_SingleMuon
+    from data_analyze.Analyze.single_muon import Analysis_SingleMuon, plots_SingleMuon
 except:
     raise ImportError('Error on importing modules. Please, try again.')
 
@@ -102,6 +102,7 @@ Preliminar analysis
 '''
 if acquisition_type == 'single_muon':
     Analysis_SingleMuon(folder=folder_name)
+    plots_SingleMuon(path=folder_name)
 elif acquisition_type == 'muon_decay':
     raise NotImplementedError
 else:
