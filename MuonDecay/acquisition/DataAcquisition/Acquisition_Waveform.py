@@ -375,3 +375,5 @@ def print_scope_config(trigger_value, trigger_slope=cfg_scope.slope, y_scale=cfg
     myprint(f'  Ch1 scale (y_scale): {y_scale}')
     myprint(f'  Trigger value: {trigger_value} mV')
     myprint(f'  Trigger slope: {trigger_slope}\n')
+
+

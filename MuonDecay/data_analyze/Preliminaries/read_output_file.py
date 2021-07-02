@@ -2,6 +2,8 @@ import re
 import os
 import pandas as pd
 
+from acquisition.DataAcquisition.Acquisition_Waveform import trigger_slope_value
+
 
 
 #=====================================================================================================
@@ -81,16 +83,19 @@ def trigger_acquisition(path='documents/data/1619314826.6753685/', file='output.
 
     '''
     Example:
-    Trigger: -40.0 mV
+    Trigger value: -40.0 mV
     '''
 
     with open(path+sep+file, 'r') as f:
         output = f.read()
     
-    temp    = re.split( 'Trigger: ' , output )[1]
+    temp    = re.split( 'Trigger value: ' , output )[1]
     trigger = float(re.split( ' mV' , temp )[0])
 
-    return( trigger )
+    temp    = re.split( 'Trigger slope: ' , output )[1]
+    slope   = trigger_slope_value( re.split( '\n' , temp )[0] )
+
+    return( trigger, slope )
 
 
 

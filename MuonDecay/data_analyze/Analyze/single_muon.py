@@ -12,6 +12,7 @@ from data_analyze.Preliminaries.read_output_file import trigger_acquisition
 from data_analyze.Spectrums.integral import simpson_integral_df
 
 
+
 #                          .
 #==========================================================================================================
 def peaks_single_muon(df, height, first_peak_loc=False):
@@ -22,7 +23,7 @@ def peaks_single_muon(df, height, first_peak_loc=False):
     for i in range(df.shape[1]):
 
         event = df[df.columns[i]]
-        x_peaks, _ = find_peaks(-1*event, height=height)
+        x_peaks, _ = find_peaks(event, height=height)
 
         if len(x_peaks) != 1:
             # raise ValueError(f'the numbers of peaks must be 1 and it found {len(x_peaks)} on {event.name}')
@@ -107,14 +108,10 @@ def Analysis_SingleMuon(folder):
     df = concat_csv(path=folder)
     waveform = df[1:] #eliminate the row of the time_epoch data
 
-    # converter = retrieve_y_to_volts(path=folder) #DataFrame with the infos of the conversion to volts
-    # waveform  = convert_y_to_volts(value=waveform, converter_df=converter) #actually, converts data to mV
-
     baseLine = waveform.iloc[150:].mean().mean() #assume that the peaks occours until x=150; then, the baseLine is the general mean
-    height = trigger_acquisition(folder) #reads the trigger on the output.txt file; trigger is in mV
+    trigger, slope = trigger_acquisition(folder) #reads the trigger on the output.txt file; trigger is in mV
 
-
-    peaks, problems = peaks_single_muon(df=waveform, height=-1*height, first_peak_loc=100)
+    peaks, problems = peaks_single_muon(df=slope*waveform, height=slope*trigger, first_peak_loc=100)
     
     contours = contours_single_muon(waveform=waveform, peak=peaks, random_left=10, random_right=15)
     integral = simpson_integral_df(contours - baseLine)
@@ -125,3 +122,5 @@ def Analysis_SingleMuon(folder):
     problems.to_csv(f"{folder}/results/problems.csv")
     contours.to_csv(f"{folder}/results/contours.csv")
     integral.to_csv(f"{folder}/results/integral.csv")
+
+

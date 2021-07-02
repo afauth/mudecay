@@ -120,3 +120,5 @@ def check_parameters(oscilloscope):
         myprint(f'Scale ok.\n')
     
     return(trigger_value_mV, trigger_slope, y_scale_value)
+
+

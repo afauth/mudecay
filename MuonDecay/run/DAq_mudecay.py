@@ -3,8 +3,7 @@ try:
     from acquisition.DataAcquisition.Acquisition_Waveform import Acquisition_Waveform
     from acquisition.DataAcquisition.Set_Scope_Parameters import Set_Scope_Parameters
     from acquisition.SaveOutputs.Save_Output import myprint, outputs, Create_Folder, Acquisition_Type, Save_Output_File
-    from acquisition.SaveOutputs.Send_Email import SendEmail
-    from acquisition.DataAcquisition.Conversion_Values import units_conversion_parameters
+    from data_analyze.Analyze.single_muon import Analysis_SingleMuon
 except:
     raise ImportError('Error on importing modules. Please, try again.')
 
@@ -96,6 +95,21 @@ else: # Execute if everything occoured as expected
     subject = f'[MuDecay] Acquisition results'
     message = 'Success'
     Save_Output_File(logging_file, outputs, cfg_scope.email_me, subject, message)
+
+
+'''
+Preliminar analysis
+'''
+if acquisition_type == 'single_muon':
+    Analysis_SingleMuon(folder=folder_name)
+elif acquisition_type == 'muon_decay':
+    raise NotImplementedError
+else:
+    raise NotImplementedError
+
+
+
+
 
 """
 Ainda precisa implementar a parte de coletar e devolver os dados já analizados
