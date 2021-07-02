@@ -3,7 +3,6 @@ from acquisition.SaveOutputs.Save_Output import myprint, outputs #import functio
 from acquisition.DataAcquisition.Conversion_Values import convert_y_to_mV, units_conversion_parameters
 from acquisition.DataAcquisition.Set_Scope_Parameters import check_parameters
 
-import os
 import pandas as pd
 import numpy as np
 from time import time, sleep
@@ -336,3 +335,47 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd
 
         acquired_samples += waveforms.shape[0]
         saved_csv += 1
+
+    print_scope_config(trigger_value, trigger_slope, y_scale)
+
+
+
+#=====================================================================================================
+def print_scope_config(trigger_value, trigger_slope=cfg_scope.slope, y_scale=cfg_scope.channel_scale):
+
+    '''
+    Oscilloscope ID from the TEKTRONIX TDS1002B
+    '''
+    myprint(f'\nOscilloscope: {cfg_scope.ScopeID}')
+
+    '''
+    Parameters for the acquisition
+    '''
+    myprint(f'Acquisition parameters:')
+    myprint(f'  Necessary samples: {cfg_scope.necessarySamples}')
+    myprint(f'  Samples per csv: {cfg_scope.samples}')
+    myprint(f'  Random samples: {cfg_scope.random_samples}')
+    myprint(f'  Minimal number of peaks: {cfg_scope.min_peaks}')
+    myprint(f'  Minimal separation: {cfg_scope.min_separation}')
+    myprint(f'  Email-me: {cfg_scope.email_me}')
+    
+    '''
+    Parameters to set on the oscilloscope
+    '''
+    myprint(f'Ocilloscope parameters:')
+    myprint(f'  Channel: {cfg_scope.channel}')
+    myprint(f'  Encode Format: {cfg_scope.encode_format}')
+    myprint(f'  Channel width: {cfg_scope.width}')
+    myprint(f'  Channel position: {cfg_scope.channel_position}')
+    myprint(f'  Probe: {cfg_scope.channel_probe}')
+    myprint(f'  Persistence: {cfg_scope.persistence}')
+    myprint(f'  Scope Resolution: {cfg_scope.scopeResolution}')
+    myprint(f'  Horizontal scale: {10E6*cfg_scope.horizontal_scale} micro-sec')
+    myprint(f'  Horizontal position: {10E6*cfg_scope.horizontal_position_2} micro-sec')
+
+    '''
+    Special parameters for the acquisition
+    '''
+    myprint(f'  Ch1 scale (y_scale): {y_scale}')
+    myprint(f'  Trigger value: {trigger_value}')
+    myprint(f'  Trigger slope: {trigger_slope}\n')

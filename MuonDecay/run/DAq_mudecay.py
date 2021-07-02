@@ -43,8 +43,8 @@ Set_Scope_Parameters(oscilloscope=scope)
 
 #                           Print preamble of informations
 #==========================================================================================================
-myprint(f'\nNumber of requested samples: {cfg_scope.necessarySamples}')
-myprint(f'Minimal number of peaks: {cfg_scope.min_peaks}')
+# myprint(f'\nNumber of requested samples: {cfg_scope.necessarySamples}')
+# myprint(f'Minimal number of peaks: {cfg_scope.min_peaks}')
 if cfg_scope.email_me == True:
     myprint(f'An email will be sent when acquisition is over or in case of error.\n')
 else:

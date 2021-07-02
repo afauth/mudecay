@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 
 from data_analyze.Preliminaries.concat_csv_files import concat_csv
-from data_analyze.Preliminaries.read_output_file import retrieve_y_to_volts, convert_y_to_volts, trigger_acquisition
+from data_analyze.Preliminaries.read_output_file import trigger_acquisition
 from data_analyze.Spectrums.integral import simpson_integral_df
 
 

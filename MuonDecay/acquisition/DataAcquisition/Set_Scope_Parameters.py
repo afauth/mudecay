@@ -1,7 +1,5 @@
-from numpy import tri
 from acquisition.Configs import cfg_scope #import config file
 from acquisition.SaveOutputs.Save_Output import myprint, outputs #import function "myprint" and variable "outputs"
-import pyvisa
 from time import sleep
 import re
 
@@ -70,26 +68,15 @@ def Set_Scope_Parameters(oscilloscope):
         sleep(1)
         
         try:
-
             Scope_Parameters(oscilloscope=oscilloscope)
-
         except:
-            
             counter += 1
             myprint(f'FAILED {counter} to write scope parameters.')
-
             if counter >= 3:
                 myprint('FAILED TO WRITE scope parameters, even after three attempts.\nPlease, check connection with the oscilloscope and try again.')
                 raise
-        
         else:
-
             try_set = False
-            myprint(f'{cfg_scope.channel} scale: {1000*cfg_scope.channel_scale} mV')
-            myprint(f'Trigger: {1_000*cfg_scope.trigger} mV')
-            myprint(f'Horizontal scale: {10E6*cfg_scope.horizontal_scale} micro-sec')
-            myprint(f'Horizontal Position: {10E6*cfg_scope.horizontal_position_2} micro-sec')
-
             myprint(f'\nOscilloscope informations: LOADED SUCESSFULLY after {counter} attempt(s). Check config file for more details.\n\n')
 
 
@@ -125,7 +112,7 @@ def check_parameters(oscilloscope):
     if trigger_slope != cfg_scope.slope:
         myprint(f'Trigger slope changed: set to {trigger_slope}')
     else:
-        myprint('trigger_slope ok.')
+        myprint('Trigger slope ok.')
     
     if y_scale_value != cfg_scope.channel_scale:
         myprint(f'Scale changed: set to {y_scale_value}\n')
