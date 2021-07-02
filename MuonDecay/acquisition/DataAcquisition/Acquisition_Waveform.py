@@ -344,14 +344,9 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd
 def print_scope_config(trigger_value, trigger_slope=cfg_scope.slope, y_scale=cfg_scope.channel_scale):
 
     '''
-    Oscilloscope ID from the TEKTRONIX TDS1002B
-    '''
-    myprint(f'\nOscilloscope: {cfg_scope.ScopeID}')
-
-    '''
     Parameters for the acquisition
     '''
-    myprint(f'Acquisition parameters:')
+    myprint(f'\nAcquisition parameters:')
     myprint(f'  Necessary samples: {cfg_scope.necessarySamples}')
     myprint(f'  Samples per csv: {cfg_scope.samples}')
     myprint(f'  Random samples: {cfg_scope.random_samples}')
@@ -363,6 +358,7 @@ def print_scope_config(trigger_value, trigger_slope=cfg_scope.slope, y_scale=cfg
     Parameters to set on the oscilloscope
     '''
     myprint(f'Ocilloscope parameters:')
+    myprint(f'  Oscilloscope: {cfg_scope.ScopeID}')
     myprint(f'  Channel: {cfg_scope.channel}')
     myprint(f'  Encode Format: {cfg_scope.encode_format}')
     myprint(f'  Channel width: {cfg_scope.width}')
@@ -377,5 +373,5 @@ def print_scope_config(trigger_value, trigger_slope=cfg_scope.slope, y_scale=cfg
     Special parameters for the acquisition
     '''
     myprint(f'  Ch1 scale (y_scale): {y_scale}')
-    myprint(f'  Trigger value: {trigger_value}')
+    myprint(f'  Trigger value: {trigger_value} mV')
     myprint(f'  Trigger slope: {trigger_slope}\n')

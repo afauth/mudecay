@@ -1,0 +1,58 @@
+
+Starting acquisition... Local time: Thu Jul  1 22:58:19 2021
+This is a "other" type of acquisition.
+
+
+SCOPE INFOs:
+1;8;ASC;RP;MSB;2500;"Ch1, DC coupling, 2.0E-2 V/div, 1.0E-6 s/div, 2500 points, Sample mode";Y;4.0E-9;0;-4.0E-7;"s";8.0E-4;0.0E0;5.0E1;"Volts"
+
+
+
+Oscilloscope informations: LOADED SUCESSFULLY after 0 attempt(s). Check config file for more details.
+
+
+An email will be sent when acquisition is over or in case of error.
+
+Trigger changed: set to -15.2 mV
+Trigger slope ok.
+Scale ok.
+
+Try number 1. 0.0% (0/100).
+Try number 2. 10.0% (10/100).
+Try number 3. 20.0% (20/100).
+Try number 4. 30.0% (30/100).
+Try number 5. 40.0% (40/100).
+Try number 6. 50.0% (50/100).
+Try number 7. 60.0% (60/100).
+Try number 8. 70.0% (70/100).
+Try number 9. 80.0% (80/100).
+Try number 10. 90.0% (90/100).
+
+Acquisition parameters:
+  Necessary samples: 100
+  Samples per csv: 10
+  Random samples: 10
+  Minimal number of peaks: 0
+  Minimal separation: 150
+  Email-me: True
+Ocilloscope parameters:
+  Oscilloscope: USB0::0x0699::0x0363::C061073::INSTR
+  Channel: CH1
+  Encode Format: ASCII
+  Channel width: 1
+  Channel position: 2
+  Probe: 1
+  Persistence: INF
+  Scope Resolution: 2500
+  Horizontal scale: 10.0 micro-sec
+  Horizontal position: 46.0 micro-sec
+  Ch1 scale (y_scale): 0.02
+  Trigger value: -15.2 mV
+  Trigger slope: FALL
+
+
+Finishing acquisition... Local time: Thu Jul  1 23:02:27 2021
+After 0:04:08.100190
+
+END acquisition
+
