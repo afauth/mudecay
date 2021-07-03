@@ -105,13 +105,25 @@ def analyze_rnd_sample(df_data, time_data, trigger, trigger_slope, counter=1, mi
         event = df_data[ df_data.columns[i] ]
         peaks, _ = find_peaks(trigger_slope*event, height=trigger_slope*trigger)
 
-        if (min_peaks >= 2) and (len(peaks) == min_peaks) and (peaks[1] - peaks[0] >= min_separation):
+        if (min_peaks > 2) and (len(peaks) >= min_peaks):
+            waveforms_analyzed[f'{counter}_{i}'] = event 
+            time_analyzed.append( time_data[i] )
+
+        # Muon decay
+        elif (min_peaks == 2) and (len(peaks) == min_peaks) and (peaks[1] - peaks[0] >= min_separation):
             waveforms_analyzed[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
             time_analyzed.append( time_data[i] )
 
-        elif (min_peaks < 2) and (len(peaks) >= min_peaks): # there's no separation when there's only 1 or none peaks
+        # Single Muon
+        elif (min_peaks == 1) and (len(peaks) == min_peaks): # there's no separation when there's only 1 or none peaks
             waveforms_analyzed[f'{counter}_{i}'] = event # counter_i will guarantee that the names on the df will not be replaced
             time_analyzed.append( time_data[i] )
+        
+        elif (min_peaks == 0) and (len(peaks) >= min_peaks): 
+            waveforms_analyzed[f'{counter}_{i}'] = event 
+            time_analyzed.append( time_data[i] )
+
+
 
     return(waveforms_analyzed, time_analyzed)
 

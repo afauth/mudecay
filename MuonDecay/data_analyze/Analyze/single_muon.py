@@ -149,7 +149,7 @@ def convert_charge(integral):
 
 
 
-def plots_SingleMuon(path, folder='results', bins=50):
+def plots_SingleMuon(path, folder='results', bins='auto'):
 
     peaks    = pd.read_csv(path+'/'+folder+'/'+'peaks.csv', index_col=0)
     integral = pd.read_csv(path+'/'+folder+'/'+'integral.csv', index_col=0)
@@ -160,7 +160,7 @@ def plots_SingleMuon(path, folder='results', bins=50):
     fig.suptitle(f'Espectros de pico e carga; {peaks.shape[0]} events', fontsize=18)
 
     # Fig 1
-    sns.histplot( -1*peaks['peak_Y0'], ax=axes[0], color='orange', bins=bins )
+    sns.histplot( peaks['peak_Y0'], ax=axes[0], color='orange', bins=bins )
     axes[0].set_title(f'Espectro de picos')
     axes[0].set_xlabel('peak (mV)')
 
@@ -170,13 +170,11 @@ def plots_SingleMuon(path, folder='results', bins=50):
     axes[1].set_xlabel('charge (pC)')
 
     #Fig 3
-    axes[2].scatter( -1*charge , -1*peaks['peak_Y0'] , color='green' )
+    axes[2].scatter( -1*charge , peaks['peak_Y0'] , color='green' )
     axes[2].set_title(f'picos X carga')
     axes[2].set_ylabel(f'peaks (mV)')
     axes[2].set_xlabel(f'charge (pC)')
 
     plt.savefig(path+'/'+folder+'/spectrums.png')
-
-    #plt.show()
 
 

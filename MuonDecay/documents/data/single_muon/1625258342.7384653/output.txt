@@ -1,0 +1,55 @@
+
+Starting acquisition... Local time: Fri Jul  2 17:39:02 2021
+This is a "single_muon" type of acquisition.
+
+
+SCOPE INFOs:
+1;8;ASC;RP;MSB;2500;"Ch1, DC coupling, 2.0E-2 V/div, 1.0E-6 s/div, 2500 points, Sample mode";Y;4.0E-9;0;-4.0E-7;"s";8.0E-4;0.0E0;5.0E1;"Volts"
+
+
+
+Oscilloscope informations: LOADED SUCESSFULLY after 0 attempt(s). Check config file for more details.
+
+
+An email will be sent when acquisition is over or in case of error.
+
+Trigger changed: set to -15.2 mV
+Trigger slope ok.
+Scale ok.
+
+Try number 1. 0.0% (0/1000).
+Try number 2. 15.0% (150/1000).
+Try number 3. 30.0% (300/1000).
+Try number 4. 45.0% (450/1000).
+Try number 5. 60.0% (600/1000).
+Try number 6. 75.0% (750/1000).
+Try number 7. 90.0% (900/1000).
+
+Acquisition parameters:
+  Necessary samples: 1000
+  Samples per csv: 100
+  Random samples: 150
+  Minimal number of peaks: 1
+  Minimal separation: 150
+  Email-me: True
+Ocilloscope parameters:
+  Oscilloscope: USB0::0x0699::0x0363::C061073::INSTR
+  Channel: CH1
+  Encode Format: ASCII
+  Channel width: 1
+  Channel position: 2
+  Probe: 1
+  Persistence: INF
+  Scope Resolution: 2500
+  Horizontal scale: 10.0 micro-sec
+  Horizontal position: 46.0 micro-sec
+  Ch1 scale (y_scale): 0.02
+  Trigger value: -15.2 mV
+  Trigger slope: FALL
+
+
+Finishing acquisition... Local time: Fri Jul  2 18:17:22 2021
+After 0:38:19.376517
+
+END acquisition
+
