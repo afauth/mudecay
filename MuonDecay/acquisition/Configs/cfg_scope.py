@@ -7,13 +7,13 @@ ScopeID = 'USB0::0x0699::0x0363::C061073::INSTR'
 Parameters for the acquisition
 '''
 #number of samples needed to search
-necessarySamples  = 20_000
+necessarySamples  = 100
 #number of samples per csv
-samples           = 100
+samples           = 10
 #number of random samples to collect
 random_samples    = 200
 #minimal amount of peaks; [1] for single muon and [2] for muon decay
-min_peaks         = 1
+min_peaks         = 2
 #separation between the two peaks (1/2500 micro-seconds): optimal value = 60 ns
 min_separation    = 150 
 #
@@ -28,7 +28,7 @@ width                 = 1        #Sets the data width to 1 byte per data point f
 channel_scale         = 30.0E-3  #Valores permitidos: ]2mV, 5V[ ; V/div
 channel_position      = 4.5      #previous: 2
 channel_probe         = 1        #
-trigger               = -15E-3   #Value in Volts; the values MUST be multiple of 0.6 mV
+trigger               = -10E-3   #Value in Volts; the values MUST be multiple of 0.6 mV
 horizontal_scale      = 1.0E-6   #
 horizontal_position_1 = 0        #Initial horizontal position 0 default
 horizontal_position_2 = 4.6E-6   #Horizontal position with respect to the start of the oscilloscope window
