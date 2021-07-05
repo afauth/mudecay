@@ -78,14 +78,16 @@ def get_rnd_sample(oscilloscope, rnd_sample):
     '''Acquisition of random samples'''
     for i in range( rnd_sample ):
         try:
-            event = np.array( oscilloscope.query_ascii_values('curve?') ) #numpy-array
+            event = oscilloscope.query_ascii_values('curve?') #list
         except:
             myprint('error')
         else:
-            event = convert_y_to_mV(event, converter) #convert event to mV, to compare with trigger
+            # event = convert_y_to_mV(event, converter) #convert event to mV, to compare with trigger
             df_data[f'{i}'] = event
             time_instant = time()
             time_data.append(time_instant)
+
+    df_data = convert_y_to_mV(df_data, converter) #convert all DataFrame to mV
 
     return(df_data, time_data)
 
@@ -173,7 +175,7 @@ def run_acquisition( oscilloscope, trigger, trigger_slope, samples=100, rnd_samp
         total_events = waveforms_storage.shape[1]
         temp_df   = pd.DataFrame()
         temp_time = [] 
-        print(f'   Run {counter}. {round(100*total_events/samples , 1)}%. ({total_events}/{samples}).')
+        myprint(f'   Run {counter}. {round(100*total_events/samples , 1)}%. ({total_events}/{samples}).')
 
         temp_df, temp_time = get_rnd_sample(
             oscilloscope=oscilloscope, 

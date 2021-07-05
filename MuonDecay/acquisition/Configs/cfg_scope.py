@@ -11,7 +11,7 @@ necessarySamples  = 100
 #number of samples per csv
 samples           = 10
 #number of random samples to collect
-random_samples    = 200
+random_samples    = 1_000
 #minimal amount of peaks; [1] for single muon and [2] for muon decay
 min_peaks         = 2
 #separation between the two peaks (1/2500 micro-seconds): optimal value = 60 ns
