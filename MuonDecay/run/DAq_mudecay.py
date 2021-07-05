@@ -115,7 +115,5 @@ else:
 
 
 """
-Ainda precisa implementar a parte de coletar e devolver os dados já analizados
-
-Implementar parte que verifica se o csv é vazio ou não e o deleta?
+converter para mV ao final de get_rnd_samples
 """

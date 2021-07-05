@@ -45,9 +45,9 @@ def convert_y_to_mV(value_in_units, converter_df):
     '''
 
     value_in_volts = converter_df['y_zero'][0] + converter_df['y_mult'][0]*(value_in_units - converter_df['y_off'][0])
-    value_in_volts *= 1_000 # mV
+    value_in_mV = 1_000*value_in_volts # mV
 
-    return(value_in_volts)
+    return(value_in_mV)
 
 
 
