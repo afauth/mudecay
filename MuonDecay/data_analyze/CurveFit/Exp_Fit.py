@@ -103,19 +103,19 @@ def Plot_Fit_Graph(xdata, ydata, coeff, conversionScale=0, plotBars=False):
 
     '''Bins centers (a.k.a. points) plot'''
     plt.scatter(
-    x=xdata, 
-    y=ydata, 
-    color='black',
-    label='Pontos experimentais'
+        x=xdata, 
+        y=ydata, 
+        color='black',
+        label='Pontos experimentais'
     )
     
     '''Plot curve fit'''
     x = np.linspace(0,10,10000)
     plt.plot( 
-    x, 
-    fit_function( x, *coeff[coeff.columns[0]] ),
-    color='orange', 
-    label='Ajuste exponencial' 
+        x, 
+        fit_function( x, *coeff[coeff.columns[0]] ),
+        color='orange', 
+        label='Ajuste exponencial' 
         )
         
     plt.legend()    
