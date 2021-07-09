@@ -1,38 +1,90 @@
+import seaborn as sns
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 
 
-#=====================================================================================================
-def Find_Peaks_Waveforms(waveforms, height, invert_waveform=True, check_two_peaks=False):
-    '''
-    waveforms:
-    height:
-    invert_waveform:
-    '''
-    
-    if invert_waveform == True:
-        wvfrs = -1*waveforms
-    else:
-        wvfrs = waveforms
-    
-    Peaks = pd.DataFrame()
 
-    for i in range(wvfrs.shape[1]): # 
+#                          .
+#==========================================================================================================
+def peaks_muon_decay(df, height, first_peak_loc=False):
 
-        event = wvfrs[wvfrs.columns[i]]
-        x_peaks, _ = find_peaks( event, height=height ) #x_peaks is an array
+    Peaks    = pd.DataFrame()
+    problems = pd.DataFrame()
 
-        if (len(x_peaks) != 2) and (check_two_peaks == True):
-            raise ValueError(f'The events must have two peaks exactly. Please, check the "height" parameter.\nProblem found on {wvfrs.columns[i]}.')
+    for i in range(df.shape[1]):
+
+        event = df[df.columns[i]]
+        x_peaks, _ = find_peaks(event, height=height)
+
+        if len(x_peaks) != 2:
+            # raise ValueError(f'the numbers of peaks must be 2 and it found {len(x_peaks)} on {event.name}')
+            problems[event.name] = [f'peaks quantity ({len(x_peaks)})']
+            continue
+
+        if first_peak_loc != False: #trigger makes us expect the pulse in [80:120]
+            if (x_peaks[0] < first_peak_loc - 15) or (x_peaks[0] > first_peak_loc + 15):
+                # raise ValueError(f'the first peak of {event.name} is not around the point {first_peak_loc}, but in the instant {x_peaks[0]}')
+                problems[event.name] = ['1st peak outrange']
+                continue
 
         y_peaks = event.iloc[x_peaks].tolist()
 
         peaks = np.append(x_peaks, y_peaks)
 
-        Peaks[wvfrs.columns[i]] = peaks
+        Peaks[event.name] = peaks
 
     Peaks = Peaks.T
-    Peaks.columns = ['peak_X0', 'peak_X1', 'peak_Y0', 'peak_Y1']
+    if Peaks.shape[1] > 0:
+        Peaks.columns = ['peak_X0', 'peak_X1', 'peak_Y0', 'peak_Y1']
+    else:
+        raise('no peaks detected at all...\n\n')
 
-    return(Peaks) # [event_0, event_1, ..., event_n] X [peak_X0, peak_X1, peak_Y0, peak_Y1]
+    problems = problems.T
+    if problems.shape[1] > 0:
+        problems.columns = ['problem']
+
+    return(Peaks, problems)
+
+
+
+#                          .
+#==========================================================================================================
+def peaks_single_muon(df, height, first_peak_loc=False):
+
+    Peaks    = pd.DataFrame()
+    problems = pd.DataFrame()
+
+    for i in range(df.shape[1]):
+
+        event = df[df.columns[i]]
+        x_peaks, _ = find_peaks(event, height=height)
+
+        if len(x_peaks) != 1:
+            # raise ValueError(f'the numbers of peaks must be 1 and it found {len(x_peaks)} on {event.name}')
+            problems[event.name] = [f'peaks quantity ({len(x_peaks)})']
+            continue
+
+        if first_peak_loc != False: #trigger makes us expect the pulse in [80:120]
+            if (x_peaks[0] < first_peak_loc - 15) or (x_peaks[0] > first_peak_loc + 15):
+                # raise ValueError(f'the first peak of {event.name} is not around the point {first_peak_loc}, but in the instant {x_peaks[0]}')
+                problems[event.name] = ['1st peak outrange']
+                continue
+
+        y_peaks = event.iloc[x_peaks].tolist()
+
+        peaks = np.append(x_peaks, y_peaks)
+
+        Peaks[event.name] = peaks
+
+    Peaks = Peaks.T
+    Peaks.columns = ['peak_X0', 'peak_Y0']
+
+    problems = problems.T
+    if problems.shape[1] > 0:
+        problems.columns = ['problem']
+
+    return(Peaks, problems)
+
+

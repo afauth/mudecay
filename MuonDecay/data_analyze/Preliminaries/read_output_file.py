@@ -70,7 +70,8 @@ def convert_y_to_volts(value, converter_df):
 #=====================================================================================================
 def trigger_acquisition(path='documents/data/1619314826.6753685/', file='output.txt', sep='/'):
     """
-    This function is built to [...]
+    This function is built to retrieve the value used on the acquisition. It reads the trigger through the 
+    output file.
 
     Parameters
     ----------
@@ -98,36 +99,3 @@ def trigger_acquisition(path='documents/data/1619314826.6753685/', file='output.
     return( trigger, slope )
 
 
-
-#=====================================================================================================
-def trigger_df(folders, rootFolder=False):
-    """
-    This function is built to [...]
-
-    Parameters
-    ----------
-    folders:
-        .
-    rootFolder: 
-        .
-    """
-
-    if rootFolder == True:
-        folders = [ os.path.join(folders, f) for f in os.listdir(folders) ]
-
-    triggers = []
-
-    for folder in folders:
-        trigger = trigger_acquisition(path=folder)
-        triggers.append(trigger)
-    
-    df = pd.DataFrame([folders, triggers]).T
-    df.columns = ['path', 'trigger']
-    
-    '''
-    without this, Python cannot understand the minus signal, as in "-40", for instance
-    so, convert the dtype to float and be sure to identify the negative values
-    '''
-    df = df.astype({'trigger': float})
-
-    return(df)

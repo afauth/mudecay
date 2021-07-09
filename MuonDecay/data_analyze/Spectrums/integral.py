@@ -73,3 +73,5 @@ def simpson_integral_df(waveforms, dx=1):
         Integrals.append(integral)
 
     return( pd.DataFrame(Integrals, index=waveforms.columns) )
+
+
