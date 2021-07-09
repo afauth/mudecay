@@ -1,4 +1,4 @@
-from acquisition.Configs import cfg_scope #import config file
+from configs import cfg_scope #import config file
 from acquisition.SaveOutputs.Save_Output import myprint, outputs #import function "myprint" and variable "outputs"
 from time import sleep
 import re

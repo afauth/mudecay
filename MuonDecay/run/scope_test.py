@@ -1,6 +1,6 @@
 import pyvisa
 import ctypes
-from acquisition.Configs import cfg_scope as config
+from configs import cfg_scope as config
 from time import time, ctime, sleep
 from datetime import timedelta
 

@@ -1,4 +1,4 @@
-from acquisition.Configs import cfg_scope #import config file
+from configs import cfg_scope #import config file
 from acquisition.SaveOutputs.Save_Output import myprint, outputs #import function "myprint" and variable "outputs"
 from acquisition.DataAcquisition.Conversion_Values import convert_y_to_mV, units_conversion_parameters
 from acquisition.DataAcquisition.Set_Scope_Parameters import check_parameters
@@ -66,10 +66,10 @@ def trigger_slope_value(config='FALL'):
 
 
 #=====================================================================================================
-def get_rnd_sample(oscilloscope, rnd_sample):
+def get_rnd_sample(oscilloscope, rnd_sample, converter):
 
-    '''Retrieve the conversion parameters from the oscilloscope'''
-    converter = units_conversion_parameters(oscilloscope=oscilloscope)
+    # '''Retrieve the conversion parameters from the oscilloscope'''
+    # converter = units_conversion_parameters(oscilloscope=oscilloscope)
 
     '''Create objects to fill'''
     df_data   = pd.DataFrame() 
@@ -81,26 +81,24 @@ def get_rnd_sample(oscilloscope, rnd_sample):
         try:
             event = oscilloscope.query_ascii_values('curve?') #list
         except:
-            # myprint('       error')
             errors += 1
         else:
-            # event = convert_y_to_mV(event, converter) #convert event to mV, to compare with trigger
             df_data[f'{i}'] = event
             time_instant = time()
             time_data.append(time_instant)
 
     df_data = convert_y_to_mV(df_data, converter) #convert all DataFrame to mV
 
-    myprint(f'        {rnd_sample - errors} events; {errors} errors')
+    myprint(f'      Events: {rnd_sample - errors}; Errors {errors}')
 
     return(df_data, time_data)
 
 
 
 #=====================================================================================================
-def analyze_rnd_sample(df_data, time_data, trigger, trigger_slope, counter=1, min_peaks=2, min_separation=10):
+def analyze_rnd_sample(df_data, time_data, trigger, trigger_slope=-1, counter=1, min_peaks=2, min_separation=10):
 
-    trigger_slope = trigger_slope_value(trigger_slope)
+    # trigger_slope = trigger_slope_value(trigger_slope)
 
     waveforms_analyzed = pd.DataFrame()
     time_analyzed = []
@@ -140,7 +138,7 @@ def analyze_rnd_sample(df_data, time_data, trigger, trigger_slope, counter=1, mi
 
 
 #=====================================================================================================
-def run_acquisition( oscilloscope, trigger, trigger_slope, samples=100, rnd_sample=1000, min_peaks=2, min_separation=10 ):
+def run_acquisition( oscilloscope, converter, trigger, trigger_slope=-1, samples=100, rnd_sample=1000, min_peaks=2, min_separation=10 ):
     """
     This function serves to the purpose of retrieving a useful sample with given lenght. 
     Operation:
@@ -183,11 +181,12 @@ def run_acquisition( oscilloscope, trigger, trigger_slope, samples=100, rnd_samp
         total_events = waveforms_storage.shape[1]
         temp_df   = pd.DataFrame()
         temp_time = [] 
-        myprint(f'   Run {counter}. {round(100*total_events/samples , 1)}%. ({total_events}/{samples}).')
+        myprint(f'      Run {counter}. {round(100*total_events/samples , 1)}%. ({total_events}/{samples}).')
 
         temp_df, temp_time = get_rnd_sample(
             oscilloscope=oscilloscope, 
-            rnd_sample=rnd_sample
+            rnd_sample=rnd_sample,
+            converter=converter
             )
 
         waveforms_analyzed, time_analyzed = analyze_rnd_sample(
@@ -248,6 +247,11 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd
 
     trigger_value, trigger_slope, y_scale = check_parameters(oscilloscope=oscilloscope)
 
+    trigger_slope_number = trigger_slope_value(trigger_slope)
+
+    # '''Retrieve the conversion parameters from the oscilloscope'''
+    converter = units_conversion_parameters(oscilloscope=oscilloscope)
+
     acquired_samples = 0    # Total amount of samples collected
     saved_csv = 1           # Total of saved csv files 
     files = []              # File names
@@ -263,7 +267,8 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd
                 min_peaks=min_peaks,
                 min_separation=min_separation,
                 trigger=trigger_value,
-                trigger_slope=trigger_slope
+                trigger_slope=trigger_slope_number,
+                converter=converter
                 )
 
         file = f'{path}/file_{saved_csv}.csv'

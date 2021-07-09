@@ -6,7 +6,8 @@ from scipy.signal import find_peaks
 from time import time, ctime, sleep
 from datetime import timedelta
 
-from acquisition.Configs import cfg_scope as config
+from configs import cfg_scope as config
+
 from acquisition.DataAcquisition.Conversion_Values import convert_y_to_mV
 from acquisition.DataAcquisition.Conversion_Values import units_conversion_parameters, convert_y_to_units
 from acquisition.DataAcquisition.Acquisition_Waveform import get_rnd_sample, analyze_rnd_sample

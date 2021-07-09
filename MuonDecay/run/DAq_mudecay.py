@@ -1,10 +1,10 @@
 try:
-    from acquisition.Configs import cfg_scope
+    from configs import cfg_scope
     from acquisition.DataAcquisition.Acquisition_Waveform import Acquisition_Waveform
     from acquisition.DataAcquisition.Set_Scope_Parameters import Set_Scope_Parameters
     from acquisition.SaveOutputs.Save_Output import myprint, outputs, Create_Folder, Acquisition_Type, Save_Output_File
-    from data_analyze.Analyze.single_muon import Analysis_SingleMuon, plots_SingleMuon
-    from data_analyze.Analyze.muon_decay import Analysis_MuonDecay, plots_MuonDecay
+    from data_analyze.Analyze.analysis import Analysis_MuonDecay, Analysis_SingleMuon
+    from data_analyze.Plots.plots import plots_MuonDecay, plots_SingleMuon
 except:
     raise ImportError('Error on importing modules. Please, try again.')
 
@@ -111,9 +111,8 @@ else:
     raise NotImplementedError
 
 
-
-
-
 """
-converter para mV ao final de get_rnd_samples
+mudar local das configs; deixar mais visível
 """
+
+
