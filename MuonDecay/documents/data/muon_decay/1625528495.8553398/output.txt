@@ -1,0 +1,328 @@
+
+Starting acquisition... Local time: Mon Jul  5 20:41:35 2021
+This is a "muon_decay" type of acquisition.
+
+FAILED 1 to write scope parameters.
+
+SCOPE INFOs:
+1;8;ASC;RP;MSB;2500;"Ch1, DC coupling, 3.0E-2 V/div, 1.0E-6 s/div, 2500 points, Sample mode";Y;4.0E-9;0;-4.0E-7;"s";1.2E-3;0.0E0;1.13E2;"Volts"
+
+
+
+Oscilloscope informations: LOADED SUCESSFULLY after 1 attempt(s). Check config file for more details.
+
+
+An email will be sent when acquisition is over or in case of error.
+
+Trigger changed: set to -9.6 mV
+Trigger slope ok.
+Scale ok.
+
+Try number 1. 0.0% (0/100).
+   Run 1. 0.0%. (0/10).
+       error
+       error
+       error
+       error
+       error
+       error
+       error
+       error
+       error
+       error
+       error
+   Run 2. 10.0%. (1/10).
+       error
+       error
+       error
+       error
+   Run 3. 20.0%. (2/10).
+       error
+       error
+   Run 4. 20.0%. (2/10).
+       error
+       error
+       error
+       error
+   Run 5. 30.0%. (3/10).
+       error
+       error
+       error
+       error
+       error
+   Run 6. 50.0%. (5/10).
+       error
+       error
+       error
+       error
+   Run 7. 80.0%. (8/10).
+       error
+       error
+       error
+   Run 8. 80.0%. (8/10).
+       error
+       error
+Try number 2. 10.0% (10/100).
+   Run 1. 0.0%. (0/10).
+       error
+       error
+       error
+       error
+       error
+       error
+   Run 2. 30.0%. (3/10).
+       error
+       error
+       error
+       error
+       error
+   Run 3. 50.0%. (5/10).
+       error
+       error
+       error
+       error
+       error
+       error
+   Run 4. 90.0%. (9/10).
+       error
+       error
+       error
+Try number 3. 20.0% (20/100).
+   Run 1. 0.0%. (0/10).
+       error
+       error
+       error
+   Run 2. 40.0%. (4/10).
+       error
+       error
+   Run 3. 50.0%. (5/10).
+       error
+       error
+   Run 4. 70.0%. (7/10).
+       error
+       error
+       error
+       error
+       error
+   Run 5. 80.0%. (8/10).
+       error
+       error
+       error
+       error
+Try number 4. 30.0% (30/100).
+   Run 1. 0.0%. (0/10).
+       error
+       error
+       error
+   Run 2. 10.0%. (1/10).
+       error
+       error
+       error
+   Run 3. 30.0%. (3/10).
+       error
+       error
+       error
+       error
+       error
+       error
+   Run 4. 50.0%. (5/10).
+       error
+       error
+       error
+       error
+       error
+       error
+   Run 5. 70.0%. (7/10).
+       error
+       error
+       error
+       error
+   Run 6. 80.0%. (8/10).
+       error
+       error
+       error
+       error
+Try number 5. 41.0% (41/100).
+   Run 1. 0.0%. (0/10).
+       error
+       error
+       error
+       error
+   Run 2. 20.0%. (2/10).
+       error
+       error
+       error
+       error
+       error
+   Run 3. 80.0%. (8/10).
+       error
+Try number 6. 53.0% (53/100).
+   Run 1. 0.0%. (0/10).
+       error
+       error
+   Run 2. 10.0%. (1/10).
+       error
+       error
+       error
+   Run 3. 30.0%. (3/10).
+       error
+       error
+       error
+       error
+       error
+   Run 4. 50.0%. (5/10).
+       error
+       error
+       error
+       error
+   Run 5. 60.0%. (6/10).
+       error
+       error
+       error
+       error
+       error
+       error
+   Run 6. 80.0%. (8/10).
+       error
+       error
+       error
+       error
+Try number 7. 64.0% (64/100).
+   Run 1. 0.0%. (0/10).
+       error
+       error
+       error
+       error
+       error
+       error
+   Run 2. 10.0%. (1/10).
+       error
+       error
+       error
+       error
+   Run 3. 30.0%. (3/10).
+       error
+       error
+       error
+       error
+       error
+   Run 4. 50.0%. (5/10).
+       error
+   Run 5. 70.0%. (7/10).
+       error
+       error
+   Run 6. 70.0%. (7/10).
+       error
+       error
+   Run 7. 70.0%. (7/10).
+       error
+       error
+       error
+       error
+   Run 8. 90.0%. (9/10).
+       error
+       error
+       error
+       error
+Try number 8. 77.0% (77/100).
+   Run 1. 0.0%. (0/10).
+       error
+       error
+       error
+       error
+   Run 2. 20.0%. (2/10).
+       error
+       error
+       error
+       error
+       error
+       error
+   Run 3. 40.0%. (4/10).
+       error
+       error
+       error
+       error
+   Run 4. 50.0%. (5/10).
+       error
+       error
+       error
+       error
+       error
+   Run 5. 70.0%. (7/10).
+       error
+       error
+       error
+       error
+Try number 9. 89.0% (89/100).
+   Run 1. 0.0%. (0/10).
+       error
+       error
+       error
+   Run 2. 10.0%. (1/10).
+       error
+       error
+       error
+       error
+   Run 3. 30.0%. (3/10).
+       error
+       error
+       error
+       error
+   Run 4. 30.0%. (3/10).
+       error
+       error
+   Run 5. 50.0%. (5/10).
+       error
+       error
+       error
+       error
+   Run 6. 60.0%. (6/10).
+       error
+       error
+       error
+       error
+       error
+       error
+       error
+   Run 7. 70.0%. (7/10).
+       error
+       error
+       error
+       error
+       error
+       error
+   Run 8. 80.0%. (8/10).
+       error
+       error
+       error
+       error
+       error
+
+Acquisition parameters:
+  Necessary samples: 100
+  Samples per csv: 10
+  Random samples: 1000
+  Minimal number of peaks: 2
+  Minimal separation: 150
+  Email-me: True
+Ocilloscope parameters:
+  Oscilloscope: USB0::0x0699::0x0363::C061073::INSTR
+  Channel: CH1
+  Encode Format: ASCII
+  Channel width: 1
+  Channel position: 4.5
+  Probe: 1
+  Persistence: INF
+  Scope Resolution: 2500
+  Horizontal scale: 10.0 micro-sec
+  Horizontal position: 46.0 micro-sec
+  Ch1 scale (y_scale): 0.03
+  Trigger value: -9.6 mV
+  Trigger slope: FALL
+
+
+Finishing acquisition... Local time: Wed Jul  7 11:04:27 2021
+After 1 day, 14:22:51.510958
+
+END acquisition
+

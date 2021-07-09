@@ -73,14 +73,16 @@ def get_rnd_sample(oscilloscope, rnd_sample):
 
     '''Create objects to fill'''
     df_data   = pd.DataFrame() 
-    time_data = [] 
+    time_data = []
+    errors    = 0 
 
     '''Acquisition of random samples'''
     for i in range( rnd_sample ):
         try:
             event = oscilloscope.query_ascii_values('curve?') #list
         except:
-            myprint('error')
+            # myprint('       error')
+            errors += 1
         else:
             # event = convert_y_to_mV(event, converter) #convert event to mV, to compare with trigger
             df_data[f'{i}'] = event
@@ -88,6 +90,8 @@ def get_rnd_sample(oscilloscope, rnd_sample):
             time_data.append(time_instant)
 
     df_data = convert_y_to_mV(df_data, converter) #convert all DataFrame to mV
+
+    myprint(f'        {rnd_sample - errors} events; {errors} errors')
 
     return(df_data, time_data)
 
@@ -100,6 +104,7 @@ def analyze_rnd_sample(df_data, time_data, trigger, trigger_slope, counter=1, mi
 
     waveforms_analyzed = pd.DataFrame()
     time_analyzed = []
+    discarded = 0
 
     '''Analysis of the rnd_sample: find waveform if len(peaks) >= min_peaks and save'''
     for i in range( df_data.shape[1] ):
@@ -124,8 +129,11 @@ def analyze_rnd_sample(df_data, time_data, trigger, trigger_slope, counter=1, mi
         elif (min_peaks == 0) and (len(peaks) >= min_peaks): 
             waveforms_analyzed[f'{counter}_{i}'] = event 
             time_analyzed.append( time_data[i] )
-
-
+        
+        else:
+            discarded += 1
+    
+    myprint(f'      Collected {df_data.shape[1] - discarded} events; {discarded} removed')
 
     return(waveforms_analyzed, time_analyzed)
 

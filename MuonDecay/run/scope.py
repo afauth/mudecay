@@ -9,6 +9,7 @@ from datetime import timedelta
 from acquisition.Configs import cfg_scope as config
 from acquisition.DataAcquisition.Conversion_Values import convert_y_to_mV
 from acquisition.DataAcquisition.Conversion_Values import units_conversion_parameters, convert_y_to_units
+from acquisition.DataAcquisition.Acquisition_Waveform import get_rnd_sample, analyze_rnd_sample
 
 
 def y_values(oscilloscope):
@@ -32,6 +33,22 @@ def plot_values(oscilloscope):
     print(event)
     plt.plot(x, event)
     plt.show()
+
+def rnd_collection(oscilloscope, samples):
+    start = time()
+    df_data, time_data = get_rnd_sample(oscilloscope, samples)
+    finish = time()
+    print(f'Time: {timedelta(seconds=finish - start)}')
+    return (df_data, time_data)
+
+def analyze_collection(df_data, time_data, trigger, trigger_slope):
+    start = time()
+    waveforms, time_value = analyze_rnd_sample(df_data, time_data, trigger, trigger_slope)
+    finish = time()
+    print(f'Time: {timedelta(seconds=finish - start)}')
+    return(waveforms, time_value)
+
+
 
 rm = pyvisa.ResourceManager()                 # Calling PyVisa library
 scope = rm.open_resource(str(config.ScopeID)) # Connecting via USB
