@@ -89,7 +89,7 @@ def get_rnd_sample(oscilloscope, rnd_sample, converter):
 
     df_data = convert_y_to_mV(df_data, converter) #convert all DataFrame to mV
 
-    myprint(f'      Events: {rnd_sample - errors}; Errors {errors}')
+    myprint(f'          Events: {rnd_sample - errors}; Errors {errors}')
 
     return(df_data, time_data)
 
@@ -131,7 +131,7 @@ def analyze_rnd_sample(df_data, time_data, trigger, trigger_slope=-1, counter=1,
         else:
             discarded += 1
     
-    myprint(f'      Collected {df_data.shape[1] - discarded} events; {discarded} removed')
+    myprint(f'          Collected {df_data.shape[1] - discarded} events; {discarded} removed')
 
     return(waveforms_analyzed, time_analyzed)
 
