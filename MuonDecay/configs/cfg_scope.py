@@ -7,13 +7,13 @@ ScopeID = 'USB0::0x0699::0x0363::C061073::INSTR'
 Parameters for the acquisition
 '''
 #minimal number of samples needed to retrieve
-necessarySamples  = 100
+necessarySamples  = 200
 #minimal number of samples per csv
 samples           = 10
 #number of random samples to collect
 random_samples    = 100
 #minimal amount of peaks; [1] for single muon and [2] for muon decay
-min_peaks         = 1
+min_peaks         = 2
 #separation between the two peaks (1/2500 micro-seconds): optimal value = 60 ns
 min_separation    = 150 
 #

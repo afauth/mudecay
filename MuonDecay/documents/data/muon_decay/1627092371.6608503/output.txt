@@ -1,0 +1,1684 @@
+
+Starting acquisition... Local time: Fri Jul 23 23:06:11 2021
+This is a "muon_decay" type of acquisition.
+
+
+SCOPE INFOs:
+1;8;ASC;RP;MSB;2500;"Ch1, DC coupling, 3.0E-2 V/div, 1.0E-6 s/div, 2500 points, Sample mode";Y;4.0E-9;0;-4.0E-7;"s";1.2E-3;0.0E0;1.13E2;"Volts"
+
+
+
+Oscilloscope informations: LOADED SUCESSFULLY after 0 attempt(s). Check config file for more details.
+
+
+An email will be sent when acquisition is over or in case of error.
+
+Trigger changed: set to -9.6 mV
+Trigger slope ok.
+Scale ok.
+
+Try number 1. 0.0% (0/100).
+      Run 1. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 2. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 3. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 4. 0.0%. (0/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 5. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 6. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 7. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 8. 0.0%. (0/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 9. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 10. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 11. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 12. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 13. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 14. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 15. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 16. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 17. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 18. 10.0%. (1/10).
+      Events: 97; Errors 3
+      Collected 1 events; 96 removed
+      Run 19. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 20. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 21. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 22. 30.0%. (3/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 23. 30.0%. (3/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 24. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 25. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 26. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 27. 40.0%. (4/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 28. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 29. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 30. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 31. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 32. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 33. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 34. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 35. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 36. 40.0%. (4/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 37. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 38. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 39. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 40. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 41. 60.0%. (6/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 42. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 43. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 44. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 45. 70.0%. (7/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 46. 70.0%. (7/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 47. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 48. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 49. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 50. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 51. 80.0%. (8/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 52. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 53. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 54. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 55. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 56. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 57. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 58. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 59. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 60. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 61. 80.0%. (8/10).
+      Events: 98; Errors 2
+      Collected 1 events; 97 removed
+      Run 62. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 63. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 64. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 65. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 66. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 67. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 68. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 69. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 70. 90.0%. (9/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 71. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+Try number 2. 10.0% (10/100).
+      Run 1. 0.0%. (0/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 2. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 3. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 4. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 5. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 6. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 7. 0.0%. (0/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 8. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 9. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 10. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 11. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 12. 10.0%. (1/10).
+      Events: 97; Errors 3
+      Collected 0 events; 97 removed
+      Run 13. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 14. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 15. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 16. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 17. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 18. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 19. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 20. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 21. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 22. 20.0%. (2/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 23. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 24. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 2 events; 98 removed
+      Run 25. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 26. 40.0%. (4/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 27. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 28. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 29. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 30. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 31. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 32. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 33. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 34. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 35. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 36. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 37. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 38. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 39. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 40. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 41. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 42. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 43. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 44. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 45. 60.0%. (6/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 46. 70.0%. (7/10).
+      Events: 98; Errors 2
+      Collected 1 events; 97 removed
+      Run 47. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 48. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 49. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+Try number 3. 20.0% (20/100).
+      Run 1. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 2. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 3. 0.0%. (0/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 4. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 5. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 2 events; 98 removed
+      Run 6. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 7. 20.0%. (2/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 8. 30.0%. (3/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 9. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 10. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 11. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 12. 40.0%. (4/10).
+      Events: 98; Errors 2
+      Collected 1 events; 97 removed
+      Run 13. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 14. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 15. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 16. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 17. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 18. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 19. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 20. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 21. 50.0%. (5/10).
+      Events: 97; Errors 3
+      Collected 0 events; 97 removed
+      Run 22. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 23. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 24. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 25. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 26. 50.0%. (5/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 27. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 28. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 29. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 30. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 31. 50.0%. (5/10).
+      Events: 97; Errors 3
+      Collected 0 events; 97 removed
+      Run 32. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 33. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 34. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 35. 70.0%. (7/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 36. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 37. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 38. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 39. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 40. 80.0%. (8/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 41. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 42. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 43. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 44. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 45. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 46. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 47. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 48. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 49. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 50. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 51. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 52. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+Try number 4. 30.0% (30/100).
+      Run 1. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 2. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 3. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 4. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 5. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 6. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 7. 0.0%. (0/10).
+      Events: 97; Errors 3
+      Collected 1 events; 96 removed
+      Run 8. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 9. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 10. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 11. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 12. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 13. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 14. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 15. 20.0%. (2/10).
+      Events: 98; Errors 2
+      Collected 1 events; 97 removed
+      Run 16. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 17. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 18. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 19. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 20. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 21. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 22. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 23. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 24. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 25. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 26. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 27. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 28. 40.0%. (4/10).
+      Events: 98; Errors 2
+      Collected 1 events; 97 removed
+      Run 29. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 30. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 31. 60.0%. (6/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 32. 60.0%. (6/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 33. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 34. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 35. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 36. 60.0%. (6/10).
+      Events: 98; Errors 2
+      Collected 1 events; 97 removed
+      Run 37. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 38. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 39. 70.0%. (7/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 40. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 41. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 42. 70.0%. (7/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 43. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 44. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 45. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 46. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 47. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 48. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 49. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 50. 80.0%. (8/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 51. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 52. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 53. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 54. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 55. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 56. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 57. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 58. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 59. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 60. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 61. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 62. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 63. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 64. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 65. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 66. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 67. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 68. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 69. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 70. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 71. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 72. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 73. 80.0%. (8/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 74. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 75. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 76. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 77. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 78. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 79. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+Try number 5. 40.0% (40/100).
+      Run 1. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 2. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 3. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 4. 0.0%. (0/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 5. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 6. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 7. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 8. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 9. 20.0%. (2/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 10. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 11. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 12. 30.0%. (3/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 13. 30.0%. (3/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 14. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 15. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 16. 40.0%. (4/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 17. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 18. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 19. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 20. 50.0%. (5/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 21. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 22. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 23. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 24. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 25. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 26. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 27. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 28. 50.0%. (5/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 29. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 30. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 31. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 32. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 33. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 34. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 35. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 36. 50.0%. (5/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 37. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 38. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 39. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 40. 50.0%. (5/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 41. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 42. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 43. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 44. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 45. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 46. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 47. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 48. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 49. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 50. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 51. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 52. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 53. 70.0%. (7/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 54. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 55. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 56. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 57. 80.0%. (8/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 58. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 59. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 60. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 61. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 62. 80.0%. (8/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 63. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 64. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 65. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 66. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 67. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 68. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 69. 80.0%. (8/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 70. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 71. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 72. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 73. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 74. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 75. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 76. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 77. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 78. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 79. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 80. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 81. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+Try number 6. 50.0% (50/100).
+      Run 1. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 2. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 3. 0.0%. (0/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 4. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 5. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 6. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 7. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 8. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 9. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 10. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 11. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 12. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 13. 20.0%. (2/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 14. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 15. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 16. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 17. 30.0%. (3/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 18. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 19. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 20. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 21. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 22. 60.0%. (6/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 23. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 24. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 25. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 26. 70.0%. (7/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 27. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 28. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 29. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 30. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 31. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 32. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 33. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 34. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 35. 90.0%. (9/10).
+      Events: 97; Errors 3
+      Collected 0 events; 97 removed
+      Run 36. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 2 events; 97 removed
+Try number 7. 61.0% (61/100).
+      Run 1. 0.0%. (0/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 2. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 3. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 4. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 5. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 6. 0.0%. (0/10).
+      Events: 98; Errors 2
+      Collected 1 events; 97 removed
+      Run 7. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 8. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 9. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 10. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 11. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 12. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 13. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 14. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 15. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 16. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 17. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 18. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 19. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 20. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 21. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 22. 30.0%. (3/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 23. 30.0%. (3/10).
+      Events: 98; Errors 2
+      Collected 1 events; 97 removed
+      Run 24. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 25. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 26. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 27. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 28. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 29. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 30. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 31. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 32. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 33. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 34. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 35. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 36. 60.0%. (6/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 37. 70.0%. (7/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 38. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 39. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 40. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 41. 70.0%. (7/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 42. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 43. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 44. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 45. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 46. 80.0%. (8/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 47. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 48. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 49. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 50. 90.0%. (9/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 51. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+Try number 8. 71.0% (71/100).
+      Run 1. 0.0%. (0/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 2. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 3. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 4. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 2 events; 98 removed
+      Run 5. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 6. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 7. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 8. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 9. 20.0%. (2/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 10. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 11. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 12. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 13. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 14. 20.0%. (2/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 15. 20.0%. (2/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 16. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 17. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 18. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 19. 20.0%. (2/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 20. 20.0%. (2/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 21. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 22. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 23. 30.0%. (3/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 24. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 25. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 26. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 27. 40.0%. (4/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 28. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 29. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 30. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 31. 50.0%. (5/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 32. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 33. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 34. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 35. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 36. 70.0%. (7/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 37. 70.0%. (7/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 38. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 39. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 40. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 41. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 42. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 43. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 44. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 45. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 46. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 47. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 48. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 49. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 50. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 51. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+Try number 9. 81.0% (81/100).
+      Run 1. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 2. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 3. 10.0%. (1/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 4. 10.0%. (1/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 5. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 2 events; 98 removed
+      Run 6. 30.0%. (3/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 7. 30.0%. (3/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 8. 40.0%. (4/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 9. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 10. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 11. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 2 events; 98 removed
+      Run 12. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 13. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 14. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 15. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 16. 70.0%. (7/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 17. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 18. 70.0%. (7/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 19. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 20. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+Try number 10. 91.0% (91/100).
+      Run 1. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 2. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 3. 0.0%. (0/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 4. 0.0%. (0/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 5. 0.0%. (0/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 6. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 7. 10.0%. (1/10).
+      Events: 100; Errors 0
+      Collected 2 events; 98 removed
+      Run 8. 30.0%. (3/10).
+      Events: 99; Errors 1
+      Collected 1 events; 98 removed
+      Run 9. 40.0%. (4/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 10. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 11. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 12. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 13. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 14. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 15. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 16. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 17. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 18. 50.0%. (5/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 19. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 20. 50.0%. (5/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 21. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 22. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 23. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 24. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 25. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 26. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 27. 60.0%. (6/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 28. 60.0%. (6/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 29. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 30. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 31. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 32. 60.0%. (6/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 33. 60.0%. (6/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 34. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 35. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 36. 60.0%. (6/10).
+      Events: 100; Errors 0
+      Collected 2 events; 98 removed
+      Run 37. 80.0%. (8/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 38. 80.0%. (8/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 39. 80.0%. (8/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+      Run 40. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 41. 90.0%. (9/10).
+      Events: 99; Errors 1
+      Collected 0 events; 99 removed
+      Run 42. 90.0%. (9/10).
+      Events: 96; Errors 4
+      Collected 0 events; 96 removed
+      Run 43. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 44. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 45. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 46. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 47. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 48. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 49. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 50. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 0 events; 100 removed
+      Run 51. 90.0%. (9/10).
+      Events: 98; Errors 2
+      Collected 0 events; 98 removed
+      Run 52. 90.0%. (9/10).
+      Events: 100; Errors 0
+      Collected 1 events; 99 removed
+
+Acquisition parameters:
+  Necessary samples: 100
+  Samples per csv: 10
+  Random samples: 100
+  Minimal number of peaks: 2
+  Minimal separation: 150
+  Email-me: True
+Ocilloscope parameters:
+  Oscilloscope: USB0::0x0699::0x0363::C061073::INSTR
+  Channel: CH1
+  Encode Format: ASCII
+  Channel width: 1
+  Channel position: 4.5
+  Probe: 1
+  Persistence: INF
+  Scope Resolution: 2500
+  Horizontal scale: 10.0 micro-sec
+  Horizontal position: 46.0 micro-sec
+  Ch1 scale (y_scale): 0.03
+  Trigger value: -9.6 mV
+  Trigger slope: FALL
+
+
+Finishing acquisition... Local time: Sun Jul 25 14:18:04 2021
+After 1 day, 15:11:52.341336
+
+END acquisition
+
