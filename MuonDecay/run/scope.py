@@ -11,6 +11,8 @@ from configs import cfg_scope as config
 from acquisition.DataAcquisition.Conversion_Values import convert_y_to_mV
 from acquisition.DataAcquisition.Conversion_Values import units_conversion_parameters, convert_y_to_units
 from acquisition.DataAcquisition.Acquisition_Waveform import get_rnd_sample, analyze_rnd_sample
+from acquisition.DataAcquisition.Acquisition_Waveform import Acquisition_Waveform
+from acquisition.DataAcquisition.Set_Scope_Parameters import Set_Scope_Parameters
 
 
 def y_values(oscilloscope):
