@@ -1,0 +1,24 @@
+
+Starting acquisition... Local time: Mon Aug 16 13:28:26 2021
+This is a "single_muon" type of acquisition.
+
+
+SCOPE INFOs:
+1;8;ASC;RP;MSB;2500;"Ch1, DC coupling, 3.0E-2 V/div, 1.0E-6 s/div, 2500 points, Sample mode";Y;4.0E-9;0;-4.0E-7;"s";1.2E-3;0.0E0;1.13E2;"Volts"
+
+
+
+Oscilloscope informations: LOADED SUCESSFULLY after 0 attempt(s). Check config file for more details.
+
+
+An email will be sent when acquisition is over or in case of error.
+
+
+
+FATAL ERROR.
+An unexpected error occoured.
+
+Please, re-check the acquisition and try again.
+
+Local time: Mon Aug 16 13:28:38 2021
+After 0:00:11.212641
