@@ -36,5 +36,7 @@ persistence           = 'INF'    #Infinite persistence
 slope                 = 'FALL'   #Negative slope
 scopeResolution       = 2500     #número de pontos em cada waveform selecionada
 numberBins            = 100      #number of bins to graph
+delay_scale           = 5.0E-9   #
+delay_scale_position  = 2.085E-6 #
 
 
