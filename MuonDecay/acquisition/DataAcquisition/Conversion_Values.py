@@ -21,11 +21,11 @@ def units_conversion_parameters(oscilloscope):
     # values = re.split( ';', temp )
 
     temp = re.split('XUNIT "s";|YUNIT "Volts"\n', scope_infos)[1]
-    values = re.split('YMULT |YZERO |YOFF', temp)
+    values = re.split('YMULT |YZERO |YOFF |;', temp)
 
-    y_mult = float(values[-3])
-    y_zero = float(values[-2])
-    y_off  = float(values[-1])
+    y_mult = float(values[1])
+    y_zero = float(values[3])
+    y_off  = float(values[5])
 
     df = pd.DataFrame(data=[y_zero, y_mult, y_off])
     df.columns = ['values']
