@@ -5,8 +5,11 @@ from data_analyze.CurveFit.Exp_Fit import Curve_Fit_Exponential, Plot_Fit_Graph
 
 
 
-Assemble_MuonDecay(path='../documents/data/muon_decay')
+Assemble_MuonDecay(path='documents/data/muon_decay')
 
-plots_MuonDecay(path='../documents/data/muon_decay')
+Assemble_SingleMuon(path='documents/data/single_muon')
 
-# Curve_Fit_Exponential(xdata=)
+plots_MuonDecay(path='documents/data/muon_decay')
+
+plots_SingleMuon(path='documents/data/single_muon')
+

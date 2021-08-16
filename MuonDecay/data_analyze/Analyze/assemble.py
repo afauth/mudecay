@@ -72,6 +72,41 @@ def Assemble_SingleMuon(path = 'documents/data/single_muon'):
 
     """
 
-    raise(NotImplementedError)
+    folders_list = os.listdir(path)
+    folders_list_full_path = [ (path + '/' + i) for i in folders_list ]
+    folders_list = [ i for i in folders_list_full_path if (os.path.isdir(i) == True) and (i != f'{path}/results') ] #only include folders
+
+    integral = []
+    peaks    = []
+
+    for i in range( len(folders_list) ):
+
+        folder_result_full_path = folders_list[i] + '/' + 'results'
+        folder_results_content  = [ (folder_result_full_path + '/' + i) for i in os.listdir(folder_result_full_path) ]
+        
+        integral.extend( [ j for j in folder_results_content if 'integral.csv' in j ] )
+        peaks.extend( [ j for j in folder_results_content if 'peaks.csv' in j ] )
+
+    integral_total = pd.DataFrame()
+    peaks_total    = pd.DataFrame()
+
+    for i in range( len(integral) ):
+    
+        df_integral = pd.read_csv( integral[i], index_col=0 )
+        integral_total = pd.concat( [integral_total, df_integral] )
+        
+    for i in range( len(peaks) ):
+        
+        df_peaks    = pd.read_csv( peaks[i], index_col=0 )
+        peaks_total    = pd.concat( [peaks_total     , df_peaks] )
+
+    integral_total.index = [ ('event_' + str(i)) for i in range(integral_total.shape[0]) ]
+    peaks_total.index    = [ ('event_' + str(i)) for i in range(peaks_total.shape[0]) ]
+    
+    pathlib.Path(f"{path}/results").mkdir(parents=True, exist_ok=True) #create folder to store the results
+    integral_total.to_csv(path+'/results/integral.csv')
+    peaks_total.to_csv(path+'/results/peaks.csv')
+
+    print(f'\nDocuments joined on \n{path}/results\n')
 
 
