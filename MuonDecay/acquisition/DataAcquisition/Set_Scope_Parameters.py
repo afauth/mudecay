@@ -13,6 +13,10 @@ def Scope_Parameters(oscilloscope):
     oscilloscope.write(f'SELECT:{cfg_scope.channel} ON')
     #print(f'\n{cfg_scope.channel} ON')
 
+    oscilloscope.write(f'HORizontal:DELay:SCAle {cfg_scope.delay_scale}')
+
+    oscilloscope.write(f'HORizontal:DELay:POSition: {cfg_scope.delay_scale_position}')
+
     oscilloscope.write(f'DATa:SOUrce {cfg_scope.channel}') 
     #print(f'')
                 
@@ -48,10 +52,6 @@ def Scope_Parameters(oscilloscope):
                 
     oscilloscope.write(f'TRIGGER:MAIN:EDGE:SLOPE {cfg_scope.slope}') 
     #print(f'Slope: {cfg_scope.slope}')
-
-    oscilloscope.write(f'HORizontal:DELay:SCAle {cfg_scope.delay_scale}')
-
-    oscilloscope.write(f'HORizontal:DELay:POSition: {cfg_scope.delay_scale_position}')
             
     myprint( f'\nSCOPE INFOs:\n{oscilloscope.query("WFMPre?")}\n' ) #Command to transfer waveform preamble information.
 
