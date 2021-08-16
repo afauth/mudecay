@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-from data_analyze.Spectrums.convert_integral import convert_charge
+from data_analyze.Spectrums.convert_integral import convert_charge, convert_energy
 
 
 #                          .
@@ -44,8 +44,8 @@ def plots_MuonDecay(path, folder='results', bins='auto'):
     peaks      = pd.read_csv(path+'/'+folder+'/'+'peaks.csv', index_col=0)
     integral_0 = pd.read_csv(path+'/'+folder+'/'+'integral_0.csv', index_col=0)
     integral_1 = pd.read_csv(path+'/'+folder+'/'+'integral_1.csv', index_col=0)
-    charge_0   = convert_charge(integral_0)
-    charge_1   = convert_charge(integral_1)
+    charge_0   = -1*convert_energy(integral_0)
+    charge_1   = -1*convert_energy(integral_1)
 
     # Main plot
     fig, axes = plt.subplots(ncols=3, nrows=2, figsize=(30,20))
@@ -57,15 +57,16 @@ def plots_MuonDecay(path, folder='results', bins='auto'):
     axes[0,0].set_xlabel('peak (mV)')
 
     # Fig 2: charge_0
-    sns.histplot( -1*charge_0, ax=axes[0,1], color='blue', bins=bins )
+    sns.histplot( charge_0, ax=axes[0,1], color='blue', bins=bins )
     axes[0,1].set_title(f'Espectro de carga')
-    axes[0,1].set_xlabel('charge (pC)')
+    axes[0,1].set_xlabel('energy (MeV)')
 
     #Fig 3: charge_0 x peaks_0
-    axes[0,2].scatter( -1*charge_0 , peaks['peak_Y0'] , color='green' )
+    axes[0,2].scatter( charge_0 , peaks['peak_Y0'] , color='green' )
     axes[0,2].set_title(f'picos X carga')
     axes[0,2].set_ylabel(f'peaks (mV)')
-    axes[0,2].set_xlabel(f'charge (pC)')
+    # axes[0,2].set_xlabel(f'charge (pC)')
+    axes[0,2].set_xlabel(f'energy (MeV)')
 
     # Fig 4: peaks_1
     sns.histplot( peaks['peak_Y1'], ax=axes[1,0], color='orange', bins=bins )
@@ -73,15 +74,17 @@ def plots_MuonDecay(path, folder='results', bins='auto'):
     axes[1,0].set_xlabel('peak (mV)')
 
     # Fig 5: charge_1
-    sns.histplot( -1*charge_1, ax=axes[1,1], color='blue', bins=bins )
+    sns.histplot( charge_1, ax=axes[1,1], color='blue', bins=bins )
     axes[1,1].set_title(f'Espectro de carga')
-    axes[1,1].set_xlabel('charge (pC)')
+    # axes[1,1].set_xlabel('charge (pC)')
+    axes[1,1].set_xlabel('energy (MeV)')
 
     #Fig 6: charge_1 x peaks_1
-    axes[1,2].scatter( -1*charge_1 , peaks['peak_Y1'] , color='green' )
+    axes[1,2].scatter( charge_1 , peaks['peak_Y1'] , color='green' )
     axes[1,2].set_title(f'picos X carga')
     axes[1,2].set_ylabel(f'peaks (mV)')
-    axes[1,2].set_xlabel(f'charge (pC)')
+    # axes[1,2].set_xlabel(f'charge (pC)')
+    axes[1,2].set_xlabel(f'energy (MeV)')
 
     plt.savefig(path+'/'+folder+'/spectrums.png')
 

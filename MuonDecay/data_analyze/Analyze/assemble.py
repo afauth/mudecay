@@ -2,6 +2,8 @@ import pathlib
 import pandas as pd
 import os
 
+from data_analyze.Spectrums.convert_integral import convert_energy, convert_charge
+
 #                          .
 #==========================================================================================================
 def Assemble_MuonDecay(path = 'documents/data/muon_decay'):
@@ -45,6 +47,15 @@ def Assemble_MuonDecay(path = 'documents/data/muon_decay'):
         integral_1_total = pd.concat( [integral_1_total, df_integral_1] )
         peaks_total      = pd.concat( [peaks_total     , df_peaks] )
 
+    # '''convert to energy'''
+    # integral_0_total = convert_energy(integral_0_total)
+    # integral_1_total = convert_energy(integral_1_total)
+
+    # '''columns labels of integrals'''
+    # integral_0_total.columns = ['energy (MeV)']
+    # integral_1_total.columns = ['energy (MeV)']
+    
+    '''indexes'''
     index = [ ('event_' + str(i)) for i in range(integral_0_total.shape[0]) ]
     integral_0_total.index = index
     integral_1_total.index = index
