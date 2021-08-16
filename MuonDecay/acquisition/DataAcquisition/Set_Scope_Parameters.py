@@ -108,7 +108,8 @@ def check_parameters(oscilloscope):
     trigger_value_mV = 1_000*float( re.split(';', trigger_info)[-1] )
     # trigger_slope = re.split('SLOPE |;', trigger_info)[6]
     trigger_slope = re.split(';', trigger_info)[5]
-    y_scale_value = float( re.split(':CH1:SCALE |\n', y_scale_info)[1] )
+    # y_scale_value = float( re.split(':CH1:SCALE |\n', y_scale_info)[1] )
+    y_scale_value = float( re.split('\n', y_scale_info)[0] )
 
     if trigger_value_mV != cfg_scope.trigger:
         myprint(f'Trigger changed: set to {trigger_value_mV} mV')
