@@ -7,7 +7,7 @@ ScopeID = 'USB0::0x0699::0x0363::C061073::INSTR'
 Parameters for the acquisition
 '''
 #minimal number of samples needed to retrieve
-necessarySamples  = 200
+necessarySamples  = 100
 #minimal number of samples per csv
 samples           = 10
 #number of random samples to collect
