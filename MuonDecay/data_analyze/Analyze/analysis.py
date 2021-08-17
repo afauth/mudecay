@@ -2,6 +2,7 @@
 # #==========================================================================================================
 import os
 import pathlib
+from scipy.sparse import base
 import seaborn as sns
 import pandas as pd
 import numpy as np
@@ -42,7 +43,7 @@ def Analysis_SingleMuon(folder):
     '''
     Retrieve base line and trigger, for the analysis
     '''
-    baseLine = waveform.iloc[150:].mean().mean() #assume that the peaks occours until x=150; then, the baseLine is the general mean
+    baseLine = waveform.iloc[:130].mean().mean() #assume that the peaks occours until x=150; then, the baseLine is the general mean
     trigger, slope = trigger_acquisition(folder) #reads the trigger on the output.txt file; trigger is in mV
 
     '''
@@ -95,7 +96,8 @@ def Analysis_MuonDecay(folder):
     '''
     Retrieve base line and trigger, for the analysis
     '''
-    baseLine = waveform.iloc[150:].mean().mean() #assume that the peaks occours until x=150; then, the baseLine is the general mean
+    baseLine = waveform.iloc[:130].mean().mean() #assume that the peaks occours until x=150; then, the baseLine is the general mean
+    print(baseLine)
     trigger, slope = trigger_acquisition(folder) #reads the trigger on the output.txt file; trigger is in mV
 
     '''

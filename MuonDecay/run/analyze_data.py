@@ -24,7 +24,7 @@ def analyze_folders_singlemuon(path='documents/data/single_muon'):
         plots_SingleMuon(folder)
 
 
-# analyze_folders_muondecay()
+analyze_folders_muondecay()
 
 # analyze_folders_singlemuon()
 
