@@ -234,10 +234,8 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd
 
     '''Convert slope to a number and trigger to scope_units'''
     trigger_slope_number = trigger_slope_value(trigger_slope)
-    trigger_in_units     = convert_y_to_units(trigger_value, converter)
+    trigger_in_units     = convert_y_to_units(value_in_volts=trigger_value/1000, converter_df=converter)
     
-    print('trigger_in_units:', trigger_in_units)
-
     acquired_samples = 0    # Total amount of samples collected
     saved_csv = 1           # Total of saved csv files 
     files = []              # File names
