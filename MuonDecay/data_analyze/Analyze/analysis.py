@@ -39,14 +39,14 @@ def Analysis_SingleMuon(folder):
     '''
     baseLine = waveform.iloc[:130].mean().mean() #assume that the peaks occours until x=150; then, the baseLine is the general mean
     
-    print(baseLine)
+    print(f'baseLine = {baseLine}')
     
     trigger_in_mV, slope_string = trigger_acquisition(folder) #reads the trigger on the output.txt file; trigger is in mV
 
     converter = retrieve_y_to_volts(folder)
 
     '''Convert trigger to units and slope to a number'''
-    trigger_in_units = convert_y_to_units(trigger_in_mV, converter)
+    trigger_in_units = convert_y_to_units(value_in_volts=trigger_in_mV/1000, converter_df=converter)
     slope_number     = trigger_slope_value(slope_string)
 
     '''
@@ -106,7 +106,7 @@ def Analysis_MuonDecay(folder):
     converter = retrieve_y_to_volts(folder)
 
     '''Convert trigger to units and slope to a number'''
-    trigger_in_units = convert_y_to_units(trigger_in_mV, converter)
+    trigger_in_units = convert_y_to_units(trigger_in_mV/1000, converter)
     slope_number     = trigger_slope_value(slope_string)
 
     '''

@@ -37,7 +37,7 @@ def peaks_muon_decay(df, height, slope=-1, first_peak_loc=False):
     if Peaks.shape[1] > 0:
         Peaks.columns = ['peak_X0', 'peak_X1', 'peak_Y0', 'peak_Y1']
     else:
-        raise('no peaks detected at all...\n\n')
+        raise ValueError('\nno peaks detected at all...\n\n')
 
     problems = problems.T
     if problems.shape[1] > 0:
@@ -53,6 +53,8 @@ def peaks_single_muon(df, height, slope=-1, first_peak_loc=False):
 
     Peaks    = pd.DataFrame()
     problems = pd.DataFrame()
+
+    print(height)
 
     for i in range(df.shape[1]):
 
@@ -77,7 +79,10 @@ def peaks_single_muon(df, height, slope=-1, first_peak_loc=False):
         Peaks[event.name] = peaks
 
     Peaks = Peaks.T
-    Peaks.columns = ['peak_X0', 'peak_Y0']
+    if Peaks.shape[1] > 0:
+        Peaks.columns = ['peak_X0', 'peak_Y0']
+    else:
+        raise ValueError('\nno peaks detected at all...\n\n')
 
     problems = problems.T
     if problems.shape[1] > 0:

@@ -40,6 +40,8 @@ def plots_SingleMuon(path, folder='results', bins='auto'):
 
     plt.savefig(path+'/'+folder+'/spectrums.png')
 
+    plot_random_contours_single_muon(path+'/'+folder)
+
 
 
 #                          .
@@ -98,6 +100,8 @@ def plots_MuonDecay(path, folder='results', bins='auto'):
 
     plt.savefig(path+'/'+folder+'/spectrums.png')
 
+    # plot_random_contours_single_muon
+
 
 
 #                          .
@@ -107,5 +111,42 @@ def plot_event(event, limits=[0,2500]):
     x = [ i for i in range( event.shape[0] ) ][ limits[0]:limits[1] ]
     y = event[ limits[0]:limits[1] ]
     plt.plot( x, y )
+
+
+
+def plot_random_contours_single_muon(path, limit_number=10):
+
+    contours = pd.read_csv(path+'/contours.csv', index_col=0)
+
+    if contours.shape[0] <= limit_number:
+        number_of_plots = contours.shape[0]
+    else:
+        number_of_plots = limit_number
+
+    df = contours.sample(n=number_of_plots, axis=1)
+
+    fig, axes = plt.subplots(ncols=1, nrows=1, figsize=(10,10))
+    axes.plot(df)
+    plt.savefig(path+'/random_plots.png')
+
+
+
+def plot_random_contours_muon_decay(path, folder='results'):
+
+    contours_0 = pd.read_csv(path+'/'+folder+'/'+'contours_0.csv', index_col=0)
+    contours_1 = pd.read_csv(path+'/'+folder+'/'+'contours_1.csv', index_col=0)
+
+    if contours_0.shape[0] <= 10:
+        number_of_plots = contours_0.shape[0]
+    else:
+        number_of_plots = 10
+
+    df_0 = contours_0.sample(n=number_of_plots, axis=1)
+    df_1 = contours_1.sample(n=number_of_plots, axis=1)
+
+    fig, axes = plt.subplots(ncols=2, nrows=1, figsize=(20,10))
+    axes[0].plot(df_0)
+    axes[1].plot(df_1)
+    plt.savefig(path+'/'+folder+'/random_plots.png')
 
 
