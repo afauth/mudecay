@@ -1,5 +1,4 @@
 import re
-import pyvisa
 import pandas as pd
 
 
@@ -23,13 +22,6 @@ def units_conversion_parameters(oscilloscope):
     y_mult = float(values[-3])
     y_zero = float(values[-2])
     y_off  = float(values[-1])
-
-    # temp = re.split('XUNIT "s";|YUNIT "Volts"\n', scope_infos)[1]
-    # values = re.split('YMULT |YZERO |YOFF |;', temp)
-
-    # y_mult = float(values[1])
-    # y_zero = float(values[3])
-    # y_off  = float(values[5])
 
     df = pd.DataFrame(data=[y_zero, y_mult, y_off])
     df.columns = ['values']
@@ -76,5 +68,21 @@ def convert_y_to_units(value_in_volts, converter_df):
     value_in_units = converter_df['y_off'][0] + (value_in_volts - converter_df['y_zero'][0]) / converter_df['y_mult'][0]
 
     return(value_in_units)
+
+
+
+#=====================================================================================================
+def trigger_slope_value(config='FALL'):
+
+    cfg_uppercase = config.upper()
+
+    if cfg_uppercase == 'FALL':
+        slope = -1
+    elif cfg_uppercase == 'RISE':
+        slope = 1
+    else:
+        raise ('Trigger Slope Error: could not determine the slope of the config file. It must be \"FALL\" or \"RISE\"')
+
+    return(slope)
 
 

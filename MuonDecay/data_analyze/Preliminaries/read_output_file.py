@@ -94,7 +94,7 @@ def trigger_acquisition(path='documents/data/1619314826.6753685/', file='output.
     trigger = float(re.split( ' mV' , temp )[0])
 
     temp    = re.split( 'Trigger slope: ' , output )[1]
-    slope   = trigger_slope_value( re.split( '\n' , temp )[0] )
+    slope   = re.split( '\n' , temp )[0] #'FALL' or 'RISE'
 
     return( trigger, slope )
 

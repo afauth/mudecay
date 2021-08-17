@@ -1,13 +1,12 @@
 from configs import cfg_scope #import config file
 from acquisition.SaveOutputs.Save_Output import myprint, outputs #import function "myprint" and variable "outputs"
-from acquisition.DataAcquisition.Conversion_Values import convert_y_to_mV, units_conversion_parameters
+from acquisition.DataAcquisition.Conversion_Values import trigger_slope_value, units_conversion_parameters, convert_y_to_units
 from acquisition.DataAcquisition.Set_Scope_Parameters import check_parameters
 
 import pandas as pd
 import numpy as np
 from time import time, sleep
-from datetime import timedelta
-from scipy.signal import find_peaks, waveforms
+from scipy.signal import find_peaks
 
 
 
@@ -50,22 +49,6 @@ def read_waveforms_csv(files, file_name, path, tag=''):
 
 
 #=====================================================================================================
-def trigger_slope_value(config='FALL'):
-
-    cfg_uppercase = config.upper()
-
-    if cfg_uppercase == 'FALL':
-        slope = -1
-    elif cfg_uppercase == 'RISE':
-        slope = 1
-    else:
-        raise ('Trigger Slope Error: could not determine the slope of the config file. It must be \"FALL\" or \"RISE\"')
-
-    return(slope)
-
-
-
-#=====================================================================================================
 def get_rnd_sample(oscilloscope, rnd_sample, converter):
 
     # '''Retrieve the conversion parameters from the oscilloscope'''
@@ -87,7 +70,7 @@ def get_rnd_sample(oscilloscope, rnd_sample, converter):
             time_instant = time()
             time_data.append(time_instant)
 
-    df_data = convert_y_to_mV(df_data, converter) #convert all DataFrame to mV
+    # df_data = convert_y_to_mV(df_data, converter) #convert all DataFrame to mV
 
     myprint(f'          Events: {rnd_sample - errors}; Errors {errors}')
 
@@ -247,10 +230,12 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd
 
     trigger_value, trigger_slope, y_scale = check_parameters(oscilloscope=oscilloscope)
 
-    trigger_slope_number = trigger_slope_value(trigger_slope)
-
-    # '''Retrieve the conversion parameters from the oscilloscope'''
+    '''Retrieve the conversion parameters from the oscilloscope'''
     converter = units_conversion_parameters(oscilloscope=oscilloscope)
+
+    '''Convert slope to a number and trigger to scope_units'''
+    trigger_slope_number = trigger_slope_value(trigger_slope)
+    trigger_in_units     = convert_y_to_units(trigger_value, converter)
 
     acquired_samples = 0    # Total amount of samples collected
     saved_csv = 1           # Total of saved csv files 
@@ -266,7 +251,7 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd
                 rnd_sample=rnd_sample,
                 min_peaks=min_peaks,
                 min_separation=min_separation,
-                trigger=trigger_value,
+                trigger=trigger_in_units,
                 trigger_slope=trigger_slope_number,
                 converter=converter
                 )
