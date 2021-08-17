@@ -13,7 +13,7 @@ samples           = 10
 #number of random samples to collect
 random_samples    = 100
 #minimal amount of peaks; [1] for single muon and [2] for muon decay
-min_peaks         = 1
+min_peaks         = 2
 #separation between the two peaks (1/2500 micro-seconds): optimal value = 60 ns
 min_separation    = 150 
 #
