@@ -1,14 +1,12 @@
-import seaborn as sns
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 
 
 
 #                          .
 #==========================================================================================================
-def peaks_muon_decay(df, height, first_peak_loc=False):
+def peaks_muon_decay(df, height, slope=-1, first_peak_loc=False):
 
     Peaks    = pd.DataFrame()
     problems = pd.DataFrame()
@@ -16,7 +14,7 @@ def peaks_muon_decay(df, height, first_peak_loc=False):
     for i in range(df.shape[1]):
 
         event = df[df.columns[i]]
-        x_peaks, _ = find_peaks(event, height=height)
+        x_peaks, _ = find_peaks(slope*event, height=slope*height)
 
         if len(x_peaks) != 2:
             # raise ValueError(f'the numbers of peaks must be 2 and it found {len(x_peaks)} on {event.name}')
@@ -51,7 +49,7 @@ def peaks_muon_decay(df, height, first_peak_loc=False):
 
 #                          .
 #==========================================================================================================
-def peaks_single_muon(df, height, first_peak_loc=False):
+def peaks_single_muon(df, height, slope=-1, first_peak_loc=False):
 
     Peaks    = pd.DataFrame()
     problems = pd.DataFrame()
@@ -59,7 +57,7 @@ def peaks_single_muon(df, height, first_peak_loc=False):
     for i in range(df.shape[1]):
 
         event = df[df.columns[i]]
-        x_peaks, _ = find_peaks(event, height=height)
+        x_peaks, _ = find_peaks(slope*event, height=slope*height)
 
         if len(x_peaks) != 1:
             # raise ValueError(f'the numbers of peaks must be 1 and it found {len(x_peaks)} on {event.name}')
