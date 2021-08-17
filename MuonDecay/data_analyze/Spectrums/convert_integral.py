@@ -1,19 +1,20 @@
 import pandas as pd
 import numpy as np
 
-
+# from data_analyze.Preliminaries.read_output_file import convert_y_to_volts
 
 #                          .
 #==========================================================================================================
-def convert_charge(integral):
-    
+def convert_charge(integral, converter_df, number_of_points=2500):
+
     R = 50 #ohm
-    binTime = 4E-3 # 10 micro-sec / 2500 points
+    binTime = 4E-3 # in micro-seconds; 10 micro-sec / 2500 points
     # VoltCh  = 100 / 255 #100mV/(256-1)bits
 
-    charge = 1_000*integral*binTime/R #pC
+    integral_in_mV = number_of_points*converter_df['y_zero'][0] + converter_df['y_mult'][0]*( integral - number_of_points*converter_df['y_off'][0] )
+    charge = 1_000*integral_in_mV*binTime/R #pC: "mV * micro-sec * 1000/1000 = pico-coulombs"
 
-    return(charge)
+    return(charge) #pC
 
 
 

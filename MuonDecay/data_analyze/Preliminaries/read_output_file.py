@@ -1,8 +1,5 @@
 import re
-import os
 import pandas as pd
-
-from acquisition.DataAcquisition.Acquisition_Waveform import trigger_slope_value
 
 
 
@@ -47,7 +44,7 @@ def retrieve_y_to_volts(path, file='output.txt', sep='/'):
 
 #                          .
 #==========================================================================================================
-def convert_y_to_volts(value, converter_df):
+def convert_y_to_mili_volts(value, converter_df):
     """
     This function is built to [...]
 
@@ -61,9 +58,9 @@ def convert_y_to_volts(value, converter_df):
 
 
     value_in_volts = converter_df['y_zero'][0] + converter_df['y_mult'][0]*(value - converter_df['y_off'][0])
-    value_in_volts *= 1_000 # mV
+    value_in_mV    = 1_000*value_in_volts # The value is actually in mV
 
-    return(value_in_volts)
+    return(value_in_mV)
 
 
 

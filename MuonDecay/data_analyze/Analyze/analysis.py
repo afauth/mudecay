@@ -4,13 +4,12 @@ import pathlib
 import pandas as pd
 
 from data_analyze.Preliminaries.concat_csv_files import concat_csv
-from data_analyze.Preliminaries.read_output_file import trigger_acquisition
+from data_analyze.Preliminaries.read_output_file import trigger_acquisition, retrieve_y_to_volts
 from data_analyze.Spectrums.integral import simpson_integral_df
 from acquisition.DataAcquisition.Conversion_Values import convert_y_to_units, trigger_slope_value
 
 from data_analyze.FindPeaks.peaks import peaks_single_muon, peaks_muon_decay
 from data_analyze.Spectrums.contours import contours_single_muon, contours_muon_decay
-
 
 
 #                          .
@@ -39,10 +38,15 @@ def Analysis_SingleMuon(folder):
     Retrieve base line and trigger, for the analysis
     '''
     baseLine = waveform.iloc[:130].mean().mean() #assume that the peaks occours until x=150; then, the baseLine is the general mean
+    
+    print(baseLine)
+    
     trigger_in_mV, slope_string = trigger_acquisition(folder) #reads the trigger on the output.txt file; trigger is in mV
 
+    converter = retrieve_y_to_volts(folder)
+
     '''Convert trigger to units and slope to a number'''
-    trigger_in_units = convert_y_to_units(trigger_in_mV)
+    trigger_in_units = convert_y_to_units(trigger_in_mV, converter)
     slope_number     = trigger_slope_value(slope_string)
 
     '''
@@ -96,10 +100,13 @@ def Analysis_MuonDecay(folder):
     Retrieve base line and trigger, for the analysis
     '''
     baseLine = waveform.iloc[:130].mean().mean() #assume that the peaks occours until x=150; then, the baseLine is the general mean
+        
     trigger_in_mV, slope_string = trigger_acquisition(folder) #reads the trigger on the output.txt file; trigger is in mV
 
+    converter = retrieve_y_to_volts(folder)
+
     '''Convert trigger to units and slope to a number'''
-    trigger_in_units = convert_y_to_units(trigger_in_mV)
+    trigger_in_units = convert_y_to_units(trigger_in_mV, converter)
     slope_number     = trigger_slope_value(slope_string)
 
     '''
