@@ -49,7 +49,7 @@ def read_waveforms_csv(files, file_name, path, tag=''):
 
 
 #=====================================================================================================
-def get_rnd_sample(oscilloscope, rnd_sample, converter):
+def get_rnd_sample(oscilloscope, rnd_sample):
 
     # '''Retrieve the conversion parameters from the oscilloscope'''
     # converter = units_conversion_parameters(oscilloscope=oscilloscope)
@@ -121,7 +121,7 @@ def analyze_rnd_sample(df_data, time_data, trigger, trigger_slope=-1, counter=1,
 
 
 #=====================================================================================================
-def run_acquisition( oscilloscope, converter, trigger, trigger_slope=-1, samples=100, rnd_sample=1000, min_peaks=2, min_separation=10 ):
+def run_acquisition( oscilloscope, trigger, trigger_slope=-1, samples=100, rnd_sample=1000, min_peaks=2, min_separation=10 ):
     """
     This function serves to the purpose of retrieving a useful sample with given lenght. 
     Operation:
@@ -169,7 +169,6 @@ def run_acquisition( oscilloscope, converter, trigger, trigger_slope=-1, samples
         temp_df, temp_time = get_rnd_sample(
             oscilloscope=oscilloscope, 
             rnd_sample=rnd_sample,
-            converter=converter
             )
 
         waveforms_analyzed, time_analyzed = analyze_rnd_sample(
@@ -236,6 +235,8 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd
     '''Convert slope to a number and trigger to scope_units'''
     trigger_slope_number = trigger_slope_value(trigger_slope)
     trigger_in_units     = convert_y_to_units(trigger_value, converter)
+    
+    print('trigger_in_units:', trigger_in_units)
 
     acquired_samples = 0    # Total amount of samples collected
     saved_csv = 1           # Total of saved csv files 
@@ -253,7 +254,6 @@ def Acquisition_Waveform( oscilloscope, necessarySamples, path, samples=100, rnd
                 min_separation=min_separation,
                 trigger=trigger_in_units,
                 trigger_slope=trigger_slope_number,
-                converter=converter
                 )
 
         file = f'{path}/file_{saved_csv}.csv'

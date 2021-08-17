@@ -8,8 +8,8 @@ import numpy as np
 def convert_charge(integral):
     
     R = 50 #ohm
-    binTime = 4E-3 #micro-sec
-    VoltCh  = 100 / 255 #100mV/(256-1)bits
+    binTime = 4E-3 # 10 micro-sec / 2500 points
+    # VoltCh  = 100 / 255 #100mV/(256-1)bits
 
     charge = 1_000*integral*binTime/R #pC
 
