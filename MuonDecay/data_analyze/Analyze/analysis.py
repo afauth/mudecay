@@ -31,6 +31,8 @@ def Analysis_SingleMuon(folder):
         Please, note that the '..' is used to acess a parent folder.
     """
 
+    print('\n============\nAnalysis Single Muon...\n')
+
     '''
     Concatenate all sub-csv files
     '''
@@ -46,7 +48,7 @@ def Analysis_SingleMuon(folder):
     '''
     Find peaks and problems; save to csv
     '''
-    peaks, problems_peaks = peaks_single_muon(df=slope*waveform, height=slope*trigger, first_peak_loc=100)
+    peaks, problems_peaks = peaks_single_muon(df=waveform, height=trigger, slope=slope, first_peak_loc=100)
     
     pathlib.Path(f"{folder}/results").mkdir(parents=True, exist_ok=True) #create folder to store the results
     peaks.to_csv(f"{folder}/results/peaks.csv")
@@ -67,6 +69,7 @@ def Analysis_SingleMuon(folder):
     problems = pd.concat([problems_peaks, problems_contour])
     problems.to_csv(f"{folder}/results/problems.csv")
     
+    print('\nending analysis...\n============\n')
 
 
 #                          .
@@ -98,7 +101,7 @@ def Analysis_MuonDecay(folder):
     '''
     Find peaks and problems; save to csv
     '''
-    peaks, problems_peaks = peaks_muon_decay(df=slope*waveform, height=slope*trigger, first_peak_loc=100)
+    peaks, problems_peaks = peaks_muon_decay(df=waveform, height=trigger, slope=slope, first_peak_loc=100)
     
     pathlib.Path(f"{folder}/results").mkdir(parents=True, exist_ok=True) #create folder to store the results
     peaks.to_csv(f"{folder}/results/peaks.csv")
