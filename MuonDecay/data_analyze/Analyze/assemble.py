@@ -3,6 +3,7 @@ import pandas as pd
 import os
 
 from data_analyze.Spectrums.convert_integral import convert_energy, convert_charge
+from data_analyze.Preliminaries.read_output_file import retrieve_y_to_volts, convert_y_to_mili_volts
 
 #                          .
 #==========================================================================================================
@@ -38,22 +39,33 @@ def Assemble_MuonDecay(path = 'documents/data/muon_decay'):
     peaks_total      = pd.DataFrame()
 
     for i in range( len(integral_0) ):
-    
+        
+        print(folders_list[i])
+
+        converter = retrieve_y_to_volts(path=f'{folders_list[i]}')
+
         df_integral_0 = pd.read_csv( integral_0[i], index_col=0 )
         df_integral_1 = pd.read_csv( integral_1[i], index_col=0 )
         df_peaks      = pd.read_csv( peaks[i], index_col=0 )
+
+        df_integral_0 = convert_energy(converter_df=converter, integral=df_integral_0)
+        df_integral_1 = convert_energy(converter_df=converter, integral=df_integral_1)
+        df_peaks      = convert_y_to_mili_volts(value=df_peaks, converter_df=converter)
 
         integral_0_total = pd.concat( [integral_0_total, df_integral_0] )
         integral_1_total = pd.concat( [integral_1_total, df_integral_1] )
         peaks_total      = pd.concat( [peaks_total     , df_peaks] )
 
+        
+
+
     # '''convert to energy'''
     # integral_0_total = convert_energy(integral_0_total)
     # integral_1_total = convert_energy(integral_1_total)
 
-    # '''columns labels of integrals'''
-    # integral_0_total.columns = ['energy (MeV)']
-    # integral_1_total.columns = ['energy (MeV)']
+    '''columns labels of integrals'''
+    integral_0_total.columns = ['energy (MeV)']
+    integral_1_total.columns = ['energy (MeV)']
     
     '''indexes'''
     index = [ ('event_' + str(i)) for i in range(integral_0_total.shape[0]) ]

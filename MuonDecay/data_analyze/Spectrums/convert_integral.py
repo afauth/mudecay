@@ -20,13 +20,13 @@ def convert_charge(integral, converter_df, number_of_points=2500):
 
 #                          .
 #==========================================================================================================
-def convert_energy(integral, single_muon_energy_MeV=1000, single_muon_charge_pC=15.5725):
+def convert_energy(integral, converter_df, single_muon_energy_MeV=1000, single_muon_charge_pC=15.5725):
 
     single_muon_energy_MeV = 1.032*2.297*10*1.09 #density*energy_cm^2_per_gram*lenght*conversion_factor
 
     ratio_MeV_per_pC = single_muon_energy_MeV / single_muon_charge_pC # MeV/pC
     
-    charge_in_pC = convert_charge(integral=integral)
+    charge_in_pC = convert_charge(integral=integral, converter_df=converter_df)
 
     energy = ratio_MeV_per_pC*charge_in_pC
 

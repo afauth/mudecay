@@ -7,9 +7,10 @@ from data_analyze.CurveFit.Exp_Fit import Curve_Fit_Exponential, Plot_Fit_Graph
 
 Assemble_MuonDecay(path='documents/data/muon_decay')
 
-Assemble_SingleMuon(path='documents/data/single_muon')
+# plots_MuonDecay(path='documents/data/muon_decay', value_converted=True)
 
-plots_MuonDecay(path='documents/data/muon_decay')
+# Assemble_SingleMuon(path='documents/data/single_muon')
 
-plots_SingleMuon(path='documents/data/single_muon')
+# plots_SingleMuon(path='documents/data/single_muon')
+
 
