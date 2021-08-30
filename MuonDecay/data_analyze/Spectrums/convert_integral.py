@@ -36,10 +36,10 @@ def convert_energy(integral, converter_df, single_muon_energy_MeV=1000, single_m
 
 #                          .
 #==========================================================================================================
-def find_charge_single_muon(path='../documents/data/single_muon/1625353737.1067114/results', file='integral.csv', number_of_bins=100):
+def find_charge_single_muon(converter_df, path='../documents/data/single_muon/1625353737.1067114/results', file='integral.csv', number_of_bins=100):
 
     integrals = pd.read_csv(f'{path}/{file}', index_col=0)
-    charge    = convert_charge(integral=-1*integrals)
+    charge    = convert_charge(integral=integrals, converter_df=converter_df)
 
     values = charge[charge.columns[0]]
     bins   = np.linspace( values.min(), values.max(), number_of_bins+1 )

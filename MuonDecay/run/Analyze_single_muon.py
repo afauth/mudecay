@@ -15,16 +15,16 @@ folder = '1625353737.1067114'
 # plots_SingleMuon(path+folder)
 
 integral = pd.read_csv(path+folder+'/results/integral.csv', index_col=0)
-integral.columns = ['integral']
 
 converter = retrieve_y_to_volts(path+folder)
 
 charge = convert_charge(integral, converter)
+charge.columns = ['carga']
 # print(integral)
 
 sns.histplot(-1*charge)
 plt.xlabel('carga (pC)')
-plt.ylabel('contagem')
+plt.ylabel('dN/dQ (1/pC)')
 plt.show()
 
 
